@@ -11,9 +11,5 @@ contract EchidnaSetup is EchidnaConfig {
 
     constructor() {
         ousd.initialize("Origin Dollar", "OUSD", ADDRESS_VAULT);
-
-        hevm.prank(ADDRESS_VAULT);
-        ousd.mint(ADDRESS_USER0, 1000);
-
     }
 }
