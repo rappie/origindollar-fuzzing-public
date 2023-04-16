@@ -14,4 +14,9 @@ contract EchidnaHelper is EchidnaSetup {
         hevm.prank(ADDRESS_VAULT);
         ousd.burn(from, amount);
     }
+
+    function changeSupply(uint256 amount) public {
+        hevm.prank(ADDRESS_VAULT);
+        ousd.changeSupply(amount);
+    }
 }
