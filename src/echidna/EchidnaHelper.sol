@@ -30,4 +30,16 @@ contract EchidnaHelper is EchidnaSetup {
         hevm.prank(from);
         ousd.transfer(to, amount);
     }
+
+    function optIn(bool targetAcc) public {
+        address target = getAccount(targetAcc);
+        hevm.prank(target);
+        ousd.rebaseOptIn();
+    }
+
+    function optOut(bool targetAcc) public {
+        address target = getAccount(targetAcc);
+        hevm.prank(target);
+        ousd.rebaseOptOut();
+    }
 }
