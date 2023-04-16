@@ -1,3 +1,6 @@
+crytic-export/
+echidna-corpus/
+
 # Compiler files
 cache/
 out/
