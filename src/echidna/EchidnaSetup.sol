@@ -19,5 +19,9 @@ contract EchidnaSetup is EchidnaConfig {
         ADDRESS_CONTRACT0 = address(dummy0);
         Dummy dummy1 = new Dummy();
         ADDRESS_CONTRACT1 = address(dummy1);
+
+        // Start out with a reasonable amount of OUSD
+        hevm.prank(ADDRESS_VAULT);
+        ousd.mint(ADDRESS_VAULT, 1_000_000e18);
     }
 }
