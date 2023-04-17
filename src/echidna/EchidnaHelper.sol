@@ -3,13 +3,13 @@
 import "./EchidnaSetup.sol";
 
 contract EchidnaHelper is EchidnaSetup {
-    function mint(bool toAcc, uint256 amount) public {
+    function mint(uint8 toAcc, uint256 amount) public {
         address to = getAccount(toAcc);
         hevm.prank(ADDRESS_VAULT);
         ousd.mint(to, amount);
     }
 
-    function burn(bool fromAcc, uint256 amount) public {
+    function burn(uint8 fromAcc, uint256 amount) public {
         address from = getAccount(fromAcc);
         hevm.prank(ADDRESS_VAULT);
         ousd.burn(from, amount);
@@ -21,8 +21,8 @@ contract EchidnaHelper is EchidnaSetup {
     }
 
     function transfer(
-        bool fromAcc,
-        bool toAcc,
+        uint8 fromAcc,
+        uint8 toAcc,
         uint256 amount
     ) public {
         address from = getAccount(fromAcc);
@@ -31,13 +31,13 @@ contract EchidnaHelper is EchidnaSetup {
         ousd.transfer(to, amount);
     }
 
-    function optIn(bool targetAcc) public {
+    function optIn(uint8 targetAcc) public {
         address target = getAccount(targetAcc);
         hevm.prank(target);
         ousd.rebaseOptIn();
     }
 
-    function optOut(bool targetAcc) public {
+    function optOut(uint8 targetAcc) public {
         address target = getAccount(targetAcc);
         hevm.prank(target);
         ousd.rebaseOptOut();

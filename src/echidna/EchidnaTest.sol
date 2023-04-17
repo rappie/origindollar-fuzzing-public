@@ -9,8 +9,8 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
     // The receiving account's balance after a transfer must increase by at least the amount transferred
     // The sending account's balance after a transfer must decrease by no more than amount transferred.
     function testTransferBalance(
-        bool fromAcc,
-        bool toAcc,
+        uint8 fromAcc,
+        uint8 toAcc,
         uint256 amount
     ) public {
         address from = getAccount(fromAcc);
