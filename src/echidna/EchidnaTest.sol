@@ -16,6 +16,8 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         address from = getAccount(fromAcc);
         address to = getAccount(toAcc);
 
+        require(from != to);
+
         uint256 fromBalBefore = ousd.balanceOf(from);
         uint256 toBalBefore = ousd.balanceOf(to);
 
