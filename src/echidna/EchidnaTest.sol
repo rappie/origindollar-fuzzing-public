@@ -126,6 +126,7 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
             assert(true);
         }
     }
+
     // After a `changeSupply`, the total supply should exactly match the target total supply. (This is needed to ensure successive rebases are correct).
     //
     // testChangeSupply(uint256): failed!💥
