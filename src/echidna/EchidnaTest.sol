@@ -103,4 +103,15 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
             assert(true);
         }
     }
+
+    // A transfer to the same account should not change that account's balance
+    function testTransferSelf(uint8 targetAcc, uint256 amount) public {
+        address target = getAccount(targetAcc);
+
+        uint256 balanceBefore = ousd.balanceOf(target);
+        transfer(targetAcc, targetAcc, amount);
+        uint256 balanceAfter = ousd.balanceOf(target);
+
+        assert(balanceBefore == balanceAfter);
+    }
 }
