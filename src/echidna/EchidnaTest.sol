@@ -18,6 +18,8 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         require(amount > 0);
         amount = amount % ousd.balanceOf(from);
 
+        Debugger.log("Total supply", ousd.totalSupply());
+
         hevm.prank(from);
         try ousd.transfer(to, amount) {
             assert(true);
