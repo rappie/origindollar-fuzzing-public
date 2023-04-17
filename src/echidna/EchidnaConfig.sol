@@ -12,10 +12,10 @@ contract EchidnaConfig {
     address internal ADDRESS_CONTRACT1;
 
     bool internal TOGGLE_STARTING_BALANCE = true;
-    uint internal STARTING_BALANCE = 1_000_000e18;
+    uint256 internal STARTING_BALANCE = 1_000_000e18;
 
     bool internal TOGGLE_CHANGESUPPLY_LIMIT = true;
-    uint internal CHANGESUPPLY_DIVISOR = 10;
+    uint256 internal CHANGESUPPLY_DIVISOR = 10;
 
     function getAccount(uint8 userId) internal view returns (address) {
         userId = userId / 64;
