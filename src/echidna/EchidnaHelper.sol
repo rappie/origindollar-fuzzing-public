@@ -16,8 +16,11 @@ contract EchidnaHelper is EchidnaSetup {
     }
 
     function changeSupply(uint256 amount) public {
-        // Increase supply by max 10% of current supply
-        // amount = ousd.totalSupply() + (amount % (ousd.totalSupply() / 10));
+        if (TOGGLE_CHANGESUPPLY_LIMIT) {
+            amount =
+                ousd.totalSupply() +
+                (amount % (ousd.totalSupply() / CHANGESUPPLY_DIVISOR));
+        }
 
         hevm.prank(ADDRESS_VAULT);
         ousd.changeSupply(amount);
