@@ -21,7 +21,14 @@ contract EchidnaSetup is EchidnaConfig {
         ADDRESS_CONTRACT1 = address(dummy1);
 
         // Start out with a reasonable amount of OUSD
-        // hevm.prank(ADDRESS_VAULT);
-        // ousd.mint(ADDRESS_VAULT, 1_000_000e18);
+        if (TOGGLE_STARTING_BALANCE) {
+            // Rebasing tokens
+            hevm.prank(ADDRESS_VAULT);
+            ousd.mint(ADDRESS_OUTSIDER, STARTING_BALANCE/2);
+
+            // Non-rebasing tokens
+            hevm.prank(ADDRESS_VAULT);
+            ousd.mint(ADDRESS_VAULT, STARTING_BALANCE/2);
+        }
     }
 }

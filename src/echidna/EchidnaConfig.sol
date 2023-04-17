@@ -2,13 +2,17 @@
 
 contract EchidnaConfig {
     address internal constant ADDRESS_VAULT = address(0x10000);
+    address internal constant ADDRESS_OUTSIDER = address(0x20000);
 
-    address internal constant ADDRESS_USER0 = address(0x20000);
-    address internal constant ADDRESS_USER1 = address(0x30000);
+    address internal constant ADDRESS_USER0 = address(0x30000);
+    address internal constant ADDRESS_USER1 = address(0x40000);
 
     // Will be set in EchidnaSetup constructor
     address internal ADDRESS_CONTRACT0;
     address internal ADDRESS_CONTRACT1;
+
+    bool internal TOGGLE_STARTING_BALANCE = true;
+    uint internal STARTING_BALANCE = 1_000_000e18;
 
     function getAccount(uint8 userId) internal view returns (address) {
         userId = userId / 64;
