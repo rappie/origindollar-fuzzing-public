@@ -1,4 +1,5 @@
 # multi-abi: true
+jobs: 4
 
 testMode: assertion
 
