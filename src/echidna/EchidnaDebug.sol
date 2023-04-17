@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+import {Address} from "@openzeppelin/contracts/utils/Address.sol";
 
 import "./EchidnaHelper.sol";
 import "./Debugger.sol";
@@ -9,5 +10,6 @@ contract EchidnaDebug is EchidnaHelper {
     function debugOUSD() public view returns (uint256) {
         // assert(ousd.balanceOf(ADDRESS_USER0) == 1000);
         // assert(ousd.rebaseState(ADDRESS_USER0) != OUSD.RebaseOptions.OptIn);
+        assert(Address.isContract(ADDRESS_CONTRACT0));
     }
 }
