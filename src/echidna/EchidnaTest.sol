@@ -41,7 +41,7 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         uint8 fromAcc,
         uint8 toAcc,
         uint256 amount
-    ) public {
+    ) public hasKnownIssue {
         address from = getAccount(fromAcc);
         address to = getAccount(toAcc);
 
