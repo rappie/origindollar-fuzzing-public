@@ -7,6 +7,8 @@ corpusDir: echidna-corpus
 
 testLimit: 100000000000
 
+# shrinkLimit: 100000000000
+
 sender: [
     "0x10000", # vault
     "0x20000", # user0
