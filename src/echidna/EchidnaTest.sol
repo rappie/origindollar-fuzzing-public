@@ -126,4 +126,19 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
             assert(true);
         }
     }
+    // After a `changeSupply`, the total supply should exactly match the target total supply. (This is needed to ensure successive rebases are correct).
+    //
+    // testChangeSupply(uint256): failed!💥
+    //   Call sequence:
+    //       testChangeSupply(1044505275072865171609)
+    //
+    //   Event sequence:
+    //       TotalSupplyUpdatedHighres(1044505275072865171610, 1000000000000000000000000, 957391048054055578595)
+    //
+    function testChangeSupply(uint256 supply) public hasKnownIssue {
+        hevm.prank(ADDRESS_VAULT);
+        ousd.changeSupply(supply);
+
+        assert(ousd.totalSupply() == supply);
+    }
 }
