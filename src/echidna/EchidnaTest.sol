@@ -8,6 +8,20 @@ import "./Debugger.sol";
 contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
     // The receiving account's balance after a transfer must increase by at least the amount transferred
     // The sending account's balance after a transfer must decrease by no more than amount transferred.
+    //
+    // testTransferBalance(uint8,uint8,uint256): failed!💥
+    //   Call sequence:
+    //     changeSupply(1)
+    //     mint(0,2)
+    //     testTransferBalance(0,64,1)
+    //
+    //   Event sequence:
+    //       Debug(«totalSupply», 1000000000000000001000002)
+    //       Debug(«fromBalBefore», 1)
+    //       Debug(«fromBalAfter», 1)
+    //       Debug(«toBalBefore», 0)
+    //       Debug(«toBalAfter», 0)
+    //
     function testTransferBalance(
         uint8 fromAcc,
         uint8 toAcc,
