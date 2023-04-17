@@ -31,7 +31,7 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         Debugger.log("toBalBefore", toBalBefore);
         Debugger.log("toBalAfter", toBalAfter);
 
-        assert(toBalAfter >= toBalBefore + amount);
         assert(fromBalAfter >= fromBalBefore - amount);
+        assert(toBalAfter >= toBalBefore + amount);
     }
 }
