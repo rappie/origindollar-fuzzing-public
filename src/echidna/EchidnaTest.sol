@@ -114,4 +114,16 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
         assert(balanceBefore == balanceAfter);
     }
+
+    // Transfers to the zero account revert
+    function testTransferToZeroAddress(uint8 fromAcc, uint256 amount) public {
+        address from = getAccount(fromAcc);
+
+        hevm.prank(from);
+        try ousd.transfer(address(0), amount) {
+            assert(false);
+        } catch {
+            assert(true);
+        }
+    }
 }
