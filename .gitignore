@@ -1,5 +1,6 @@
 crytic-export/
 echidna-corpus/
+medusa-corpus/
 
 # Compiler files
 cache/
