@@ -14,6 +14,7 @@ contract EchidnaSetup is EchidnaConfig {
     constructor() {
         ousd.initialize("Origin Dollar", "OUSD", ADDRESS_VAULT);
 
+        // Deploy dummny contracts as users
         Dummy dummy0 = new Dummy();
         ADDRESS_CONTRACT0 = address(dummy0);
         Dummy dummy1 = new Dummy();
