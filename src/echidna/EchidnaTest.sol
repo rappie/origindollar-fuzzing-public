@@ -57,4 +57,23 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
             assert(false);
         }
     }
+
+    // An account should never be able to successfully transfer an amount greater than their balance.
+    function testTransferExceedingBalanceReverts(
+        uint8 fromAcc,
+        uint8 toAcc,
+        uint256 amount
+    ) public {
+        address from = getAccount(fromAcc);
+        address to = getAccount(toAcc);
+
+        amount = ousd.balanceOf(from) + 1 + amount;
+
+        hevm.prank(from);
+        try ousd.transfer(to, amount) {
+            assert(false);
+        } catch {
+            assert(true);
+        }
+    }
 }
