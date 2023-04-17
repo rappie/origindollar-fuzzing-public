@@ -51,6 +51,19 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
     }
 
     // An account should always be able to successfully transfer an amount within its balance.
+    //
+    // testTransferWithinBalanceDoesNotRevert(uint8,uint8,uint8): failed!💥
+    //   Call sequence:
+    //       mint(0,1)
+    //       changeSupply(3)
+    //       optOut(0)
+    //       testTransferWithinBalanceDoesNotRevert(0,128,2)
+    //       optIn(0)
+    //       testTransferWithinBalanceDoesNotRevert(128,0,1)
+    //
+    //   Event sequence:
+    //       error Revert Panic(17): SafeMath over-/under-flows
+    //
     function testTransferWithinBalanceDoesNotRevert(
         uint8 fromAcc,
         uint8 toAcc,
