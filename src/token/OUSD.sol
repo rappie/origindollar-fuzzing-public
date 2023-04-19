@@ -54,7 +54,7 @@ contract OUSD is Initializable, InitializableERC20Detailed, Governable {
     address public vaultAddress = address(0);
     mapping(address => uint256) private _creditBalances;
     uint256 private _rebasingCredits;
-    uint256 private _rebasingCreditsPerToken;
+    uint256 internal _rebasingCreditsPerToken;
     // Frozen address/credits are non rebasing (value is held in contracts which
     // do not receive yield unless they explicitly opt in)
     uint256 public nonRebasingSupply;

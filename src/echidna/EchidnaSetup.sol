@@ -2,14 +2,13 @@
 
 import "./IHevm.sol";
 import "./EchidnaConfig.sol";
-
-import "../token/OUSD.sol";
+import "./OUSDEchidna.sol";
 
 contract Dummy {}
 
 contract EchidnaSetup is EchidnaConfig {
     IHevm hevm = IHevm(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
-    OUSD ousd = new OUSD();
+    OUSDEchidna ousd = new OUSDEchidna();
 
     constructor() {
         ousd.initialize("Origin Dollar", "OUSD", ADDRESS_VAULT);
