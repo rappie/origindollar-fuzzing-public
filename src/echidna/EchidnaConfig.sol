@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 contract EchidnaConfig {
     address internal constant ADDRESS_VAULT = address(0x10000);
@@ -24,12 +25,12 @@ contract EchidnaConfig {
         _;
     }
 
-    function getAccount(uint8 userId) internal view returns (address) {
-        userId = userId / 64;
-        if (userId == 0) return ADDRESS_USER0;
-        if (userId == 1) return ADDRESS_USER1;
-        if (userId == 2) return ADDRESS_CONTRACT0;
-        if (userId == 3) return ADDRESS_CONTRACT1;
+    function getAccount(uint8 accountId) internal view returns (address account) {
+        accountId = accountId / 64;
+        if (accountId == 0) return account = ADDRESS_USER0;
+        if (accountId == 1) return account = ADDRESS_USER1;
+        if (accountId == 2) return account = ADDRESS_CONTRACT0;
+        if (accountId == 3) return account = ADDRESS_CONTRACT1;
         require(false, "Unknown account ID");
     }
 }
