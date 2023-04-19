@@ -142,4 +142,28 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
         assert(ousd.totalSupply() == supply);
     }
+
+    // The total supply may be greater than the sum of account balances. (The difference will go into future rebases)
+    //
+    // testTotalSupplyVsTotalBalance(): failed!💥
+    //   Call sequence:
+    //     mint(0,1)
+    //     changeSupply(1)
+    //     optOut(64)
+    //     transfer(0,64,1)
+    //     testTotalSupplyVsTotalBalance()
+    //
+    //   Event sequence:
+    //     Debug(«totalSupply», 1000000000000000001000001)
+    //     Debug(«totalBalance», 1000000000000000001000002)
+    //
+    function testTotalSupplyVsTotalBalance() public {
+        uint256 totalSupply = ousd.totalSupply();
+        uint256 totalBalance = getTotalBalance();
+
+        Debugger.log("totalSupply", totalSupply);
+        Debugger.log("totalBalance", totalBalance);
+
+        assert(totalSupply >= totalBalance);
+    }
 }
