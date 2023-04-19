@@ -166,4 +166,17 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
         assert(totalSupply >= totalBalance);
     }
+
+    // Non-rebasing supply should not be larger than total supply
+    function testNonRebasingSupplyVsTotalSupply() public {
+        uint256 nonRebasingSupply = ousd.nonRebasingSupply();
+        uint256 totalSupply = ousd.totalSupply();
+
+        Debugger.log("nonRebasingSupply", nonRebasingSupply);
+        Debugger.log("totalSupply", totalSupply);
+
+        assert(nonRebasingSupply <= totalSupply);
+    }
+
+
 }
