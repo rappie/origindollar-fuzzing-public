@@ -6,6 +6,11 @@ import "./EchidnaSetup.sol";
 contract EchidnaHelper is EchidnaSetup {
     function mint(uint8 toAcc, uint256 amount) public {
         address to = getAccount(toAcc);
+
+        if (TOGGLE_MINT_LIMIT) {
+            amount = amount % MINT_MODULO;
+        }
+
         hevm.prank(ADDRESS_VAULT);
         ousd.mint(to, amount);
     }

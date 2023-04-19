@@ -20,6 +20,9 @@ contract EchidnaConfig {
     bool internal TOGGLE_CHANGESUPPLY_LIMIT = true;
     uint256 internal CHANGESUPPLY_DIVISOR = 10;
 
+    bool internal TOGGLE_MINT_LIMIT = true;
+    uint256 internal MINT_MODULO = 1_000_000_000_000e18;
+
     modifier hasKnownIssue() {
         if (!TOGGLE_KNOWN_ISSUES) return;
         _;
