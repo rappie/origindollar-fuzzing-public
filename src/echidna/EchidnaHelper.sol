@@ -48,4 +48,13 @@ contract EchidnaHelper is EchidnaSetup {
         hevm.prank(target);
         ousd.rebaseOptOut();
     }
+
+    function getTotalBalance() public view returns (uint256 total) {
+        total += ousd.balanceOf(ADDRESS_VAULT);
+        total += ousd.balanceOf(ADDRESS_OUTSIDER);
+        total += ousd.balanceOf(ADDRESS_USER0);
+        total += ousd.balanceOf(ADDRESS_USER1);
+        total += ousd.balanceOf(ADDRESS_CONTRACT0);
+        total += ousd.balanceOf(ADDRESS_CONTRACT1);
+    }
 }
