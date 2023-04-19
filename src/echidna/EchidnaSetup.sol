@@ -23,11 +23,11 @@ contract EchidnaSetup is EchidnaConfig {
         if (TOGGLE_STARTING_BALANCE) {
             // Rebasing tokens
             hevm.prank(ADDRESS_VAULT);
-            ousd.mint(ADDRESS_OUTSIDER, STARTING_BALANCE/2);
+            ousd.mint(ADDRESS_OUTSIDER, STARTING_BALANCE / 2);
 
             // Non-rebasing tokens
             hevm.prank(ADDRESS_VAULT);
-            ousd.mint(ADDRESS_VAULT, STARTING_BALANCE/2);
+            ousd.mint(ADDRESS_VAULT, STARTING_BALANCE / 2);
         }
     }
 }
