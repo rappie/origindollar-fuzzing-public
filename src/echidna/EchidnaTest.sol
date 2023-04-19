@@ -6,6 +6,8 @@ import "./EchidnaDebug.sol";
 import "./Debugger.sol";
 
 contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
+    uint256 prevRebasingCreditsPerToken = type(uint256).max;
+
     // The receiving account's balance after a transfer must increase by at least the amount transferred
     // The sending account's balance after a transfer must decrease by no more than amount transferred.
     //
@@ -178,5 +180,26 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         assert(nonRebasingSupply <= totalSupply);
     }
 
+    // Global `rebasingCreditsPerToken` should never increase
+    //
+    // 💥 Known to break when manually calling `changeSupply`. This can be reproduced by toggling `TOGGLE_CHANGESUPPLY_LIMIT`.
+    //
+    // Call sequence:
+    //   testRebasingCreditsPerTokenNotIncreased()
+    //   changeSupply(1)
+    //   testRebasingCreditsPerTokenNotIncreased()
+    //
+    function testRebasingCreditsPerTokenNotIncreased() public {
+        uint256 curRebasingCreditsPerToken = ousd.rebasingCreditsPerToken();
 
+        Debugger.log(
+            "prevRebasingCreditsPerToken",
+            prevRebasingCreditsPerToken
+        );
+        Debugger.log("curRebasingCreditsPerToken", curRebasingCreditsPerToken);
+
+        assert(curRebasingCreditsPerToken <= prevRebasingCreditsPerToken);
+
+        prevRebasingCreditsPerToken = curRebasingCreditsPerToken;
+    }
 }
