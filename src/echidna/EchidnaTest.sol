@@ -204,4 +204,18 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
         prevRebasingCreditsPerToken = curRebasingCreditsPerToken;
     }
+
+    // Account balance should not increase when opting in. (Ok to lose rounding funds doing this)
+    function testOptInBalance(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        uint256 balanceBefore = ousd.balanceOf(target);
+        optIn(targetAcc);
+        uint256 balanceAfter = ousd.balanceOf(target);
+
+        Debugger.log("balanceBefore", balanceBefore);
+        Debugger.log("balanceAfter", balanceAfter);
+
+        assert(balanceAfter <= balanceBefore);
+    }
 }
