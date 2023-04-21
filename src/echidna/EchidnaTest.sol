@@ -281,4 +281,9 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
             assert(false);
         }
     }
+
+    // The rebasing credits per token ratio must greater than zero
+    function testRebasingCreditsPerTokenAboveZero() public {
+        assert(ousd.rebasingCreditsPerTokenHighres() > 0);
+    }
 }
