@@ -218,4 +218,18 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
         assert(balanceAfter <= balanceBefore);
     }
+
+    // Account balance should remain the same after opting out
+    function testOptOutBalance(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        uint256 balanceBefore = ousd.balanceOf(target);
+        optOut(targetAcc);
+        uint256 balanceAfter = ousd.balanceOf(target);
+
+        Debugger.log("balanceBefore", balanceBefore);
+        Debugger.log("balanceAfter", balanceAfter);
+
+        assert(balanceAfter == balanceBefore);
+    }
 }
