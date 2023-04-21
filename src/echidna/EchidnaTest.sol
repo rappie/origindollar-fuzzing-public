@@ -191,7 +191,8 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
     //   testRebasingCreditsPerTokenNotIncreased()
     //
     function testRebasingCreditsPerTokenNotIncreased() public {
-        uint256 curRebasingCreditsPerToken = ousd.rebasingCreditsPerTokenHighres();
+        uint256 curRebasingCreditsPerToken = ousd
+            .rebasingCreditsPerTokenHighres();
 
         Debugger.log(
             "prevRebasingCreditsPerToken",
