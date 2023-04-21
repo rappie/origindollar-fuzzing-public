@@ -270,4 +270,15 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
         assert(balanceAfter == balanceBefore);
     }
+
+    // The `balanceOf` function should never revert
+    function testBalanceOfShouldNotRevert(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        try ousd.balanceOf(target) {
+            assert(true);
+        } catch {
+            assert(false);
+        }
+    }
 }
