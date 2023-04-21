@@ -232,4 +232,33 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
         assert(balanceAfter == balanceBefore);
     }
+
+    // After opting in, total supply should remain the same
+    function testOptInTotalSupply(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        uint256 totalSupplyBefore = ousd.totalSupply();
+        optIn(targetAcc);
+        uint256 totalSupplyAfter = ousd.totalSupply();
+
+        Debugger.log("totalSupplyBefore", totalSupplyBefore);
+        Debugger.log("totalSupplyAfter", totalSupplyAfter);
+
+        assert(totalSupplyAfter == totalSupplyBefore);
+    }
+
+    // After opting out, total supply should remain the same
+    function testOptOutTotalSupply(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        uint256 totalSupplyBefore = ousd.totalSupply();
+        optOut(targetAcc);
+        uint256 totalSupplyAfter = ousd.totalSupply();
+
+        Debugger.log("totalSupplyBefore", totalSupplyBefore);
+        Debugger.log("totalSupplyAfter", totalSupplyAfter);
+
+        assert(totalSupplyAfter == totalSupplyBefore);
+    }
+
 }
