@@ -257,4 +257,17 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         assert(totalSupplyAfter == totalSupplyBefore);
     }
 
+    // Account balance should remain the same when a smart contract auto converts
+    function testAutoConvertBalance(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        uint256 balanceBefore = ousd.balanceOf(target);
+        ousd._isNonRebasingAccountEchidna(target);
+        uint256 balanceAfter = ousd.balanceOf(target);
+
+        Debugger.log("balanceBefore", balanceBefore);
+        Debugger.log("balanceAfter", balanceAfter);
+
+        assert(balanceAfter == balanceBefore);
+    }
 }
