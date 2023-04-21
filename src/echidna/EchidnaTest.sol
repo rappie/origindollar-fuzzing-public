@@ -235,8 +235,6 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
     // After opting in, total supply should remain the same
     function testOptInTotalSupply(uint8 targetAcc) public {
-        address target = getAccount(targetAcc);
-
         uint256 totalSupplyBefore = ousd.totalSupply();
         optIn(targetAcc);
         uint256 totalSupplyAfter = ousd.totalSupply();
@@ -249,8 +247,6 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
     // After opting out, total supply should remain the same
     function testOptOutTotalSupply(uint8 targetAcc) public {
-        address target = getAccount(targetAcc);
-
         uint256 totalSupplyBefore = ousd.totalSupply();
         optOut(targetAcc);
         uint256 totalSupplyAfter = ousd.totalSupply();
