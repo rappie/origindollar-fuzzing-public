@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./EchidnaSetup.sol";
+import "./Debugger.sol";
 
 contract EchidnaHelper is EchidnaSetup {
     function mint(uint8 toAcc, uint256 amount) public {
