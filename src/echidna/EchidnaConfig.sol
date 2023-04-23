@@ -3,12 +3,13 @@ pragma solidity ^0.8.0;
 
 contract EchidnaConfig {
     address internal constant ADDRESS_VAULT = address(0x10000);
-    address internal constant ADDRESS_OUTSIDER = address(0x20000);
+    address internal constant ADDRESS_OUTSIDER_USER = address(0x20000);
 
     address internal constant ADDRESS_USER0 = address(0x30000);
     address internal constant ADDRESS_USER1 = address(0x40000);
 
     // Will be set in EchidnaSetup constructor
+    address internal ADDRESS_OUTSIDER_CONTRACT;
     address internal ADDRESS_CONTRACT0;
     address internal ADDRESS_CONTRACT1;
 

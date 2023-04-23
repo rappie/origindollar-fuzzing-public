@@ -60,7 +60,8 @@ contract EchidnaHelper is EchidnaSetup {
 
     function getTotalBalance() public view returns (uint256 total) {
         total += ousd.balanceOf(ADDRESS_VAULT);
-        total += ousd.balanceOf(ADDRESS_OUTSIDER);
+        total += ousd.balanceOf(ADDRESS_OUTSIDER_USER);
+        total += ousd.balanceOf(ADDRESS_OUTSIDER_CONTRACT);
         total += ousd.balanceOf(ADDRESS_USER0);
         total += ousd.balanceOf(ADDRESS_USER1);
         total += ousd.balanceOf(ADDRESS_CONTRACT0);

@@ -15,6 +15,8 @@ contract EchidnaSetup is EchidnaConfig {
         ousd.initialize("Origin Dollar", "OUSD", ADDRESS_VAULT);
 
         // Deploy dummny contracts as users
+        Dummy outsider = new Dummy();
+        ADDRESS_OUTSIDER_CONTRACT = address(outsider);
         Dummy dummy0 = new Dummy();
         ADDRESS_CONTRACT0 = address(dummy0);
         Dummy dummy1 = new Dummy();
@@ -24,11 +26,11 @@ contract EchidnaSetup is EchidnaConfig {
         if (TOGGLE_STARTING_BALANCE) {
             // Rebasing tokens
             hevm.prank(ADDRESS_VAULT);
-            ousd.mint(ADDRESS_OUTSIDER, STARTING_BALANCE / 2);
+            ousd.mint(ADDRESS_OUTSIDER_USER, STARTING_BALANCE / 2);
 
             // Non-rebasing tokens
             hevm.prank(ADDRESS_VAULT);
-            ousd.mint(ADDRESS_VAULT, STARTING_BALANCE / 2);
+            ousd.mint(ADDRESS_OUTSIDER_CONTRACT, STARTING_BALANCE / 2);
         }
     }
 }
