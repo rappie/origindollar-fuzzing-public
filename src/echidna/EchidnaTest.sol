@@ -346,4 +346,13 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
         assert(balanceAfter <= balanceBefore - amount);
     }
+
+    // A burn of an account balance must result in a zero balance
+    function testBurnAllBalanceToZero(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        burn(targetAcc, ousd.balanceOf(target));
+        assert(ousd.balanceOf(target) == 0);
+    }
+
 }
