@@ -175,9 +175,6 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         uint256 nonRebasingSupply = ousd.nonRebasingSupply();
         uint256 totalSupply = ousd.totalSupply();
 
-        Debugger.log("nonRebasingSupply", nonRebasingSupply);
-        Debugger.log("totalSupply", totalSupply);
-
         assert(nonRebasingSupply <= totalSupply);
     }
 
@@ -213,9 +210,6 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         optIn(targetAcc);
         uint256 balanceAfter = ousd.balanceOf(target);
 
-        Debugger.log("balanceBefore", balanceBefore);
-        Debugger.log("balanceAfter", balanceAfter);
-
         assert(balanceAfter <= balanceBefore);
     }
 
@@ -227,9 +221,6 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         optOut(targetAcc);
         uint256 balanceAfter = ousd.balanceOf(target);
 
-        Debugger.log("balanceBefore", balanceBefore);
-        Debugger.log("balanceAfter", balanceAfter);
-
         assert(balanceAfter == balanceBefore);
     }
 
@@ -239,9 +230,6 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         optIn(targetAcc);
         uint256 totalSupplyAfter = ousd.totalSupply();
 
-        Debugger.log("totalSupplyBefore", totalSupplyBefore);
-        Debugger.log("totalSupplyAfter", totalSupplyAfter);
-
         assert(totalSupplyAfter == totalSupplyBefore);
     }
 
@@ -250,9 +238,6 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         uint256 totalSupplyBefore = ousd.totalSupply();
         optOut(targetAcc);
         uint256 totalSupplyAfter = ousd.totalSupply();
-
-        Debugger.log("totalSupplyBefore", totalSupplyBefore);
-        Debugger.log("totalSupplyAfter", totalSupplyAfter);
 
         assert(totalSupplyAfter == totalSupplyBefore);
     }
@@ -264,9 +249,6 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         uint256 balanceBefore = ousd.balanceOf(target);
         ousd._isNonRebasingAccountEchidna(target);
         uint256 balanceAfter = ousd.balanceOf(target);
-
-        Debugger.log("balanceBefore", balanceBefore);
-        Debugger.log("balanceAfter", balanceAfter);
 
         assert(balanceAfter == balanceBefore);
     }
@@ -295,9 +277,6 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         mint(targetAcc, 0);
         uint256 balanceAfter = ousd.balanceOf(target);
 
-        Debugger.log("balanceBefore", balanceBefore);
-        Debugger.log("balanceAfter", balanceAfter);
-
         assert(balanceAfter == balanceBefore);
     }
 
@@ -308,9 +287,6 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         uint256 balanceBefore = ousd.balanceOf(target);
         burn(targetAcc, 0);
         uint256 balanceAfter = ousd.balanceOf(target);
-
-        Debugger.log("balanceBefore", balanceBefore);
-        Debugger.log("balanceAfter", balanceAfter);
 
         assert(balanceAfter == balanceBefore);
     }
