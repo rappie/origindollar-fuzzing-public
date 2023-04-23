@@ -286,4 +286,32 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
     function testRebasingCreditsPerTokenAboveZero() public {
         assert(ousd.rebasingCreditsPerTokenHighres() > 0);
     }
+
+    // Minting 0 tokens should not affect account balance
+    function testMintZeroBalance(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        uint256 balanceBefore = ousd.balanceOf(target);
+        mint(targetAcc, 0);
+        uint256 balanceAfter = ousd.balanceOf(target);
+
+        Debugger.log("balanceBefore", balanceBefore);
+        Debugger.log("balanceAfter", balanceAfter);
+
+        assert(balanceAfter == balanceBefore);
+    }
+
+    // Burning 0 tokens should not affect account balance
+    function testBurnZeroBalance(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        uint256 balanceBefore = ousd.balanceOf(target);
+        burn(targetAcc, 0);
+        uint256 balanceAfter = ousd.balanceOf(target);
+
+        Debugger.log("balanceBefore", balanceBefore);
+        Debugger.log("balanceAfter", balanceAfter);
+
+        assert(balanceAfter == balanceBefore);
+    }
 }
