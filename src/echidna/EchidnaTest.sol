@@ -342,4 +342,32 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
         assert(balanceAfter >= balanceBefore + amountMinted);
     }
+
+    // Burning tokens must decrease the balance by at least amount.
+    //
+    // testBurnBalance(uint8,uint256): failed!💥
+    //   Call sequence:
+    //     changeSupply(1)
+    //     mint(0,3)
+    //     testBurnBalance(0,1)
+    //
+    //   Event sequence:
+    //       Debug(«balanceBefore», 2)
+    //       Debug(«balanceAfter», 2)
+    //
+    function testBurnBalance(uint8 targetAcc, uint256 amount)
+        public
+        hasKnownIssue
+    {
+        address target = getAccount(targetAcc);
+
+        uint256 balanceBefore = ousd.balanceOf(target);
+        burn(targetAcc, amount);
+        uint256 balanceAfter = ousd.balanceOf(target);
+
+        Debugger.log("balanceBefore", balanceBefore);
+        Debugger.log("balanceAfter", balanceAfter);
+
+        assert(balanceAfter <= balanceBefore - amount);
+    }
 }
