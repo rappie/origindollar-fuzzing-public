@@ -314,4 +314,19 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
 
         assert(balanceAfter == balanceBefore);
     }
+
+    // Minting tokens should always increase the account balance by at least amount
+    function testMintBalance(uint8 targetAcc, uint256 amount) public {
+        address target = getAccount(targetAcc);
+
+        uint256 balanceBefore = ousd.balanceOf(target);
+        uint256 amountMinted = mint(targetAcc, amount);
+        uint256 balanceAfter = ousd.balanceOf(target);
+
+        Debugger.log("amountMinted", amountMinted);
+        Debugger.log("balanceBefore", balanceBefore);
+        Debugger.log("balanceAfter", balanceAfter);
+
+        assert(balanceAfter >= balanceBefore + amountMinted);
+    }
 }
