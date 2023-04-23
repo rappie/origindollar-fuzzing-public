@@ -5,7 +5,7 @@ import "./EchidnaSetup.sol";
 import "./Debugger.sol";
 
 contract EchidnaHelper is EchidnaSetup {
-    function mint(uint8 toAcc, uint256 amount) public {
+    function mint(uint8 toAcc, uint256 amount) public returns (uint256) {
         address to = getAccount(toAcc);
 
         if (TOGGLE_MINT_LIMIT) {
@@ -14,6 +14,8 @@ contract EchidnaHelper is EchidnaSetup {
 
         hevm.prank(ADDRESS_VAULT);
         ousd.mint(to, amount);
+
+        return amount;
     }
 
     function burn(uint8 fromAcc, uint256 amount) public {
