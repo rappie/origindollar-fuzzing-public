@@ -316,6 +316,16 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
     }
 
     // Minting tokens should always increase the account balance by at least amount
+    //
+    // testMintBalance(uint8,uint256): failed!💥
+    //   Call sequence:
+    //       changeSupply(1)
+    //       testMintBalance(0,1)
+    //
+    //   Event sequence:
+    //       Debug(«balanceBefore», 0)
+    //       Debug(«balanceAfter», 0)
+    //
     function testMintBalance(uint8 targetAcc, uint256 amount) public {
         address target = getAccount(targetAcc);
 
