@@ -355,4 +355,16 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
         assert(ousd.balanceOf(target) == 0);
     }
 
+    // You should always be able to burn an account's balance
+    function testBurnAllBalanceShouldNotRevert(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+        uint balance = ousd.balanceOf(target);
+
+        hevm.prank(ADDRESS_VAULT);
+        try ousd.burn(target, balance) {
+            assert(true);
+        } catch {
+            assert(false);
+        }
+    }
 }
