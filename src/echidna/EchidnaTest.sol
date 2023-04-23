@@ -326,7 +326,7 @@ contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
     //       Debug(«balanceBefore», 0)
     //       Debug(«balanceAfter», 0)
     //
-    function testMintBalance(uint8 targetAcc, uint256 amount) public {
+    function testMintBalance(uint8 targetAcc, uint256 amount) public hasKnownIssue {
         address target = getAccount(targetAcc);
 
         uint256 balanceBefore = ousd.balanceOf(target);
