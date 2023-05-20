@@ -1,6 +1,6 @@
 # OUSD Fuzzing Campaign
 
-**NOTE** This repo is work in progress.
+**NOTE:** This repo is work in progress.
 
 ## Invariants
 
