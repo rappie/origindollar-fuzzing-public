@@ -6,7 +6,7 @@ import "./EchidnaHelper.sol";
 import "./EchidnaDebug.sol";
 import "./Debugger.sol";
 
-contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {
+contract EchidnaTest is EchidnaDebug {
     uint256 prevRebasingCreditsPerToken = type(uint256).max;
 
     // The receiving account's balance after a transfer must increase by at least the amount transferred
