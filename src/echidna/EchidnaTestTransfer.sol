@@ -6,47 +6,59 @@ import "./Debugger.sol";
 
 contract EchidnaTestTransfer is EchidnaDebug {
     // The receiving account's balance after a transfer must increase by at least the amount transferred
-    // The sending account's balance after a transfer must decrease by no more than amount transferred.
     //
-    // testTransferBalance(uint8,uint8,uint256): failed!💥
-    //   Call sequence:
-    //     changeSupply(1)
-    //     mint(0,2)
-    //     testTransferBalance(0,64,1)
+    // testTransferBalanceReceiver(uint8,uint8,uint256): failed!💥
+    //  Call sequence:
+    //    mint(0,1)
+    //    changeSupply(2)
+    //    testTransferBalanceReceiver(0,64,1)
     //
-    //   Event sequence:
-    //       Debug(«totalSupply», 1000000000000000001000002)
-    //       Debug(«fromBalBefore», 1)
-    //       Debug(«fromBalAfter», 1)
-    //       Debug(«toBalBefore», 0)
-    //       Debug(«toBalAfter», 0)
+    // Event sequence:
+    //    Debug(«totalSupply», 2)
+    //    Debug(«toBalBefore», 0)
+    //    Debug(«toBalAfter», 0)
     //
-    function testTransferBalance(
+    function testTransferBalanceReceiver(
         uint8 fromAcc,
         uint8 toAcc,
         uint256 amount
-    ) public hasKnownIssue {
+    ) public {
+        address from = getAccount(fromAcc);
+        address to = getAccount(toAcc);
+
+        require(from != to);
+
+        uint256 toBalBefore = ousd.balanceOf(to);
+        transfer(fromAcc, toAcc, amount);
+        uint256 toBalAfter = ousd.balanceOf(to);
+
+        Debugger.log("totalSupply", ousd.totalSupply());
+        Debugger.log("toBalBefore", toBalBefore);
+        Debugger.log("toBalAfter", toBalAfter);
+
+        assert(toBalAfter >= toBalBefore + amount);
+    }
+
+    // The sending account's balance after a transfer must decrease by no more than amount transferred.
+    function testTransferBalanceSender(
+        uint8 fromAcc,
+        uint8 toAcc,
+        uint256 amount
+    ) public {
         address from = getAccount(fromAcc);
         address to = getAccount(toAcc);
 
         require(from != to);
 
         uint256 fromBalBefore = ousd.balanceOf(from);
-        uint256 toBalBefore = ousd.balanceOf(to);
-
         transfer(fromAcc, toAcc, amount);
-
         uint256 fromBalAfter = ousd.balanceOf(from);
-        uint256 toBalAfter = ousd.balanceOf(to);
 
         Debugger.log("totalSupply", ousd.totalSupply());
         Debugger.log("fromBalBefore", fromBalBefore);
         Debugger.log("fromBalAfter", fromBalAfter);
-        Debugger.log("toBalBefore", toBalBefore);
-        Debugger.log("toBalAfter", toBalAfter);
 
         assert(fromBalAfter >= fromBalBefore - amount);
-        assert(toBalAfter >= toBalBefore + amount);
     }
 
     // An account should always be able to successfully transfer an amount within its balance.
