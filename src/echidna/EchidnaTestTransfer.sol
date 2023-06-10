@@ -25,6 +25,7 @@ contract EchidnaTestTransfer is EchidnaDebug {
         Debugger.log("toBalAfter", toBalAfter);
 
         assert(toBalAfter >= toBalBefore + amount);
+    }
 
     // The receiving account's balance after a transfer must not increase by more than the amount transferred
     function testTransferBalanceReceivedMore(
