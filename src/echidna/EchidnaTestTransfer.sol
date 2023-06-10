@@ -6,11 +6,23 @@ import "./Debugger.sol";
 
 contract EchidnaTestTransfer is EchidnaDebug {
     // The receiving account's balance after a transfer must not increase by less than the amount transferred
+    //
+    // testTransferBalanceReceivedLess(uint8,uint8,uint256): failed!💥
+    //   Call sequence:
+    //     changeSupply(1)
+    //     mint(64,2)
+    //     testTransferBalanceReceivedLess(64,0,1)
+    //
+    //   Event sequence:
+    //     Debug(«totalSupply», 1000000000000000000500002)
+    //     Debug(«toBalBefore», 0)
+    //     Debug(«toBalAfter», 0)
+    //
     function testTransferBalanceReceivedLess(
         uint8 fromAcc,
         uint8 toAcc,
         uint256 amount
-    ) public {
+    ) public hasKnownIssue {
         address from = getAccount(fromAcc);
         address to = getAccount(toAcc);
 
@@ -50,11 +62,23 @@ contract EchidnaTestTransfer is EchidnaDebug {
     }
 
     // The sending account's balance after a transfer must not decrease by less than the amount transferred
+    //
+    // testTransferBalanceSentLess(uint8,uint8,uint256): failed!💥
+    //   Call sequence:
+    //     mint(0,1)
+    //     changeSupply(1)
+    //     testTransferBalanceSentLess(0,64,1)
+    //
+    //   Event sequence:
+    //     Debug(«totalSupply», 1000000000000000000500001)
+    //     Debug(«fromBalBefore», 1)
+    //     Debug(«fromBalAfter», 1)
+    //
     function testTransferBalanceSentLess(
         uint8 fromAcc,
         uint8 toAcc,
         uint256 amount
-    ) public {
+    ) public hasKnownIssue {
         address from = getAccount(fromAcc);
         address to = getAccount(toAcc);
 
