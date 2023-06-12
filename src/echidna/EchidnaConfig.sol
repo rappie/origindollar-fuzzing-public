@@ -29,7 +29,11 @@ contract EchidnaConfig {
         _;
     }
 
-    function getAccount(uint8 accountId) internal view returns (address account) {
+    function getAccount(uint8 accountId)
+        internal
+        view
+        returns (address account)
+    {
         accountId = accountId / 64;
         if (accountId == 0) return account = ADDRESS_USER0;
         if (accountId == 1) return account = ADDRESS_USER1;
