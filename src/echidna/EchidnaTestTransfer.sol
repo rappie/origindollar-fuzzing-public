@@ -193,4 +193,64 @@ contract EchidnaTestTransfer is EchidnaDebug {
             assert(true);
         }
     }
+
+    // The receiving account's balance after a transfer must not increase by less than the amount transferred (minus rounding error)
+    function testTransferBalanceReceivedLessRounding(
+        uint8 fromAcc,
+        uint8 toAcc,
+        uint256 amount
+    ) public {
+        address from = getAccount(fromAcc);
+        address to = getAccount(toAcc);
+
+        require(from != to);
+
+        uint256 toBalBefore = ousd.balanceOf(to);
+        transfer(fromAcc, toAcc, amount);
+        uint256 toBalAfter = ousd.balanceOf(to);
+
+        int256 toDelta = int256(toBalAfter) - int256(toBalBefore);
+
+        Debugger.log("totalSupply", ousd.totalSupply());
+        Debugger.log("toBalBefore", toBalBefore);
+        Debugger.log("toBalAfter", toBalAfter);
+        Debugger.log("toDelta", toDelta);
+
+        // delta == amount, if no error
+        // delta < amount,  if too little is sent
+        // delta > amount,  if too much is sent
+        int256 error = int256(amount) - toDelta;
+
+        assert(error < int(TRANSFER_ROUNDING_ERROR));
+    }
+
+    // The sending account's balance after a transfer must not decrease by less than the amount transferred (minus rounding error)
+    function testTransferBalanceSentLessRounding(
+        uint8 fromAcc,
+        uint8 toAcc,
+        uint256 amount
+    ) public {
+        address from = getAccount(fromAcc);
+        address to = getAccount(toAcc);
+
+        require(from != to);
+
+        uint256 fromBalBefore = ousd.balanceOf(from);
+        transfer(fromAcc, toAcc, amount);
+        uint256 fromBalAfter = ousd.balanceOf(from);
+
+        int256 fromDelta = int256(fromBalAfter) - int256(fromBalBefore);
+
+        Debugger.log("totalSupply", ousd.totalSupply());
+        Debugger.log("fromBalBefore", fromBalBefore);
+        Debugger.log("fromBalAfter", fromBalAfter);
+        Debugger.log("fromDelta", fromDelta);
+
+        // delta == -amount, if no error
+        // delta < -amount,  if too much is sent
+        // delta > -amount,  if too little is sent
+        int error = int256(amount) + fromDelta;
+
+        assert(error < int(TRANSFER_ROUNDING_ERROR));
+    }
 }
