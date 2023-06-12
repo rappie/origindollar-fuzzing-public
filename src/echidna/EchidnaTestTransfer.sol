@@ -211,17 +211,18 @@ contract EchidnaTestTransfer is EchidnaDebug {
 
         int256 toDelta = int256(toBalAfter) - int256(toBalBefore);
 
-        Debugger.log("totalSupply", ousd.totalSupply());
-        Debugger.log("toBalBefore", toBalBefore);
-        Debugger.log("toBalAfter", toBalAfter);
-        Debugger.log("toDelta", toDelta);
-
         // delta == amount, if no error
         // delta < amount,  if too little is sent
         // delta > amount,  if too much is sent
         int256 error = int256(amount) - toDelta;
 
-        assert(error < int(TRANSFER_ROUNDING_ERROR));
+        Debugger.log("totalSupply", ousd.totalSupply());
+        Debugger.log("toBalBefore", toBalBefore);
+        Debugger.log("toBalAfter", toBalAfter);
+        Debugger.log("toDelta", toDelta);
+        Debugger.log("error", error);
+
+        assert(error <= int256(TRANSFER_ROUNDING_ERROR));
     }
 
     // The sending account's balance after a transfer must not decrease by less than the amount transferred (minus rounding error)
@@ -241,16 +242,17 @@ contract EchidnaTestTransfer is EchidnaDebug {
 
         int256 fromDelta = int256(fromBalAfter) - int256(fromBalBefore);
 
+        // delta == -amount, if no error
+        // delta < -amount,  if too much is sent
+        // delta > -amount,  if too little is sent
+        int256 error = int256(amount) + fromDelta;
+
         Debugger.log("totalSupply", ousd.totalSupply());
         Debugger.log("fromBalBefore", fromBalBefore);
         Debugger.log("fromBalAfter", fromBalAfter);
         Debugger.log("fromDelta", fromDelta);
+        Debugger.log("error", error);
 
-        // delta == -amount, if no error
-        // delta < -amount,  if too much is sent
-        // delta > -amount,  if too little is sent
-        int error = int256(amount) + fromDelta;
-
-        assert(error < int(TRANSFER_ROUNDING_ERROR));
+        assert(error <= int256(TRANSFER_ROUNDING_ERROR));
     }
 }
