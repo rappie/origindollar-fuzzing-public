@@ -27,7 +27,7 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
         assert(balanceAfter == balanceBefore);
     }
 
-    // Minting tokens should always increase the account balance by at least amount
+    // Minting tokens must increase the account balance by at least amount
     //
     // testMintBalance(uint8,uint256): failed!💥
     //   Call sequence:
@@ -56,7 +56,7 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
         assert(balanceAfter >= balanceBefore + amountMinted);
     }
 
-    // Burning tokens must decrease the balance by at least amount.
+    // Burning tokens must decrease the account balance by at least amount
     //
     // testBurnBalance(uint8,uint256): failed!💥
     //   Call sequence:
