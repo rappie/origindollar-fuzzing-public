@@ -27,7 +27,7 @@ contract EchidnaTestSupply is EchidnaTestTransfer {
         assert(ousd.totalSupply() == supply);
     }
 
-    // The total supply may be greater than the sum of account balances. (The difference will go into future rebases)
+    // The total supply may only be greater than the sum of account balances. (The difference will go into future rebases)
     //
     // testTotalSupplyVsTotalBalance(): failed!💥
     //   Call sequence:
