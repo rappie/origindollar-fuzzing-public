@@ -85,6 +85,24 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
         assert(balanceAfter <= balanceBefore - amount);
     }
 
+    // Minting tokens should not increase the account balance by less than rounding error above amount
+    function testMintBalanceRounding(uint8 targetAcc, uint256 amount) public {
+        address target = getAccount(targetAcc);
+
+        uint256 balanceBefore = ousd.balanceOf(target);
+        uint256 amountMinted = mint(targetAcc, amount);
+        uint256 balanceAfter = ousd.balanceOf(target);
+
+        int256 delta = int256(balanceAfter) - int256(balanceBefore);
+
+        // delta == amount, if no error
+        // delta < amount,  if too little is minted
+        // delta > amount,  if too much is minted
+        int256 error = int256(amountMinted) - delta;
+
+        assert(error <= int256(MINT_ROUNDING_ERROR));
+    }
+
     // A burn of an account balance must result in a zero balance
     function testBurnAllBalanceToZero(uint8 targetAcc) public hasKnownIssue {
         address target = getAccount(targetAcc);
