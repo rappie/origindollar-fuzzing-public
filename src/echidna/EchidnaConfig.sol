@@ -13,7 +13,8 @@ contract EchidnaConfig {
     address internal ADDRESS_CONTRACT0;
     address internal ADDRESS_CONTRACT1;
 
-    bool internal TOGGLE_KNOWN_ISSUES = false;
+    bool internal TOGGLE_KNOWN_ISSUES = true;
+    bool internal TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS = false;
 
     bool internal TOGGLE_STARTING_BALANCE = true;
     uint256 internal STARTING_BALANCE = 1_000_000e18;
@@ -28,6 +29,11 @@ contract EchidnaConfig {
 
     modifier hasKnownIssue() {
         if (!TOGGLE_KNOWN_ISSUES) return;
+        _;
+    }
+
+    modifier hasKnownIssueWithinLimits() {
+        if (!TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS) return;
         _;
     }
 

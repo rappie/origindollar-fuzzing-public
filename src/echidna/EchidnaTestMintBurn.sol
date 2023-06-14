@@ -41,6 +41,7 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
     function testMintBalance(uint8 targetAcc, uint256 amount)
         public
         hasKnownIssue
+        hasKnownIssueWithinLimits
     {
         address target = getAccount(targetAcc);
 
@@ -70,6 +71,7 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
     function testBurnBalance(uint8 targetAcc, uint256 amount)
         public
         hasKnownIssue
+        hasKnownIssueWithinLimits
     {
         address target = getAccount(targetAcc);
 
@@ -84,7 +86,7 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
     }
 
     // A burn of an account balance must result in a zero balance
-    function testBurnAllBalanceToZero(uint8 targetAcc) public {
+    function testBurnAllBalanceToZero(uint8 targetAcc) public hasKnownIssue {
         address target = getAccount(targetAcc);
 
         burn(targetAcc, ousd.balanceOf(target));
@@ -92,7 +94,10 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
     }
 
     // You should always be able to burn an account's balance
-    function testBurnAllBalanceShouldNotRevert(uint8 targetAcc) public {
+    function testBurnAllBalanceShouldNotRevert(uint8 targetAcc)
+        public
+        hasKnownIssue
+    {
         address target = getAccount(targetAcc);
         uint256 balance = ousd.balanceOf(target);
 

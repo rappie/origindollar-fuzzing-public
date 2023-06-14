@@ -16,7 +16,11 @@ contract EchidnaTestSupply is EchidnaTestTransfer {
     //   Event sequence:
     //       TotalSupplyUpdatedHighres(1044505275072865171610, 1000000000000000000000000, 957391048054055578595)
     //
-    function testChangeSupply(uint256 supply) public hasKnownIssue {
+    function testChangeSupply(uint256 supply)
+        public
+        hasKnownIssue
+        hasKnownIssueWithinLimits
+    {
         hevm.prank(ADDRESS_VAULT);
         ousd.changeSupply(supply);
 
@@ -37,7 +41,11 @@ contract EchidnaTestSupply is EchidnaTestTransfer {
     //     Debug(«totalSupply», 1000000000000000001000001)
     //     Debug(«totalBalance», 1000000000000000001000002)
     //
-    function testTotalSupplyVsTotalBalance() public hasKnownIssue {
+    function testTotalSupplyVsTotalBalance()
+        public
+        hasKnownIssue
+        hasKnownIssueWithinLimits
+    {
         uint256 totalSupply = ousd.totalSupply();
         uint256 totalBalance = getTotalBalance();
 
@@ -48,7 +56,7 @@ contract EchidnaTestSupply is EchidnaTestTransfer {
     }
 
     // Non-rebasing supply should not be larger than total supply
-    function testNonRebasingSupplyVsTotalSupply() public {
+    function testNonRebasingSupplyVsTotalSupply() public hasKnownIssue {
         uint256 nonRebasingSupply = ousd.nonRebasingSupply();
         uint256 totalSupply = ousd.totalSupply();
 
@@ -64,7 +72,7 @@ contract EchidnaTestSupply is EchidnaTestTransfer {
     //   changeSupply(1)
     //   testRebasingCreditsPerTokenNotIncreased()
     //
-    function testRebasingCreditsPerTokenNotIncreased() public {
+    function testRebasingCreditsPerTokenNotIncreased() public hasKnownIssue {
         uint256 curRebasingCreditsPerToken = ousd
             .rebasingCreditsPerTokenHighres();
 

@@ -22,7 +22,7 @@ contract EchidnaTestTransfer is EchidnaDebug {
         uint8 fromAcc,
         uint8 toAcc,
         uint256 amount
-    ) public hasKnownIssue {
+    ) public hasKnownIssue hasKnownIssueWithinLimits {
         address from = getAccount(fromAcc);
         address to = getAccount(toAcc);
 
@@ -78,7 +78,7 @@ contract EchidnaTestTransfer is EchidnaDebug {
         uint8 fromAcc,
         uint8 toAcc,
         uint256 amount
-    ) public hasKnownIssue {
+    ) public hasKnownIssue hasKnownIssueWithinLimits {
         address from = getAccount(fromAcc);
         address to = getAccount(toAcc);
 
