@@ -67,6 +67,7 @@ contract EchidnaTestAccounting is EchidnaTestSupply {
         }
     }
 
+    // Account balance should remain the same after opting in minus rounding error
     function testOptInBalanceRounding(uint8 targetAcc) public {
         address target = getAccount(targetAcc);
 
