@@ -91,4 +91,32 @@ contract EchidnaTestSupply is EchidnaTestTransfer {
     function testRebasingCreditsPerTokenAboveZero() public {
         assert(ousd.rebasingCreditsPerTokenHighres() > 0);
     }
+
+    // The sum of all non-rebasing balances should not be larger than non-rebasing supply
+    //
+    // testTotalNonRebasingSupplyLessThanTotalBalance(): failed!💥
+    //   Call sequence
+    //     mint(0,2)
+    //     changeSupply(1)
+    //     optOut(0)
+    //     burn(0,1)
+    //     testTotalNonRebasingSupplyLessThanTotalBalance()
+    //
+    //   Event sequence:
+    //     Debug(«totalNonRebasingSupply», 500000000000000000000001)
+    //     Debug(«totalNonRebasingBalance», 500000000000000000000002)
+    //
+    function testTotalNonRebasingSupplyLessThanTotalBalance()
+        public
+        hasKnownIssue
+        hasKnownIssueWithinLimits
+    {
+        uint256 totalNonRebasingSupply = ousd.nonRebasingSupply();
+        uint256 totalNonRebasingBalance = getTotalNonRebasingBalance();
+
+        Debugger.log("totalNonRebasingSupply", totalNonRebasingSupply);
+        Debugger.log("totalNonRebasingBalance", totalNonRebasingBalance);
+
+        assert(totalNonRebasingSupply >= totalNonRebasingBalance);
+    }
 }
