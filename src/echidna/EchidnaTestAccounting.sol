@@ -27,6 +27,20 @@ contract EchidnaTestAccounting is EchidnaTestSupply {
         assert(balanceAfter == balanceBefore);
     }
 
+    // Account balance should remain the same after opting in minus rounding error
+    function testOptInBalanceRounding(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        uint256 balanceBefore = ousd.balanceOf(target);
+        optIn(targetAcc);
+        uint256 balanceAfter = ousd.balanceOf(target);
+
+        int256 delta = int256(balanceAfter) - int256(balanceBefore);
+        Debugger.log("delta", delta);
+
+        assert(-1 * delta <= int256(OPT_IN_ROUNDING_ERROR));
+    }
+
     // After opting in, total supply should remain the same
     function testOptInTotalSupply(uint8 targetAcc) public {
         uint256 totalSupplyBefore = ousd.totalSupply();
@@ -65,19 +79,5 @@ contract EchidnaTestAccounting is EchidnaTestSupply {
         } catch {
             assert(false);
         }
-    }
-
-    // Account balance should remain the same after opting in minus rounding error
-    function testOptInBalanceRounding(uint8 targetAcc) public {
-        address target = getAccount(targetAcc);
-
-        uint256 balanceBefore = ousd.balanceOf(target);
-        optIn(targetAcc);
-        uint256 balanceAfter = ousd.balanceOf(target);
-
-        int256 delta = int256(balanceAfter) - int256(balanceBefore);
-        Debugger.log("delta", delta);
-
-        assert(-1 * delta <= int256(OPT_IN_ROUNDING_ERROR));
     }
 }
