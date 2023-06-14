@@ -26,6 +26,7 @@ contract EchidnaConfig {
     uint256 internal MINT_MODULO = 1_000_000_000_000e18;
 
     uint256 internal TRANSFER_ROUNDING_ERROR = 1e18 - 1;
+    uint256 internal OPT_IN_ROUNDING_ERROR = 1e18 - 1;
 
     modifier hasKnownIssue() {
         if (!TOGGLE_KNOWN_ISSUES) return;
