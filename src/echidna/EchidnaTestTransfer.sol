@@ -117,6 +117,68 @@ contract EchidnaTestTransfer is EchidnaDebug {
         assert(fromBalAfter >= fromBalBefore - amount);
     }
 
+    // The receiving account's balance after a transfer must not increase by less than the amount transferred (minus rounding error)
+    function testTransferBalanceReceivedLessRounding(
+        uint8 fromAcc,
+        uint8 toAcc,
+        uint256 amount
+    ) public {
+        address from = getAccount(fromAcc);
+        address to = getAccount(toAcc);
+
+        require(from != to);
+
+        uint256 toBalBefore = ousd.balanceOf(to);
+        transfer(fromAcc, toAcc, amount);
+        uint256 toBalAfter = ousd.balanceOf(to);
+
+        int256 toDelta = int256(toBalAfter) - int256(toBalBefore);
+
+        // delta == amount, if no error
+        // delta < amount,  if too little is sent
+        // delta > amount,  if too much is sent
+        int256 error = int256(amount) - toDelta;
+
+        Debugger.log("totalSupply", ousd.totalSupply());
+        Debugger.log("toBalBefore", toBalBefore);
+        Debugger.log("toBalAfter", toBalAfter);
+        Debugger.log("toDelta", toDelta);
+        Debugger.log("error", error);
+
+        assert(error <= int256(TRANSFER_ROUNDING_ERROR));
+    }
+
+    // The sending account's balance after a transfer must not decrease by less than the amount transferred (minus rounding error)
+    function testTransferBalanceSentLessRounding(
+        uint8 fromAcc,
+        uint8 toAcc,
+        uint256 amount
+    ) public {
+        address from = getAccount(fromAcc);
+        address to = getAccount(toAcc);
+
+        require(from != to);
+
+        uint256 fromBalBefore = ousd.balanceOf(from);
+        transfer(fromAcc, toAcc, amount);
+        uint256 fromBalAfter = ousd.balanceOf(from);
+
+        int256 fromDelta = int256(fromBalAfter) - int256(fromBalBefore);
+
+        // delta == -amount, if no error
+        // delta < -amount,  if too much is sent
+        // delta > -amount,  if too little is sent
+        int256 error = int256(amount) + fromDelta;
+
+        Debugger.log("totalSupply", ousd.totalSupply());
+        Debugger.log("fromBalBefore", fromBalBefore);
+        Debugger.log("fromBalAfter", fromBalAfter);
+        Debugger.log("fromDelta", fromDelta);
+        Debugger.log("error", error);
+
+        assert(error <= int256(TRANSFER_ROUNDING_ERROR));
+    }
+
     // An account should always be able to successfully transfer an amount within its balance.
     //
     // testTransferWithinBalanceDoesNotRevert(uint8,uint8,uint8): failed!💥
@@ -192,67 +254,5 @@ contract EchidnaTestTransfer is EchidnaDebug {
         } catch {
             assert(true);
         }
-    }
-
-    // The receiving account's balance after a transfer must not increase by less than the amount transferred (minus rounding error)
-    function testTransferBalanceReceivedLessRounding(
-        uint8 fromAcc,
-        uint8 toAcc,
-        uint256 amount
-    ) public {
-        address from = getAccount(fromAcc);
-        address to = getAccount(toAcc);
-
-        require(from != to);
-
-        uint256 toBalBefore = ousd.balanceOf(to);
-        transfer(fromAcc, toAcc, amount);
-        uint256 toBalAfter = ousd.balanceOf(to);
-
-        int256 toDelta = int256(toBalAfter) - int256(toBalBefore);
-
-        // delta == amount, if no error
-        // delta < amount,  if too little is sent
-        // delta > amount,  if too much is sent
-        int256 error = int256(amount) - toDelta;
-
-        Debugger.log("totalSupply", ousd.totalSupply());
-        Debugger.log("toBalBefore", toBalBefore);
-        Debugger.log("toBalAfter", toBalAfter);
-        Debugger.log("toDelta", toDelta);
-        Debugger.log("error", error);
-
-        assert(error <= int256(TRANSFER_ROUNDING_ERROR));
-    }
-
-    // The sending account's balance after a transfer must not decrease by less than the amount transferred (minus rounding error)
-    function testTransferBalanceSentLessRounding(
-        uint8 fromAcc,
-        uint8 toAcc,
-        uint256 amount
-    ) public {
-        address from = getAccount(fromAcc);
-        address to = getAccount(toAcc);
-
-        require(from != to);
-
-        uint256 fromBalBefore = ousd.balanceOf(from);
-        transfer(fromAcc, toAcc, amount);
-        uint256 fromBalAfter = ousd.balanceOf(from);
-
-        int256 fromDelta = int256(fromBalAfter) - int256(fromBalBefore);
-
-        // delta == -amount, if no error
-        // delta < -amount,  if too much is sent
-        // delta > -amount,  if too little is sent
-        int256 error = int256(amount) + fromDelta;
-
-        Debugger.log("totalSupply", ousd.totalSupply());
-        Debugger.log("fromBalBefore", fromBalBefore);
-        Debugger.log("fromBalAfter", fromBalAfter);
-        Debugger.log("fromDelta", fromDelta);
-        Debugger.log("error", error);
-
-        assert(error <= int256(TRANSFER_ROUNDING_ERROR));
     }
 }
