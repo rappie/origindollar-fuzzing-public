@@ -27,21 +27,21 @@ contract EchidnaTestSupply is EchidnaTestTransfer {
         assert(ousd.totalSupply() == supply);
     }
 
-    // The total supply may only be greater than the sum of account balances. (The difference will go into future rebases)
+    // The total supply must not be less than the sum of account balances. (The difference will go into future rebases)
     //
-    // testTotalSupplyVsTotalBalance(): failed!💥
+    // testTotalSupplyLessThanTotalBalance(): failed!💥
     //   Call sequence:
     //     mint(0,1)
     //     changeSupply(1)
     //     optOut(64)
     //     transfer(0,64,1)
-    //     testTotalSupplyVsTotalBalance()
+    //     testTotalSupplyLessThanTotalBalance()
     //
     //   Event sequence:
     //     Debug(«totalSupply», 1000000000000000001000001)
     //     Debug(«totalBalance», 1000000000000000001000002)
     //
-    function testTotalSupplyVsTotalBalance()
+    function testTotalSupplyLessThanTotalBalance()
         public
         hasKnownIssue
         hasKnownIssueWithinLimits
