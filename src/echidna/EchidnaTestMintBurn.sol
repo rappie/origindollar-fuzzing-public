@@ -100,6 +100,7 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
         // delta > amount,  if too much is minted
         int256 error = int256(amountMinted) - delta;
 
+        assert(error >= 0);
         assert(error <= int256(MINT_ROUNDING_ERROR));
     }
 

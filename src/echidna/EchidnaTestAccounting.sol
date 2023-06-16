@@ -38,6 +38,7 @@ contract EchidnaTestAccounting is EchidnaTestSupply {
         int256 delta = int256(balanceAfter) - int256(balanceBefore);
         Debugger.log("delta", delta);
 
+        assert(-1 * delta >= 0);
         assert(-1 * delta <= int256(OPT_IN_ROUNDING_ERROR));
     }
 

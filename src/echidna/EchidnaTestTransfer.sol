@@ -145,6 +145,7 @@ contract EchidnaTestTransfer is EchidnaDebug {
         Debugger.log("toDelta", toDelta);
         Debugger.log("error", error);
 
+        assert(error >= 0);
         assert(error <= int256(TRANSFER_ROUNDING_ERROR));
     }
 
@@ -176,6 +177,7 @@ contract EchidnaTestTransfer is EchidnaDebug {
         Debugger.log("fromDelta", fromDelta);
         Debugger.log("error", error);
 
+        assert(error >= 0);
         assert(error <= int256(TRANSFER_ROUNDING_ERROR));
     }
 
