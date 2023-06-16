@@ -4,7 +4,11 @@ pragma solidity ^0.8.0;
 import "./EchidnaDebug.sol";
 import "./EchidnaTestTransfer.sol";
 
+import {StableMath} from "../utils/StableMath.sol";
+
 contract EchidnaTestSupply is EchidnaTestTransfer {
+    using StableMath for uint256;
+
     uint256 prevRebasingCreditsPerToken = type(uint256).max;
 
     // After a `changeSupply`, the total supply should exactly match the target total supply. (This is needed to ensure successive rebases are correct).
@@ -118,5 +122,23 @@ contract EchidnaTestSupply is EchidnaTestTransfer {
         Debugger.log("totalNonRebasingBalance", totalNonRebasingBalance);
 
         assert(totalNonRebasingSupply >= totalNonRebasingBalance);
+    }
+
+    // An accounts credits / credits per token should not be larger it's balance
+    function testCreditsPerTokenVsBalance(uint8 targetAcc) public {
+        address target = getAccount(targetAcc);
+
+        (uint256 credits, uint256 creditsPerToken, ) = ousd
+            .creditsBalanceOfHighres(target);
+        uint256 expectedBalance = credits.divPrecisely(creditsPerToken);
+
+        uint256 balance = ousd.balanceOf(target);
+
+        Debugger.log("credits", credits);
+        Debugger.log("creditsPerToken", creditsPerToken);
+        Debugger.log("expectedBalance", expectedBalance);
+        Debugger.log("balance", balance);
+
+        assert(expectedBalance == balance);
     }
 }
