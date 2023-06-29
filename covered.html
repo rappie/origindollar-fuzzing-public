@@ -96,8 +96,8 @@
    5 |     | <span class='neutral'></span>
    6 |     | <span class='neutral'>/**</span>
    7 |     | <span class='neutral'> * @dev Collection of functions related to the address type</span>
-   8 |     | <span class='unexecuted'> */</span>
-   9 |     | <span class='neutral'>library Address {</span>
+   8 |     | <span class='neutral'> */</span>
+   9 |     | <span class='unexecuted'>library Address {</span>
   10 |     | <span class='neutral'>    /**</span>
   11 |     | <span class='neutral'>     * @dev Returns true if `account` is a contract.</span>
   12 |     | <span class='neutral'>     *</span>
@@ -122,9 +122,9 @@
   31 |     | <span class='neutral'></span>
   32 |     | <span class='neutral'>        uint256 size;</span>
   33 |     | <span class='neutral'>        assembly {</span>
-  34 | *r  | <span class='executed'>            size := extcodesize(account)</span>
+  34 | *   | <span class='executed'>            size := extcodesize(account)</span>
   35 |     | <span class='neutral'>        }</span>
-  36 | *r  | <span class='executed'>        return size &gt; 0;</span>
+  36 | *   | <span class='executed'>        return size &gt; 0;</span>
   37 |     | <span class='neutral'>    }</span>
   38 |     | <span class='neutral'></span>
   39 |     | <span class='neutral'>    /**</span>
@@ -327,8 +327,8 @@
   12 |     | <span class='neutral'> *</span>
   13 |     | <span class='neutral'> * NOTE: `SafeMath` is generally not needed starting with Solidity 0.8, since the compiler</span>
   14 |     | <span class='neutral'> * now has built in overflow checking.</span>
-  15 |     | <span class='unexecuted'> */</span>
-  16 |     | <span class='neutral'>library SafeMath {</span>
+  15 |     | <span class='neutral'> */</span>
+  16 |     | <span class='unexecuted'>library SafeMath {</span>
   17 |     | <span class='neutral'>    /**</span>
   18 |     | <span class='neutral'>     * @dev Returns the addition of two unsigned integers, with an overflow flag.</span>
   19 |     | <span class='neutral'>     *</span>
@@ -419,8 +419,8 @@
  104 |     | <span class='neutral'>     *</span>
  105 |     | <span class='neutral'>     * - Subtraction cannot overflow.</span>
  106 |     | <span class='neutral'>     */</span>
- 107 | *r  | <span class='executed'>    function sub(uint256 a, uint256 b) internal pure returns (uint256) {</span>
- 108 | *r  | <span class='executed'>        return a - b;</span>
+ 107 | *   | <span class='executed'>    function sub(uint256 a, uint256 b) internal pure returns (uint256) {</span>
+ 108 | *   | <span class='executed'>        return a - b;</span>
  109 |     | <span class='neutral'>    }</span>
  110 |     | <span class='neutral'></span>
  111 |     | <span class='neutral'>    /**</span>
@@ -433,8 +433,8 @@
  118 |     | <span class='neutral'>     *</span>
  119 |     | <span class='neutral'>     * - Multiplication cannot overflow.</span>
  120 |     | <span class='neutral'>     */</span>
- 121 | *r  | <span class='executed'>    function mul(uint256 a, uint256 b) internal pure returns (uint256) {</span>
- 122 | *r  | <span class='executed'>        return a * b;</span>
+ 121 | *   | <span class='executed'>    function mul(uint256 a, uint256 b) internal pure returns (uint256) {</span>
+ 122 | *   | <span class='executed'>        return a * b;</span>
  123 |     | <span class='neutral'>    }</span>
  124 |     | <span class='neutral'></span>
  125 |     | <span class='neutral'>    /**</span>
@@ -447,8 +447,8 @@
  132 |     | <span class='neutral'>     *</span>
  133 |     | <span class='neutral'>     * - The divisor cannot be zero.</span>
  134 |     | <span class='neutral'>     */</span>
- 135 | *r  | <span class='executed'>    function div(uint256 a, uint256 b) internal pure returns (uint256) {</span>
- 136 | *r  | <span class='executed'>        return a / b;</span>
+ 135 | *   | <span class='executed'>    function div(uint256 a, uint256 b) internal pure returns (uint256) {</span>
+ 136 | *   | <span class='executed'>        return a / b;</span>
  137 |     | <span class='neutral'>    }</span>
  138 |     | <span class='neutral'></span>
  139 |     | <span class='neutral'>    /**</span>
@@ -549,8 +549,8 @@
 <code>
   1 |     | <span class='neutral'>// SPDX-License-Identifier: MIT</span>
   2 |     | <span class='neutral'>pragma solidity ^0.8.0;</span>
-  3 |     | <span class='unexecuted'></span>
-  4 |     | <span class='neutral'>library Debugger {</span>
+  3 |     | <span class='neutral'></span>
+  4 |     | <span class='unexecuted'>library Debugger {</span>
   5 |     | <span class='neutral'>    event Debug(string debugString);</span>
   6 |     | <span class='neutral'>    event Debug(string description, string data);</span>
   7 |     | <span class='neutral'>    event Debug(string prefix, string description, string data);</span>
@@ -605,8 +605,8 @@
  56 |     | <span class='neutral'>        emit Debug(prefix, description, data);</span>
  57 |     | <span class='neutral'>    }</span>
  58 |     | <span class='neutral'></span>
- 59 |     | <span class='neutral'>    function log(string memory description, int256 data) internal {</span>
- 60 |     | <span class='neutral'>        emit Debug(description, data);</span>
+ 59 | *   | <span class='executed'>    function log(string memory description, int256 data) internal {</span>
+ 60 | *   | <span class='executed'>        emit Debug(description, data);</span>
  61 |     | <span class='neutral'>    }</span>
  62 |     | <span class='neutral'></span>
  63 |     | <span class='neutral'>    function log(</span>
@@ -651,9 +651,9 @@
  1 |     | <span class='neutral'>// SPDX-License-Identifier: MIT</span>
  2 |     | <span class='neutral'>pragma solidity ^0.8.0;</span>
  3 |     | <span class='neutral'></span>
- 4 |     | <span class='neutral'>import &quot;./EchidnaTest.sol&quot;;</span>
- 5 | *r  | <span class='executed'></span>
- 6 |     | <span class='neutral'>contract Echidna is EchidnaTest {}</span>
+ 4 |     | <span class='neutral'>import &quot;./EchidnaTestMintBurn.sol&quot;;</span>
+ 5 |     | <span class='neutral'></span>
+ 6 | *r  | <span class='executed'>contract Echidna is EchidnaTestMintBurn {}</span>
  7 |     | <span class='neutral'></span>
 
 </code>
@@ -663,45 +663,59 @@
 <code>
   1 |     | <span class='neutral'>// SPDX-License-Identifier: MIT</span>
   2 |     | <span class='neutral'>pragma solidity ^0.8.0;</span>
-  3 |     | <span class='unexecuted'></span>
-  4 |     | <span class='neutral'>contract EchidnaConfig {</span>
-  5 | *r  | <span class='executed'>    address internal constant ADDRESS_VAULT = address(0x10000);</span>
+  3 |     | <span class='neutral'></span>
+  4 |     | <span class='unexecuted'>contract EchidnaConfig {</span>
+  5 | *   | <span class='executed'>    address internal constant ADDRESS_VAULT = address(0x10000);</span>
   6 | *   | <span class='executed'>    address internal constant ADDRESS_OUTSIDER_USER = address(0x20000);</span>
   7 |     | <span class='neutral'></span>
-  8 | *r  | <span class='executed'>    address internal constant ADDRESS_USER0 = address(0x30000);</span>
-  9 | *r  | <span class='executed'>    address internal constant ADDRESS_USER1 = address(0x40000);</span>
+  8 | *   | <span class='executed'>    address internal constant ADDRESS_USER0 = address(0x30000);</span>
+  9 | *   | <span class='executed'>    address internal constant ADDRESS_USER1 = address(0x40000);</span>
  10 |     | <span class='neutral'></span>
  11 |     | <span class='neutral'>    // Will be set in EchidnaSetup constructor</span>
  12 |     | <span class='neutral'>    address internal ADDRESS_OUTSIDER_CONTRACT;</span>
  13 |     | <span class='neutral'>    address internal ADDRESS_CONTRACT0;</span>
  14 |     | <span class='neutral'>    address internal ADDRESS_CONTRACT1;</span>
  15 |     | <span class='neutral'></span>
- 16 |     | <span class='unexecuted'>    bool internal TOGGLE_KNOWN_ISSUES = false;</span>
- 17 |     | <span class='neutral'></span>
- 18 |     | <span class='unexecuted'>    bool internal TOGGLE_STARTING_BALANCE = true;</span>
- 19 |     | <span class='unexecuted'>    uint256 internal STARTING_BALANCE = 1_000_000e18;</span>
- 20 |     | <span class='neutral'></span>
- 21 |     | <span class='unexecuted'>    bool internal TOGGLE_CHANGESUPPLY_LIMIT = true;</span>
- 22 |     | <span class='unexecuted'>    uint256 internal CHANGESUPPLY_DIVISOR = 10;</span>
- 23 |     | <span class='neutral'></span>
- 24 |     | <span class='unexecuted'>    bool internal TOGGLE_MINT_LIMIT = true;</span>
- 25 |     | <span class='unexecuted'>    uint256 internal MINT_MODULO = 1_000_000_000_000e18;</span>
- 26 |     | <span class='neutral'></span>
- 27 |     | <span class='neutral'>    modifier hasKnownIssue() {</span>
- 28 | *   | <span class='executed'>        if (!TOGGLE_KNOWN_ISSUES) return;</span>
- 29 |     | <span class='neutral'>        _;</span>
- 30 |     | <span class='neutral'>    }</span>
+ 16 |     | <span class='unexecuted'>    bool internal TOGGLE_KNOWN_ISSUES = true;</span>
+ 17 |     | <span class='neutral'>    bool internal TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS = false;</span>
+ 18 |     | <span class='neutral'></span>
+ 19 |     | <span class='unexecuted'>    bool internal TOGGLE_STARTING_BALANCE = true;</span>
+ 20 |     | <span class='unexecuted'>    uint256 internal STARTING_BALANCE = 1_000_000e18;</span>
+ 21 |     | <span class='neutral'></span>
+ 22 |     | <span class='unexecuted'>    bool internal TOGGLE_CHANGESUPPLY_LIMIT = true;</span>
+ 23 |     | <span class='unexecuted'>    uint256 internal CHANGESUPPLY_DIVISOR = 10;</span>
+ 24 |     | <span class='neutral'></span>
+ 25 |     | <span class='unexecuted'>    bool internal TOGGLE_MINT_LIMIT = true;</span>
+ 26 |     | <span class='unexecuted'>    uint256 internal MINT_MODULO = 1_000_000_000_000e18;</span>
+ 27 |     | <span class='neutral'></span>
+ 28 |     | <span class='unexecuted'>    uint256 internal TRANSFER_ROUNDING_ERROR = 1e18 - 1;</span>
+ 29 |     | <span class='unexecuted'>    uint256 internal OPT_IN_ROUNDING_ERROR = 1e18 - 1;</span>
+ 30 |     | <span class='unexecuted'>    uint256 internal MINT_ROUNDING_ERROR = 1e18 - 1;</span>
  31 |     | <span class='neutral'></span>
- 32 | *r  | <span class='executed'>    function getAccount(uint8 accountId) internal view returns (address account) {</span>
- 33 | *r  | <span class='executed'>        accountId = accountId / 64;</span>
- 34 | *r  | <span class='executed'>        if (accountId == 0) return account = ADDRESS_USER0;</span>
- 35 | *r  | <span class='executed'>        if (accountId == 1) return account = ADDRESS_USER1;</span>
- 36 | *r  | <span class='executed'>        if (accountId == 2) return account = ADDRESS_CONTRACT0;</span>
- 37 | *r  | <span class='executed'>        if (accountId == 3) return account = ADDRESS_CONTRACT1;</span>
- 38 | *r  | <span class='executed'>        require(false, &quot;Unknown account ID&quot;);</span>
- 39 |     | <span class='neutral'>    }</span>
- 40 |     | <span class='neutral'>}</span>
+ 32 |     | <span class='neutral'>    modifier hasKnownIssue() {</span>
+ 33 | *   | <span class='executed'>        if (!TOGGLE_KNOWN_ISSUES) return;</span>
+ 34 | *   | <span class='executed'>        _;</span>
+ 35 |     | <span class='neutral'>    }</span>
+ 36 |     | <span class='neutral'></span>
+ 37 |     | <span class='neutral'>    modifier hasKnownIssueWithinLimits() {</span>
+ 38 | *   | <span class='executed'>        if (!TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS) return;</span>
+ 39 |     | <span class='neutral'>        _;</span>
+ 40 |     | <span class='neutral'>    }</span>
  41 |     | <span class='neutral'></span>
+ 42 | *   | <span class='executed'>    function getAccount(uint8 accountId)</span>
+ 43 |     | <span class='neutral'>        internal</span>
+ 44 |     | <span class='neutral'>        view</span>
+ 45 | *   | <span class='executed'>        returns (address account)</span>
+ 46 |     | <span class='neutral'>    {</span>
+ 47 | *   | <span class='executed'>        accountId = accountId / 64;</span>
+ 48 | *   | <span class='executed'>        if (accountId == 0) return account = ADDRESS_USER0;</span>
+ 49 | *   | <span class='executed'>        if (accountId == 1) return account = ADDRESS_USER1;</span>
+ 50 | *   | <span class='executed'>        if (accountId == 2) return account = ADDRESS_CONTRACT0;</span>
+ 51 | *   | <span class='executed'>        if (accountId == 3) return account = ADDRESS_CONTRACT1;</span>
+ 52 | *   | <span class='executed'>        require(false, &quot;Unknown account ID&quot;);</span>
+ 53 |     | <span class='neutral'>    }</span>
+ 54 |     | <span class='neutral'>}</span>
+ 55 |     | <span class='neutral'></span>
 
 </code>
 <br />
@@ -717,9 +731,9 @@
   7 |     | <span class='neutral'>import &quot;./Debugger.sol&quot;;</span>
   8 |     | <span class='neutral'></span>
   9 |     | <span class='neutral'>import &quot;../token/OUSD.sol&quot;;</span>
- 10 |     | <span class='unexecuted'></span>
- 11 |     | <span class='neutral'>contract EchidnaDebug is EchidnaHelper {</span>
- 12 | *   | <span class='executed'>    function debugOUSD() public pure {</span>
+ 10 |     | <span class='neutral'></span>
+ 11 |     | <span class='unexecuted'>contract EchidnaDebug is EchidnaHelper {</span>
+ 12 |     | <span class='neutral'>    function debugOUSD() public pure {</span>
  13 |     | <span class='neutral'>        // assert(ousd.balanceOf(ADDRESS_USER0) == 1000);</span>
  14 |     | <span class='neutral'>        // assert(ousd.rebaseState(ADDRESS_USER0) != OUSD.RebaseOptions.OptIn);</span>
  15 |     | <span class='neutral'>        // assert(Address.isContract(ADDRESS_CONTRACT0));</span>
@@ -739,9 +753,9 @@
   3 |     | <span class='neutral'></span>
   4 |     | <span class='neutral'>import &quot;./EchidnaSetup.sol&quot;;</span>
   5 |     | <span class='neutral'>import &quot;./Debugger.sol&quot;;</span>
-  6 |     | <span class='unexecuted'></span>
-  7 |     | <span class='neutral'>contract EchidnaHelper is EchidnaSetup {</span>
-  8 | *r  | <span class='executed'>    function mint(uint8 toAcc, uint256 amount) public returns (uint256) {</span>
+  6 |     | <span class='neutral'></span>
+  7 |     | <span class='unexecuted'>contract EchidnaHelper is EchidnaSetup {</span>
+  8 | *   | <span class='executed'>    function mint(uint8 toAcc, uint256 amount) public returns (uint256) {</span>
   9 | *   | <span class='executed'>        address to = getAccount(toAcc);</span>
  10 |     | <span class='neutral'></span>
  11 | *   | <span class='executed'>        if (TOGGLE_MINT_LIMIT) {</span>
@@ -754,9 +768,9 @@
  18 | *   | <span class='executed'>        return amount;</span>
  19 |     | <span class='neutral'>    }</span>
  20 |     | <span class='neutral'></span>
- 21 | *r  | <span class='executed'>    function burn(uint8 fromAcc, uint256 amount) public {</span>
- 22 | *r  | <span class='executed'>        address from = getAccount(fromAcc);</span>
- 23 | *r  | <span class='executed'>        hevm.prank(ADDRESS_VAULT);</span>
+ 21 | *   | <span class='executed'>    function burn(uint8 fromAcc, uint256 amount) public {</span>
+ 22 | *   | <span class='executed'>        address from = getAccount(fromAcc);</span>
+ 23 | *   | <span class='executed'>        hevm.prank(ADDRESS_VAULT);</span>
  24 | *r  | <span class='executed'>        ousd.burn(from, amount);</span>
  25 |     | <span class='neutral'>    }</span>
  26 |     | <span class='neutral'></span>
@@ -771,26 +785,26 @@
  35 | *   | <span class='executed'>        ousd.changeSupply(amount);</span>
  36 |     | <span class='neutral'>    }</span>
  37 |     | <span class='neutral'></span>
- 38 | *r  | <span class='executed'>    function transfer(</span>
+ 38 | *   | <span class='executed'>    function transfer(</span>
  39 |     | <span class='neutral'>        uint8 fromAcc,</span>
  40 |     | <span class='neutral'>        uint8 toAcc,</span>
  41 |     | <span class='neutral'>        uint256 amount</span>
  42 |     | <span class='unexecuted'>    ) public {</span>
- 43 | *r  | <span class='executed'>        address from = getAccount(fromAcc);</span>
- 44 | *r  | <span class='executed'>        address to = getAccount(toAcc);</span>
- 45 | *r  | <span class='executed'>        hevm.prank(from);</span>
+ 43 | *   | <span class='executed'>        address from = getAccount(fromAcc);</span>
+ 44 | *   | <span class='executed'>        address to = getAccount(toAcc);</span>
+ 45 | *   | <span class='executed'>        hevm.prank(from);</span>
  46 | *r  | <span class='executed'>        ousd.transfer(to, amount);</span>
  47 |     | <span class='neutral'>    }</span>
  48 |     | <span class='neutral'></span>
- 49 | *r  | <span class='executed'>    function optIn(uint8 targetAcc) public {</span>
- 50 | *r  | <span class='executed'>        address target = getAccount(targetAcc);</span>
- 51 | *r  | <span class='executed'>        hevm.prank(target);</span>
- 52 | *r  | <span class='executed'>        ousd.rebaseOptIn();</span>
+ 49 | *   | <span class='executed'>    function optIn(uint8 targetAcc) public {</span>
+ 50 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 51 | *   | <span class='executed'>        hevm.prank(target);</span>
+ 52 | *   | <span class='executed'>        ousd.rebaseOptIn();</span>
  53 |     | <span class='neutral'>    }</span>
  54 |     | <span class='neutral'></span>
- 55 | *r  | <span class='executed'>    function optOut(uint8 targetAcc) public {</span>
- 56 | *r  | <span class='executed'>        address target = getAccount(targetAcc);</span>
- 57 | *r  | <span class='executed'>        hevm.prank(target);</span>
+ 55 | *   | <span class='executed'>    function optOut(uint8 targetAcc) public {</span>
+ 56 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 57 | *   | <span class='executed'>        hevm.prank(target);</span>
  58 | *r  | <span class='executed'>        ousd.rebaseOptOut();</span>
  59 |     | <span class='neutral'>    }</span>
  60 |     | <span class='neutral'></span>
@@ -803,8 +817,32 @@
  67 | *   | <span class='executed'>        total += ousd.balanceOf(ADDRESS_CONTRACT0);</span>
  68 | *   | <span class='executed'>        total += ousd.balanceOf(ADDRESS_CONTRACT1);</span>
  69 |     | <span class='neutral'>    }</span>
- 70 |     | <span class='neutral'>}</span>
- 71 |     | <span class='neutral'></span>
+ 70 |     | <span class='neutral'></span>
+ 71 | *   | <span class='executed'>    function getTotalNonRebasingBalance() public  returns (uint256 total) {</span>
+ 72 | *   | <span class='executed'>        total += ousd._isNonRebasingAccountEchidna(ADDRESS_VAULT)</span>
+ 73 | *   | <span class='executed'>            ? ousd.balanceOf(ADDRESS_VAULT)</span>
+ 74 | *   | <span class='executed'>            : 0;</span>
+ 75 | *   | <span class='executed'>        total += ousd._isNonRebasingAccountEchidna(ADDRESS_OUTSIDER_USER)</span>
+ 76 | *   | <span class='executed'>            ? ousd.balanceOf(ADDRESS_OUTSIDER_USER)</span>
+ 77 | *   | <span class='executed'>            : 0;</span>
+ 78 | *   | <span class='executed'>        total += ousd._isNonRebasingAccountEchidna(ADDRESS_OUTSIDER_CONTRACT)</span>
+ 79 | *   | <span class='executed'>            ? ousd.balanceOf(ADDRESS_OUTSIDER_CONTRACT)</span>
+ 80 |     | <span class='unexecuted'>            : 0;</span>
+ 81 | *   | <span class='executed'>        total += ousd._isNonRebasingAccountEchidna(ADDRESS_USER0)</span>
+ 82 | *   | <span class='executed'>            ? ousd.balanceOf(ADDRESS_USER0)</span>
+ 83 | *   | <span class='executed'>            : 0;</span>
+ 84 | *   | <span class='executed'>        total += ousd._isNonRebasingAccountEchidna(ADDRESS_USER1)</span>
+ 85 | *   | <span class='executed'>            ? ousd.balanceOf(ADDRESS_USER1)</span>
+ 86 | *   | <span class='executed'>            : 0;</span>
+ 87 | *   | <span class='executed'>        total += ousd._isNonRebasingAccountEchidna(ADDRESS_CONTRACT0)</span>
+ 88 | *   | <span class='executed'>            ? ousd.balanceOf(ADDRESS_CONTRACT0)</span>
+ 89 | *   | <span class='executed'>            : 0;</span>
+ 90 | *   | <span class='executed'>        total += ousd._isNonRebasingAccountEchidna(ADDRESS_CONTRACT1)</span>
+ 91 | *   | <span class='executed'>            ? ousd.balanceOf(ADDRESS_CONTRACT1)</span>
+ 92 | *   | <span class='executed'>            : 0;</span>
+ 93 |     | <span class='neutral'>    }</span>
+ 94 |     | <span class='neutral'>}</span>
+ 95 |     | <span class='neutral'></span>
 
 </code>
 <br />
@@ -817,10 +855,10 @@
   4 |     | <span class='neutral'>import &quot;./IHevm.sol&quot;;</span>
   5 |     | <span class='neutral'>import &quot;./EchidnaConfig.sol&quot;;</span>
   6 |     | <span class='neutral'>import &quot;./OUSDEchidna.sol&quot;;</span>
-  7 |     | <span class='unexecuted'></span>
-  8 |     | <span class='neutral'>contract Dummy {}</span>
-  9 |     | <span class='unexecuted'></span>
- 10 |     | <span class='neutral'>contract EchidnaSetup is EchidnaConfig {</span>
+  7 |     | <span class='neutral'></span>
+  8 |     | <span class='unexecuted'>contract Dummy {}</span>
+  9 |     | <span class='neutral'></span>
+ 10 |     | <span class='unexecuted'>contract EchidnaSetup is EchidnaConfig {</span>
  11 |     | <span class='unexecuted'>    IHevm hevm = IHevm(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);</span>
  12 |     | <span class='unexecuted'>    OUSDEchidna ousd = new OUSDEchidna();</span>
  13 |     | <span class='neutral'></span>
@@ -852,379 +890,651 @@
 </code>
 <br />
 
-<b>/home/rappie/Desktop/targets/origin-dollar/fuzzing-ousd-public/src/echidna/EchidnaTest.sol</b>
+<b>/home/rappie/Desktop/targets/origin-dollar/fuzzing-ousd-public/src/echidna/EchidnaTestAccounting.sol</b>
+<code>
+  1 |     | <span class='neutral'>// SPDX-License-Identifier: MIT</span>
+  2 |     | <span class='neutral'>pragma solidity ^0.8.0;</span>
+  3 |     | <span class='neutral'></span>
+  4 |     | <span class='neutral'>import &quot;./EchidnaDebug.sol&quot;;</span>
+  5 |     | <span class='neutral'>import &quot;./EchidnaTestSupply.sol&quot;;</span>
+  6 |     | <span class='neutral'></span>
+  7 |     | <span class='unexecuted'>contract EchidnaTestAccounting is EchidnaTestSupply {</span>
+  8 |     | <span class='neutral'>    // After opting in, balance should not increase. (Ok to lose rounding funds doing this)</span>
+  9 | *   | <span class='executed'>    function testOptInBalance(uint8 targetAcc) public {</span>
+ 10 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 11 |     | <span class='neutral'></span>
+ 12 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
+ 13 | *   | <span class='executed'>        optIn(targetAcc);</span>
+ 14 | *   | <span class='executed'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
+ 15 |     | <span class='neutral'></span>
+ 16 | *   | <span class='executed'>        assert(balanceAfter &lt;= balanceBefore);</span>
+ 17 |     | <span class='neutral'>    }</span>
+ 18 |     | <span class='neutral'></span>
+ 19 |     | <span class='neutral'>    // After opting out, balance should remain the same</span>
+ 20 | *   | <span class='executed'>    function testOptOutBalance(uint8 targetAcc) public {</span>
+ 21 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 22 |     | <span class='neutral'></span>
+ 23 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
+ 24 | *   | <span class='executed'>        optOut(targetAcc);</span>
+ 25 | *   | <span class='executed'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
+ 26 |     | <span class='neutral'></span>
+ 27 |     | <span class='neutral'>        assert(balanceAfter == balanceBefore);</span>
+ 28 |     | <span class='neutral'>    }</span>
+ 29 |     | <span class='neutral'></span>
+ 30 |     | <span class='neutral'>    // Account balance should remain the same after opting in minus rounding error</span>
+ 31 | *   | <span class='executed'>    function testOptInBalanceRounding(uint8 targetAcc) public {</span>
+ 32 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 33 |     | <span class='neutral'></span>
+ 34 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
+ 35 | *   | <span class='executed'>        optIn(targetAcc);</span>
+ 36 | *   | <span class='executed'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
+ 37 |     | <span class='neutral'></span>
+ 38 | *   | <span class='executed'>        int256 delta = int256(balanceAfter) - int256(balanceBefore);</span>
+ 39 | *   | <span class='executed'>        Debugger.log(&quot;delta&quot;, delta);</span>
+ 40 |     | <span class='neutral'></span>
+ 41 | *   | <span class='executed'>        assert(-1 * delta &gt;= 0);</span>
+ 42 | *   | <span class='executed'>        assert(-1 * delta &lt;= int256(OPT_IN_ROUNDING_ERROR));</span>
+ 43 |     | <span class='neutral'>    }</span>
+ 44 |     | <span class='neutral'></span>
+ 45 |     | <span class='neutral'>    // After opting in, total supply should remain the same</span>
+ 46 | *   | <span class='executed'>    function testOptInTotalSupply(uint8 targetAcc) public {</span>
+ 47 | *   | <span class='executed'>        uint256 totalSupplyBefore = ousd.totalSupply();</span>
+ 48 | *   | <span class='executed'>        optIn(targetAcc);</span>
+ 49 |     | <span class='neutral'>        uint256 totalSupplyAfter = ousd.totalSupply();</span>
+ 50 |     | <span class='neutral'></span>
+ 51 |     | <span class='neutral'>        assert(totalSupplyAfter == totalSupplyBefore);</span>
+ 52 |     | <span class='neutral'>    }</span>
+ 53 |     | <span class='neutral'></span>
+ 54 |     | <span class='neutral'>    // After opting out, total supply should remain the same</span>
+ 55 | *   | <span class='executed'>    function testOptOutTotalSupply(uint8 targetAcc) public {</span>
+ 56 | *   | <span class='executed'>        uint256 totalSupplyBefore = ousd.totalSupply();</span>
+ 57 | *   | <span class='executed'>        optOut(targetAcc);</span>
+ 58 | *   | <span class='executed'>        uint256 totalSupplyAfter = ousd.totalSupply();</span>
+ 59 |     | <span class='neutral'></span>
+ 60 | *   | <span class='executed'>        assert(totalSupplyAfter == totalSupplyBefore);</span>
+ 61 |     | <span class='neutral'>    }</span>
+ 62 |     | <span class='neutral'></span>
+ 63 |     | <span class='neutral'>    // Account balance should remain the same when a smart contract auto converts</span>
+ 64 | *   | <span class='executed'>    function testAutoConvertBalance(uint8 targetAcc) public {</span>
+ 65 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 66 |     | <span class='neutral'></span>
+ 67 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
+ 68 | *   | <span class='executed'>        ousd._isNonRebasingAccountEchidna(target);</span>
+ 69 | *   | <span class='executed'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
+ 70 |     | <span class='neutral'></span>
+ 71 | *   | <span class='executed'>        assert(balanceAfter == balanceBefore);</span>
+ 72 |     | <span class='neutral'>    }</span>
+ 73 |     | <span class='neutral'></span>
+ 74 |     | <span class='neutral'>    // The `balanceOf` function should never revert</span>
+ 75 | *   | <span class='executed'>    function testBalanceOfShouldNotRevert(uint8 targetAcc) public {</span>
+ 76 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 77 |     | <span class='neutral'></span>
+ 78 | *   | <span class='executed'>        try ousd.balanceOf(target) {</span>
+ 79 |     | <span class='unexecuted'>            assert(true);</span>
+ 80 |     | <span class='neutral'>        } catch {</span>
+ 81 |     | <span class='unexecuted'>            assert(false);</span>
+ 82 |     | <span class='neutral'>        }</span>
+ 83 |     | <span class='neutral'>    }</span>
+ 84 |     | <span class='neutral'>}</span>
+ 85 |     | <span class='neutral'></span>
+
+</code>
+<br />
+
+<b>/home/rappie/Desktop/targets/origin-dollar/fuzzing-ousd-public/src/echidna/EchidnaTestMintBurn.sol</b>
 <code>
    1 |     | <span class='neutral'>// SPDX-License-Identifier: MIT</span>
    2 |     | <span class='neutral'>pragma solidity ^0.8.0;</span>
    3 |     | <span class='neutral'></span>
-   4 |     | <span class='neutral'>import &quot;./EchidnaSetup.sol&quot;;</span>
-   5 |     | <span class='neutral'>import &quot;./EchidnaHelper.sol&quot;;</span>
-   6 |     | <span class='neutral'>import &quot;./EchidnaDebug.sol&quot;;</span>
-   7 |     | <span class='neutral'>import &quot;./Debugger.sol&quot;;</span>
-   8 |     | <span class='unexecuted'></span>
-   9 |     | <span class='neutral'>contract EchidnaTest is EchidnaSetup, EchidnaHelper, EchidnaDebug {</span>
-  10 |     | <span class='unexecuted'>    uint256 prevRebasingCreditsPerToken = type(uint256).max;</span>
+   4 |     | <span class='neutral'>import &quot;./EchidnaDebug.sol&quot;;</span>
+   5 |     | <span class='neutral'>import &quot;./EchidnaTestAccounting.sol&quot;;</span>
+   6 |     | <span class='neutral'></span>
+   7 |     | <span class='unexecuted'>contract EchidnaTestMintBurn is EchidnaTestAccounting {</span>
+   8 |     | <span class='neutral'>    // Minting 0 tokens should not affect account balance</span>
+   9 | *   | <span class='executed'>    function testMintZeroBalance(uint8 targetAcc) public {</span>
+  10 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
   11 |     | <span class='neutral'></span>
-  12 |     | <span class='neutral'>    // The receiving account&#39;s balance after a transfer must increase by at least the amount transferred</span>
-  13 |     | <span class='neutral'>    // The sending account&#39;s balance after a transfer must decrease by no more than amount transferred.</span>
-  14 |     | <span class='neutral'>    //</span>
-  15 |     | <span class='neutral'>    // testTransferBalance(uint8,uint8,uint256): failed!💥</span>
-  16 |     | <span class='neutral'>    //   Call sequence:</span>
-  17 |     | <span class='neutral'>    //     changeSupply(1)</span>
-  18 |     | <span class='neutral'>    //     mint(0,2)</span>
-  19 |     | <span class='neutral'>    //     testTransferBalance(0,64,1)</span>
-  20 |     | <span class='neutral'>    //</span>
-  21 |     | <span class='neutral'>    //   Event sequence:</span>
-  22 |     | <span class='neutral'>    //       Debug(«totalSupply», 1000000000000000001000002)</span>
-  23 |     | <span class='neutral'>    //       Debug(«fromBalBefore», 1)</span>
-  24 |     | <span class='neutral'>    //       Debug(«fromBalAfter», 1)</span>
-  25 |     | <span class='neutral'>    //       Debug(«toBalBefore», 0)</span>
-  26 |     | <span class='neutral'>    //       Debug(«toBalAfter», 0)</span>
-  27 |     | <span class='neutral'>    //</span>
-  28 | *   | <span class='executed'>    function testTransferBalance(</span>
-  29 |     | <span class='neutral'>        uint8 fromAcc,</span>
-  30 |     | <span class='neutral'>        uint8 toAcc,</span>
-  31 |     | <span class='neutral'>        uint256 amount</span>
-  32 |     | <span class='unexecuted'>    ) public hasKnownIssue {</span>
-  33 |     | <span class='unexecuted'>        address from = getAccount(fromAcc);</span>
-  34 |     | <span class='unexecuted'>        address to = getAccount(toAcc);</span>
-  35 |     | <span class='neutral'></span>
-  36 |     | <span class='unexecuted'>        require(from != to);</span>
-  37 |     | <span class='neutral'></span>
-  38 |     | <span class='unexecuted'>        uint256 fromBalBefore = ousd.balanceOf(from);</span>
-  39 |     | <span class='unexecuted'>        uint256 toBalBefore = ousd.balanceOf(to);</span>
-  40 |     | <span class='neutral'></span>
-  41 |     | <span class='unexecuted'>        transfer(fromAcc, toAcc, amount);</span>
-  42 |     | <span class='neutral'></span>
-  43 |     | <span class='unexecuted'>        uint256 fromBalAfter = ousd.balanceOf(from);</span>
-  44 |     | <span class='unexecuted'>        uint256 toBalAfter = ousd.balanceOf(to);</span>
-  45 |     | <span class='neutral'></span>
-  46 |     | <span class='unexecuted'>        Debugger.log(&quot;totalSupply&quot;, ousd.totalSupply());</span>
-  47 |     | <span class='unexecuted'>        Debugger.log(&quot;fromBalBefore&quot;, fromBalBefore);</span>
-  48 |     | <span class='unexecuted'>        Debugger.log(&quot;fromBalAfter&quot;, fromBalAfter);</span>
-  49 |     | <span class='unexecuted'>        Debugger.log(&quot;toBalBefore&quot;, toBalBefore);</span>
-  50 |     | <span class='unexecuted'>        Debugger.log(&quot;toBalAfter&quot;, toBalAfter);</span>
+  12 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
+  13 | *   | <span class='executed'>        mint(targetAcc, 0);</span>
+  14 |     | <span class='neutral'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
+  15 |     | <span class='neutral'></span>
+  16 |     | <span class='neutral'>        assert(balanceAfter == balanceBefore);</span>
+  17 |     | <span class='neutral'>    }</span>
+  18 |     | <span class='neutral'></span>
+  19 |     | <span class='neutral'>    // Burning 0 tokens should not affect account balance</span>
+  20 | *   | <span class='executed'>    function testBurnZeroBalance(uint8 targetAcc) public {</span>
+  21 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+  22 |     | <span class='neutral'></span>
+  23 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
+  24 | *   | <span class='executed'>        burn(targetAcc, 0);</span>
+  25 |     | <span class='neutral'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
+  26 |     | <span class='neutral'></span>
+  27 |     | <span class='neutral'>        assert(balanceAfter == balanceBefore);</span>
+  28 |     | <span class='neutral'>    }</span>
+  29 |     | <span class='neutral'></span>
+  30 |     | <span class='neutral'>    // Minting tokens must increase the account balance by at least amount</span>
+  31 |     | <span class='neutral'>    //</span>
+  32 |     | <span class='neutral'>    // testMintBalance(uint8,uint256): failed!💥</span>
+  33 |     | <span class='neutral'>    //   Call sequence:</span>
+  34 |     | <span class='neutral'>    //       changeSupply(1)</span>
+  35 |     | <span class='neutral'>    //       testMintBalance(0,1)</span>
+  36 |     | <span class='neutral'>    //</span>
+  37 |     | <span class='neutral'>    //   Event sequence:</span>
+  38 |     | <span class='neutral'>    //       Debug(«balanceBefore», 0)</span>
+  39 |     | <span class='neutral'>    //       Debug(«balanceAfter», 0)</span>
+  40 |     | <span class='neutral'>    //</span>
+  41 | *   | <span class='executed'>    function testMintBalance(uint8 targetAcc, uint256 amount)</span>
+  42 |     | <span class='neutral'>        public</span>
+  43 |     | <span class='neutral'>        hasKnownIssue</span>
+  44 |     | <span class='neutral'>        hasKnownIssueWithinLimits</span>
+  45 |     | <span class='neutral'>    {</span>
+  46 |     | <span class='unexecuted'>        address target = getAccount(targetAcc);</span>
+  47 |     | <span class='neutral'></span>
+  48 |     | <span class='unexecuted'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
+  49 |     | <span class='unexecuted'>        uint256 amountMinted = mint(targetAcc, amount);</span>
+  50 |     | <span class='unexecuted'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
   51 |     | <span class='neutral'></span>
-  52 |     | <span class='unexecuted'>        assert(fromBalAfter &gt;= fromBalBefore - amount);</span>
-  53 |     | <span class='unexecuted'>        assert(toBalAfter &gt;= toBalBefore + amount);</span>
-  54 |     | <span class='neutral'>    }</span>
+  52 |     | <span class='unexecuted'>        Debugger.log(&quot;amountMinted&quot;, amountMinted);</span>
+  53 |     | <span class='unexecuted'>        Debugger.log(&quot;balanceBefore&quot;, balanceBefore);</span>
+  54 |     | <span class='unexecuted'>        Debugger.log(&quot;balanceAfter&quot;, balanceAfter);</span>
   55 |     | <span class='neutral'></span>
-  56 |     | <span class='neutral'>    // An account should always be able to successfully transfer an amount within its balance.</span>
-  57 |     | <span class='neutral'>    //</span>
-  58 |     | <span class='neutral'>    // testTransferWithinBalanceDoesNotRevert(uint8,uint8,uint8): failed!💥</span>
-  59 |     | <span class='neutral'>    //   Call sequence:</span>
-  60 |     | <span class='neutral'>    //       mint(0,1)</span>
-  61 |     | <span class='neutral'>    //       changeSupply(3)</span>
-  62 |     | <span class='neutral'>    //       optOut(0)</span>
-  63 |     | <span class='neutral'>    //       testTransferWithinBalanceDoesNotRevert(0,128,2)</span>
-  64 |     | <span class='neutral'>    //       optIn(0)</span>
-  65 |     | <span class='neutral'>    //       testTransferWithinBalanceDoesNotRevert(128,0,1)</span>
+  56 |     | <span class='unexecuted'>        assert(balanceAfter &gt;= balanceBefore + amountMinted);</span>
+  57 |     | <span class='neutral'>    }</span>
+  58 |     | <span class='neutral'></span>
+  59 |     | <span class='neutral'>    // Burning tokens must decrease the account balance by at least amount</span>
+  60 |     | <span class='neutral'>    //</span>
+  61 |     | <span class='neutral'>    // testBurnBalance(uint8,uint256): failed!💥</span>
+  62 |     | <span class='neutral'>    //   Call sequence:</span>
+  63 |     | <span class='neutral'>    //     changeSupply(1)</span>
+  64 |     | <span class='neutral'>    //     mint(0,3)</span>
+  65 |     | <span class='neutral'>    //     testBurnBalance(0,1)</span>
   66 |     | <span class='neutral'>    //</span>
   67 |     | <span class='neutral'>    //   Event sequence:</span>
-  68 |     | <span class='neutral'>    //       error Revert Panic(17): SafeMath over-/under-flows</span>
-  69 |     | <span class='neutral'>    //</span>
-  70 | *   | <span class='executed'>    function testTransferWithinBalanceDoesNotRevert(</span>
-  71 |     | <span class='neutral'>        uint8 fromAcc,</span>
-  72 |     | <span class='neutral'>        uint8 toAcc,</span>
-  73 |     | <span class='neutral'>        uint256 amount</span>
-  74 | *   | <span class='executed'>    ) public hasKnownIssue {</span>
-  75 |     | <span class='unexecuted'>        address from = getAccount(fromAcc);</span>
-  76 |     | <span class='unexecuted'>        address to = getAccount(toAcc);</span>
+  68 |     | <span class='neutral'>    //       Debug(«balanceBefore», 2)</span>
+  69 |     | <span class='neutral'>    //       Debug(«balanceAfter», 2)</span>
+  70 |     | <span class='neutral'>    //</span>
+  71 | *   | <span class='executed'>    function testBurnBalance(uint8 targetAcc, uint256 amount)</span>
+  72 |     | <span class='neutral'>        public</span>
+  73 |     | <span class='neutral'>        hasKnownIssue</span>
+  74 |     | <span class='neutral'>        hasKnownIssueWithinLimits</span>
+  75 |     | <span class='neutral'>    {</span>
+  76 |     | <span class='unexecuted'>        address target = getAccount(targetAcc);</span>
   77 |     | <span class='neutral'></span>
-  78 |     | <span class='unexecuted'>        require(amount &gt; 0);</span>
-  79 |     | <span class='unexecuted'>        amount = amount % ousd.balanceOf(from);</span>
-  80 |     | <span class='neutral'></span>
-  81 |     | <span class='unexecuted'>        Debugger.log(&quot;Total supply&quot;, ousd.totalSupply());</span>
-  82 |     | <span class='neutral'></span>
-  83 |     | <span class='unexecuted'>        hevm.prank(from);</span>
-  84 | *   | <span class='executed'>        try ousd.transfer(to, amount) {</span>
-  85 | *   | <span class='executed'>            assert(true);</span>
-  86 |     | <span class='neutral'>        } catch {</span>
-  87 | *   | <span class='executed'>            assert(false);</span>
-  88 |     | <span class='neutral'>        }</span>
-  89 |     | <span class='neutral'>    }</span>
-  90 |     | <span class='neutral'></span>
-  91 |     | <span class='neutral'>    // An account should never be able to successfully transfer an amount greater than their balance.</span>
-  92 | *r  | <span class='executed'>    function testTransferExceedingBalanceReverts(</span>
-  93 |     | <span class='neutral'>        uint8 fromAcc,</span>
-  94 |     | <span class='neutral'>        uint8 toAcc,</span>
-  95 |     | <span class='neutral'>        uint256 amount</span>
-  96 |     | <span class='neutral'>    ) public {</span>
-  97 | *r  | <span class='executed'>        address from = getAccount(fromAcc);</span>
-  98 | *r  | <span class='executed'>        address to = getAccount(toAcc);</span>
-  99 |     | <span class='neutral'></span>
- 100 | *r  | <span class='executed'>        amount = ousd.balanceOf(from) + 1 + amount;</span>
- 101 |     | <span class='neutral'></span>
- 102 | *   | <span class='executed'>        hevm.prank(from);</span>
- 103 | *   | <span class='executed'>        try ousd.transfer(to, amount) {</span>
- 104 |     | <span class='unexecuted'>            assert(false);</span>
- 105 |     | <span class='neutral'>        } catch {</span>
- 106 | *   | <span class='executed'>            assert(true);</span>
- 107 |     | <span class='neutral'>        }</span>
- 108 |     | <span class='neutral'>    }</span>
- 109 |     | <span class='neutral'></span>
- 110 |     | <span class='neutral'>    // A transfer to the same account should not change that account&#39;s balance</span>
- 111 | *r  | <span class='executed'>    function testTransferSelf(uint8 targetAcc, uint256 amount) public {</span>
- 112 | *r  | <span class='executed'>        address target = getAccount(targetAcc);</span>
- 113 |     | <span class='neutral'></span>
- 114 | *r  | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
- 115 | *r  | <span class='executed'>        transfer(targetAcc, targetAcc, amount);</span>
- 116 | *   | <span class='executed'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
- 117 |     | <span class='neutral'></span>
- 118 | *   | <span class='executed'>        assert(balanceBefore == balanceAfter);</span>
- 119 |     | <span class='neutral'>    }</span>
- 120 |     | <span class='neutral'></span>
- 121 |     | <span class='neutral'>    // Transfers to the zero account revert</span>
- 122 | *   | <span class='executed'>    function testTransferToZeroAddress(uint8 fromAcc, uint256 amount) public {</span>
- 123 | *   | <span class='executed'>        address from = getAccount(fromAcc);</span>
- 124 |     | <span class='neutral'></span>
- 125 | *   | <span class='executed'>        hevm.prank(from);</span>
- 126 | *   | <span class='executed'>        try ousd.transfer(address(0), amount) {</span>
+  78 |     | <span class='unexecuted'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
+  79 |     | <span class='unexecuted'>        burn(targetAcc, amount);</span>
+  80 |     | <span class='unexecuted'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
+  81 |     | <span class='neutral'></span>
+  82 |     | <span class='unexecuted'>        Debugger.log(&quot;balanceBefore&quot;, balanceBefore);</span>
+  83 |     | <span class='unexecuted'>        Debugger.log(&quot;balanceAfter&quot;, balanceAfter);</span>
+  84 |     | <span class='neutral'></span>
+  85 |     | <span class='unexecuted'>        assert(balanceAfter &lt;= balanceBefore - amount);</span>
+  86 |     | <span class='neutral'>    }</span>
+  87 |     | <span class='neutral'></span>
+  88 |     | <span class='neutral'>    // Minting tokens should not increase the account balance by less than rounding error above amount</span>
+  89 | *   | <span class='executed'>    function testMintBalanceRounding(uint8 targetAcc, uint256 amount) public {</span>
+  90 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+  91 |     | <span class='neutral'></span>
+  92 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
+  93 | *   | <span class='executed'>        uint256 amountMinted = mint(targetAcc, amount);</span>
+  94 | *   | <span class='executed'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
+  95 |     | <span class='neutral'></span>
+  96 | *   | <span class='executed'>        int256 delta = int256(balanceAfter) - int256(balanceBefore);</span>
+  97 |     | <span class='neutral'></span>
+  98 |     | <span class='neutral'>        // delta == amount, if no error</span>
+  99 |     | <span class='neutral'>        // delta &lt; amount,  if too little is minted</span>
+ 100 |     | <span class='neutral'>        // delta &gt; amount,  if too much is minted</span>
+ 101 | *   | <span class='executed'>        int256 error = int256(amountMinted) - delta;</span>
+ 102 |     | <span class='neutral'></span>
+ 103 | *   | <span class='executed'>        assert(error &gt;= 0);</span>
+ 104 | *   | <span class='executed'>        assert(error &lt;= int256(MINT_ROUNDING_ERROR));</span>
+ 105 |     | <span class='neutral'>    }</span>
+ 106 |     | <span class='neutral'></span>
+ 107 |     | <span class='neutral'>    // A burn of an account balance must result in a zero balance</span>
+ 108 | *   | <span class='executed'>    function testBurnAllBalanceToZero(uint8 targetAcc) public hasKnownIssue {</span>
+ 109 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 110 |     | <span class='neutral'></span>
+ 111 | *   | <span class='executed'>        burn(targetAcc, ousd.balanceOf(target));</span>
+ 112 | *   | <span class='executed'>        assert(ousd.balanceOf(target) == 0);</span>
+ 113 |     | <span class='neutral'>    }</span>
+ 114 |     | <span class='neutral'></span>
+ 115 |     | <span class='neutral'>    // You should always be able to burn an account&#39;s balance</span>
+ 116 | *   | <span class='executed'>    function testBurnAllBalanceShouldNotRevert(uint8 targetAcc)</span>
+ 117 |     | <span class='neutral'>        public</span>
+ 118 |     | <span class='neutral'>        hasKnownIssue</span>
+ 119 |     | <span class='neutral'>    {</span>
+ 120 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 121 | *   | <span class='executed'>        uint256 balance = ousd.balanceOf(target);</span>
+ 122 |     | <span class='neutral'></span>
+ 123 | *   | <span class='executed'>        hevm.prank(ADDRESS_VAULT);</span>
+ 124 | *   | <span class='executed'>        try ousd.burn(target, balance) {</span>
+ 125 |     | <span class='neutral'>            assert(true);</span>
+ 126 |     | <span class='neutral'>        } catch {</span>
  127 |     | <span class='unexecuted'>            assert(false);</span>
- 128 |     | <span class='neutral'>        } catch {</span>
- 129 | *   | <span class='executed'>            assert(true);</span>
- 130 |     | <span class='neutral'>        }</span>
- 131 |     | <span class='neutral'>    }</span>
- 132 |     | <span class='neutral'></span>
- 133 |     | <span class='neutral'>    // After a `changeSupply`, the total supply should exactly match the target total supply. (This is needed to ensure successive rebases are correct).</span>
- 134 |     | <span class='neutral'>    //</span>
- 135 |     | <span class='neutral'>    // testChangeSupply(uint256): failed!💥</span>
- 136 |     | <span class='neutral'>    //   Call sequence:</span>
- 137 |     | <span class='neutral'>    //       testChangeSupply(1044505275072865171609)</span>
- 138 |     | <span class='neutral'>    //</span>
- 139 |     | <span class='neutral'>    //   Event sequence:</span>
- 140 |     | <span class='neutral'>    //       TotalSupplyUpdatedHighres(1044505275072865171610, 1000000000000000000000000, 957391048054055578595)</span>
- 141 |     | <span class='neutral'>    //</span>
- 142 | *   | <span class='executed'>    function testChangeSupply(uint256 supply) public hasKnownIssue {</span>
- 143 |     | <span class='unexecuted'>        hevm.prank(ADDRESS_VAULT);</span>
- 144 |     | <span class='unexecuted'>        ousd.changeSupply(supply);</span>
- 145 |     | <span class='neutral'></span>
- 146 |     | <span class='unexecuted'>        assert(ousd.totalSupply() == supply);</span>
- 147 |     | <span class='neutral'>    }</span>
+ 128 |     | <span class='neutral'>        }</span>
+ 129 |     | <span class='neutral'>    }</span>
+ 130 |     | <span class='neutral'>}</span>
+ 131 |     | <span class='neutral'></span>
+
+</code>
+<br />
+
+<b>/home/rappie/Desktop/targets/origin-dollar/fuzzing-ousd-public/src/echidna/EchidnaTestSupply.sol</b>
+<code>
+   1 |     | <span class='neutral'>// SPDX-License-Identifier: MIT</span>
+   2 |     | <span class='neutral'>pragma solidity ^0.8.0;</span>
+   3 |     | <span class='neutral'></span>
+   4 |     | <span class='neutral'>import &quot;./EchidnaDebug.sol&quot;;</span>
+   5 |     | <span class='neutral'>import &quot;./EchidnaTestTransfer.sol&quot;;</span>
+   6 |     | <span class='neutral'></span>
+   7 |     | <span class='neutral'>import {StableMath} from &quot;../utils/StableMath.sol&quot;;</span>
+   8 |     | <span class='neutral'></span>
+   9 |     | <span class='unexecuted'>contract EchidnaTestSupply is EchidnaTestTransfer {</span>
+  10 |     | <span class='neutral'>    using StableMath for uint256;</span>
+  11 |     | <span class='neutral'></span>
+  12 |     | <span class='unexecuted'>    uint256 prevRebasingCreditsPerToken = type(uint256).max;</span>
+  13 |     | <span class='neutral'></span>
+  14 |     | <span class='neutral'>    // After a `changeSupply`, the total supply should exactly match the target total supply. (This is needed to ensure successive rebases are correct).</span>
+  15 |     | <span class='neutral'>    //</span>
+  16 |     | <span class='neutral'>    // testChangeSupply(uint256): failed!💥</span>
+  17 |     | <span class='neutral'>    //   Call sequence:</span>
+  18 |     | <span class='neutral'>    //       testChangeSupply(1044505275072865171609)</span>
+  19 |     | <span class='neutral'>    //</span>
+  20 |     | <span class='neutral'>    //   Event sequence:</span>
+  21 |     | <span class='neutral'>    //       TotalSupplyUpdatedHighres(1044505275072865171610, 1000000000000000000000000, 957391048054055578595)</span>
+  22 |     | <span class='neutral'>    //</span>
+  23 | *   | <span class='executed'>    function testChangeSupply(uint256 supply)</span>
+  24 |     | <span class='neutral'>        public</span>
+  25 |     | <span class='neutral'>        hasKnownIssue</span>
+  26 |     | <span class='neutral'>        hasKnownIssueWithinLimits</span>
+  27 |     | <span class='neutral'>    {</span>
+  28 |     | <span class='unexecuted'>        hevm.prank(ADDRESS_VAULT);</span>
+  29 |     | <span class='unexecuted'>        ousd.changeSupply(supply);</span>
+  30 |     | <span class='neutral'></span>
+  31 | *   | <span class='executed'>        assert(ousd.totalSupply() == supply);</span>
+  32 |     | <span class='neutral'>    }</span>
+  33 |     | <span class='neutral'></span>
+  34 |     | <span class='neutral'>    // The total supply must not be less than the sum of account balances. (The difference will go into future rebases)</span>
+  35 |     | <span class='neutral'>    //</span>
+  36 |     | <span class='neutral'>    // testTotalSupplyLessThanTotalBalance(): failed!💥</span>
+  37 |     | <span class='neutral'>    //   Call sequence:</span>
+  38 |     | <span class='neutral'>    //     mint(0,1)</span>
+  39 |     | <span class='neutral'>    //     changeSupply(1)</span>
+  40 |     | <span class='neutral'>    //     optOut(64)</span>
+  41 |     | <span class='neutral'>    //     transfer(0,64,1)</span>
+  42 |     | <span class='neutral'>    //     testTotalSupplyLessThanTotalBalance()</span>
+  43 |     | <span class='neutral'>    //</span>
+  44 |     | <span class='neutral'>    //   Event sequence:</span>
+  45 |     | <span class='neutral'>    //     Debug(«totalSupply», 1000000000000000001000001)</span>
+  46 |     | <span class='neutral'>    //     Debug(«totalBalance», 1000000000000000001000002)</span>
+  47 |     | <span class='neutral'>    //</span>
+  48 | *   | <span class='executed'>    function testTotalSupplyLessThanTotalBalance()</span>
+  49 |     | <span class='neutral'>        public</span>
+  50 |     | <span class='neutral'>        hasKnownIssue</span>
+  51 |     | <span class='neutral'>        hasKnownIssueWithinLimits</span>
+  52 |     | <span class='neutral'>    {</span>
+  53 |     | <span class='unexecuted'>        uint256 totalSupply = ousd.totalSupply();</span>
+  54 |     | <span class='unexecuted'>        uint256 totalBalance = getTotalBalance();</span>
+  55 |     | <span class='neutral'></span>
+  56 |     | <span class='unexecuted'>        Debugger.log(&quot;totalSupply&quot;, totalSupply);</span>
+  57 |     | <span class='unexecuted'>        Debugger.log(&quot;totalBalance&quot;, totalBalance);</span>
+  58 |     | <span class='neutral'></span>
+  59 |     | <span class='neutral'>        assert(totalSupply &gt;= totalBalance);</span>
+  60 |     | <span class='neutral'>    }</span>
+  61 |     | <span class='neutral'></span>
+  62 |     | <span class='neutral'>    // Non-rebasing supply should not be larger than total supply</span>
+  63 | *   | <span class='executed'>    function testNonRebasingSupplyVsTotalSupply() public hasKnownIssue {</span>
+  64 | *   | <span class='executed'>        uint256 nonRebasingSupply = ousd.nonRebasingSupply();</span>
+  65 | *   | <span class='executed'>        uint256 totalSupply = ousd.totalSupply();</span>
+  66 |     | <span class='neutral'></span>
+  67 | *   | <span class='executed'>        assert(nonRebasingSupply &lt;= totalSupply);</span>
+  68 |     | <span class='neutral'>    }</span>
+  69 |     | <span class='neutral'></span>
+  70 |     | <span class='neutral'>    // Global `rebasingCreditsPerToken` should never increase</span>
+  71 |     | <span class='neutral'>    //</span>
+  72 |     | <span class='neutral'>    // 💥 Known to break when manually calling `changeSupply`. This can be reproduced by toggling `TOGGLE_CHANGESUPPLY_LIMIT`.</span>
+  73 |     | <span class='neutral'>    //</span>
+  74 |     | <span class='neutral'>    // Call sequence:</span>
+  75 |     | <span class='neutral'>    //   testRebasingCreditsPerTokenNotIncreased()</span>
+  76 |     | <span class='neutral'>    //   changeSupply(1)</span>
+  77 |     | <span class='neutral'>    //   testRebasingCreditsPerTokenNotIncreased()</span>
+  78 |     | <span class='neutral'>    //</span>
+  79 | *   | <span class='executed'>    function testRebasingCreditsPerTokenNotIncreased() public hasKnownIssue {</span>
+  80 | *   | <span class='executed'>        uint256 curRebasingCreditsPerToken = ousd</span>
+  81 |     | <span class='neutral'>            .rebasingCreditsPerTokenHighres();</span>
+  82 |     | <span class='neutral'></span>
+  83 | *   | <span class='executed'>        Debugger.log(</span>
+  84 |     | <span class='neutral'>            &quot;prevRebasingCreditsPerToken&quot;,</span>
+  85 | *   | <span class='executed'>            prevRebasingCreditsPerToken</span>
+  86 |     | <span class='neutral'>        );</span>
+  87 | *   | <span class='executed'>        Debugger.log(&quot;curRebasingCreditsPerToken&quot;, curRebasingCreditsPerToken);</span>
+  88 |     | <span class='neutral'></span>
+  89 | *   | <span class='executed'>        assert(curRebasingCreditsPerToken &lt;= prevRebasingCreditsPerToken);</span>
+  90 |     | <span class='neutral'></span>
+  91 | *   | <span class='executed'>        prevRebasingCreditsPerToken = curRebasingCreditsPerToken;</span>
+  92 |     | <span class='neutral'>    }</span>
+  93 |     | <span class='neutral'></span>
+  94 |     | <span class='neutral'>    // The rebasing credits per token ratio must greater than zero</span>
+  95 | *   | <span class='executed'>    function testRebasingCreditsPerTokenAboveZero() public {</span>
+  96 | *   | <span class='executed'>        assert(ousd.rebasingCreditsPerTokenHighres() &gt; 0);</span>
+  97 |     | <span class='neutral'>    }</span>
+  98 |     | <span class='neutral'></span>
+  99 |     | <span class='neutral'>    // The sum of all non-rebasing balances should not be larger than non-rebasing supply</span>
+ 100 |     | <span class='neutral'>    //</span>
+ 101 |     | <span class='neutral'>    // testTotalNonRebasingSupplyLessThanTotalBalance(): failed!💥</span>
+ 102 |     | <span class='neutral'>    //   Call sequence</span>
+ 103 |     | <span class='neutral'>    //     mint(0,2)</span>
+ 104 |     | <span class='neutral'>    //     changeSupply(1)</span>
+ 105 |     | <span class='neutral'>    //     optOut(0)</span>
+ 106 |     | <span class='neutral'>    //     burn(0,1)</span>
+ 107 |     | <span class='neutral'>    //     testTotalNonRebasingSupplyLessThanTotalBalance()</span>
+ 108 |     | <span class='neutral'>    //</span>
+ 109 |     | <span class='neutral'>    //   Event sequence:</span>
+ 110 |     | <span class='neutral'>    //     Debug(«totalNonRebasingSupply», 500000000000000000000001)</span>
+ 111 |     | <span class='neutral'>    //     Debug(«totalNonRebasingBalance», 500000000000000000000002)</span>
+ 112 |     | <span class='neutral'>    //</span>
+ 113 | *   | <span class='executed'>    function testTotalNonRebasingSupplyLessThanTotalBalance()</span>
+ 114 |     | <span class='neutral'>        public</span>
+ 115 |     | <span class='neutral'>        hasKnownIssue</span>
+ 116 |     | <span class='neutral'>        hasKnownIssueWithinLimits</span>
+ 117 |     | <span class='unexecuted'>    {</span>
+ 118 |     | <span class='unexecuted'>        uint256 totalNonRebasingSupply = ousd.nonRebasingSupply();</span>
+ 119 |     | <span class='unexecuted'>        uint256 totalNonRebasingBalance = getTotalNonRebasingBalance();</span>
+ 120 |     | <span class='neutral'></span>
+ 121 |     | <span class='unexecuted'>        Debugger.log(&quot;totalNonRebasingSupply&quot;, totalNonRebasingSupply);</span>
+ 122 |     | <span class='unexecuted'>        Debugger.log(&quot;totalNonRebasingBalance&quot;, totalNonRebasingBalance);</span>
+ 123 |     | <span class='neutral'></span>
+ 124 |     | <span class='unexecuted'>        assert(totalNonRebasingSupply &gt;= totalNonRebasingBalance);</span>
+ 125 |     | <span class='neutral'>    }</span>
+ 126 |     | <span class='neutral'></span>
+ 127 |     | <span class='neutral'>    // An accounts credits / credits per token should not be larger it&#39;s balance</span>
+ 128 | *   | <span class='executed'>    function testCreditsPerTokenVsBalance(uint8 targetAcc) public {</span>
+ 129 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 130 |     | <span class='neutral'></span>
+ 131 | *   | <span class='executed'>        (uint256 credits, uint256 creditsPerToken, ) = ousd</span>
+ 132 |     | <span class='neutral'>            .creditsBalanceOfHighres(target);</span>
+ 133 | *   | <span class='executed'>        uint256 expectedBalance = credits.divPrecisely(creditsPerToken);</span>
+ 134 |     | <span class='neutral'></span>
+ 135 | *   | <span class='executed'>        uint256 balance = ousd.balanceOf(target);</span>
+ 136 |     | <span class='neutral'></span>
+ 137 | *   | <span class='executed'>        Debugger.log(&quot;credits&quot;, credits);</span>
+ 138 | *   | <span class='executed'>        Debugger.log(&quot;creditsPerToken&quot;, creditsPerToken);</span>
+ 139 | *   | <span class='executed'>        Debugger.log(&quot;expectedBalance&quot;, expectedBalance);</span>
+ 140 | *   | <span class='executed'>        Debugger.log(&quot;balance&quot;, balance);</span>
+ 141 |     | <span class='neutral'></span>
+ 142 | *r  | <span class='executed'>        require(credits &gt; 0, &quot;Credits should be greater than zero&quot;);</span>
+ 143 |     | <span class='neutral'></span>
+ 144 |     | <span class='neutral'>        // assert(false);</span>
+ 145 | *   | <span class='executed'>        assert(expectedBalance == balance);</span>
+ 146 |     | <span class='neutral'>    }</span>
+ 147 |     | <span class='neutral'>}</span>
  148 |     | <span class='neutral'></span>
- 149 |     | <span class='neutral'>    // The total supply may be greater than the sum of account balances. (The difference will go into future rebases)</span>
- 150 |     | <span class='neutral'>    //</span>
- 151 |     | <span class='neutral'>    // testTotalSupplyVsTotalBalance(): failed!💥</span>
- 152 |     | <span class='neutral'>    //   Call sequence:</span>
- 153 |     | <span class='neutral'>    //     mint(0,1)</span>
- 154 |     | <span class='neutral'>    //     changeSupply(1)</span>
- 155 |     | <span class='neutral'>    //     optOut(64)</span>
- 156 |     | <span class='neutral'>    //     transfer(0,64,1)</span>
- 157 |     | <span class='neutral'>    //     testTotalSupplyVsTotalBalance()</span>
- 158 |     | <span class='neutral'>    //</span>
- 159 |     | <span class='neutral'>    //   Event sequence:</span>
- 160 |     | <span class='neutral'>    //     Debug(«totalSupply», 1000000000000000001000001)</span>
- 161 |     | <span class='neutral'>    //     Debug(«totalBalance», 1000000000000000001000002)</span>
- 162 |     | <span class='neutral'>    //</span>
- 163 | *   | <span class='executed'>    function testTotalSupplyVsTotalBalance() public hasKnownIssue {</span>
- 164 |     | <span class='unexecuted'>        uint256 totalSupply = ousd.totalSupply();</span>
- 165 |     | <span class='unexecuted'>        uint256 totalBalance = getTotalBalance();</span>
+
+</code>
+<br />
+
+<b>/home/rappie/Desktop/targets/origin-dollar/fuzzing-ousd-public/src/echidna/EchidnaTestTransfer.sol</b>
+<code>
+   1 |     | <span class='neutral'>// SPDX-License-Identifier: MIT</span>
+   2 |     | <span class='neutral'>pragma solidity ^0.8.0;</span>
+   3 |     | <span class='neutral'></span>
+   4 |     | <span class='neutral'>import &quot;./EchidnaDebug.sol&quot;;</span>
+   5 |     | <span class='neutral'>import &quot;./Debugger.sol&quot;;</span>
+   6 |     | <span class='neutral'></span>
+   7 |     | <span class='unexecuted'>contract EchidnaTestTransfer is EchidnaDebug {</span>
+   8 |     | <span class='neutral'>    // The receiving account&#39;s balance after a transfer must not increase by less than the amount transferred</span>
+   9 |     | <span class='neutral'>    //</span>
+  10 |     | <span class='neutral'>    // testTransferBalanceReceivedLess(uint8,uint8,uint256): failed!💥</span>
+  11 |     | <span class='neutral'>    //   Call sequence:</span>
+  12 |     | <span class='neutral'>    //     changeSupply(1)</span>
+  13 |     | <span class='neutral'>    //     mint(64,2)</span>
+  14 |     | <span class='neutral'>    //     testTransferBalanceReceivedLess(64,0,1)</span>
+  15 |     | <span class='neutral'>    //</span>
+  16 |     | <span class='neutral'>    //   Event sequence:</span>
+  17 |     | <span class='neutral'>    //     Debug(«totalSupply», 1000000000000000000500002)</span>
+  18 |     | <span class='neutral'>    //     Debug(«toBalBefore», 0)</span>
+  19 |     | <span class='neutral'>    //     Debug(«toBalAfter», 0)</span>
+  20 |     | <span class='neutral'>    //</span>
+  21 | *   | <span class='executed'>    function testTransferBalanceReceivedLess(</span>
+  22 |     | <span class='neutral'>        uint8 fromAcc,</span>
+  23 |     | <span class='neutral'>        uint8 toAcc,</span>
+  24 |     | <span class='neutral'>        uint256 amount</span>
+  25 |     | <span class='neutral'>    ) public hasKnownIssue hasKnownIssueWithinLimits {</span>
+  26 |     | <span class='unexecuted'>        address from = getAccount(fromAcc);</span>
+  27 |     | <span class='unexecuted'>        address to = getAccount(toAcc);</span>
+  28 |     | <span class='neutral'></span>
+  29 |     | <span class='unexecuted'>        require(from != to);</span>
+  30 |     | <span class='neutral'></span>
+  31 |     | <span class='unexecuted'>        uint256 toBalBefore = ousd.balanceOf(to);</span>
+  32 |     | <span class='unexecuted'>        transfer(fromAcc, toAcc, amount);</span>
+  33 |     | <span class='unexecuted'>        uint256 toBalAfter = ousd.balanceOf(to);</span>
+  34 |     | <span class='neutral'></span>
+  35 |     | <span class='unexecuted'>        Debugger.log(&quot;totalSupply&quot;, ousd.totalSupply());</span>
+  36 |     | <span class='unexecuted'>        Debugger.log(&quot;toBalBefore&quot;, toBalBefore);</span>
+  37 |     | <span class='unexecuted'>        Debugger.log(&quot;toBalAfter&quot;, toBalAfter);</span>
+  38 |     | <span class='neutral'></span>
+  39 |     | <span class='unexecuted'>        assert(toBalAfter &gt;= toBalBefore + amount);</span>
+  40 |     | <span class='neutral'>    }</span>
+  41 |     | <span class='neutral'></span>
+  42 |     | <span class='neutral'>    // The receiving account&#39;s balance after a transfer must not increase by more than the amount transferred</span>
+  43 | *   | <span class='executed'>    function testTransferBalanceReceivedMore(</span>
+  44 |     | <span class='neutral'>        uint8 fromAcc,</span>
+  45 |     | <span class='neutral'>        uint8 toAcc,</span>
+  46 |     | <span class='neutral'>        uint256 amount</span>
+  47 |     | <span class='neutral'>    ) public {</span>
+  48 | *   | <span class='executed'>        address from = getAccount(fromAcc);</span>
+  49 | *   | <span class='executed'>        address to = getAccount(toAcc);</span>
+  50 |     | <span class='neutral'></span>
+  51 | *r  | <span class='executed'>        require(from != to);</span>
+  52 |     | <span class='neutral'></span>
+  53 | *   | <span class='executed'>        uint256 toBalBefore = ousd.balanceOf(to);</span>
+  54 | *   | <span class='executed'>        transfer(fromAcc, toAcc, amount);</span>
+  55 | *   | <span class='executed'>        uint256 toBalAfter = ousd.balanceOf(to);</span>
+  56 |     | <span class='neutral'></span>
+  57 | *   | <span class='executed'>        Debugger.log(&quot;totalSupply&quot;, ousd.totalSupply());</span>
+  58 | *   | <span class='executed'>        Debugger.log(&quot;toBalBefore&quot;, toBalBefore);</span>
+  59 | *   | <span class='executed'>        Debugger.log(&quot;toBalAfter&quot;, toBalAfter);</span>
+  60 |     | <span class='neutral'></span>
+  61 | *   | <span class='executed'>        assert(toBalAfter &lt;= toBalBefore + amount);</span>
+  62 |     | <span class='neutral'>    }</span>
+  63 |     | <span class='neutral'></span>
+  64 |     | <span class='neutral'>    // The sending account&#39;s balance after a transfer must not decrease by less than the amount transferred</span>
+  65 |     | <span class='neutral'>    //</span>
+  66 |     | <span class='neutral'>    // testTransferBalanceSentLess(uint8,uint8,uint256): failed!💥</span>
+  67 |     | <span class='neutral'>    //   Call sequence:</span>
+  68 |     | <span class='neutral'>    //     mint(0,1)</span>
+  69 |     | <span class='neutral'>    //     changeSupply(1)</span>
+  70 |     | <span class='neutral'>    //     testTransferBalanceSentLess(0,64,1)</span>
+  71 |     | <span class='neutral'>    //</span>
+  72 |     | <span class='neutral'>    //   Event sequence:</span>
+  73 |     | <span class='neutral'>    //     Debug(«totalSupply», 1000000000000000000500001)</span>
+  74 |     | <span class='neutral'>    //     Debug(«fromBalBefore», 1)</span>
+  75 |     | <span class='neutral'>    //     Debug(«fromBalAfter», 1)</span>
+  76 |     | <span class='neutral'>    //</span>
+  77 | *   | <span class='executed'>    function testTransferBalanceSentLess(</span>
+  78 |     | <span class='neutral'>        uint8 fromAcc,</span>
+  79 |     | <span class='neutral'>        uint8 toAcc,</span>
+  80 |     | <span class='neutral'>        uint256 amount</span>
+  81 | *   | <span class='executed'>    ) public hasKnownIssue hasKnownIssueWithinLimits {</span>
+  82 |     | <span class='unexecuted'>        address from = getAccount(fromAcc);</span>
+  83 |     | <span class='unexecuted'>        address to = getAccount(toAcc);</span>
+  84 |     | <span class='neutral'></span>
+  85 |     | <span class='unexecuted'>        require(from != to);</span>
+  86 |     | <span class='neutral'></span>
+  87 |     | <span class='unexecuted'>        uint256 fromBalBefore = ousd.balanceOf(from);</span>
+  88 |     | <span class='unexecuted'>        transfer(fromAcc, toAcc, amount);</span>
+  89 |     | <span class='unexecuted'>        uint256 fromBalAfter = ousd.balanceOf(from);</span>
+  90 |     | <span class='neutral'></span>
+  91 |     | <span class='unexecuted'>        Debugger.log(&quot;totalSupply&quot;, ousd.totalSupply());</span>
+  92 |     | <span class='unexecuted'>        Debugger.log(&quot;fromBalBefore&quot;, fromBalBefore);</span>
+  93 |     | <span class='unexecuted'>        Debugger.log(&quot;fromBalAfter&quot;, fromBalAfter);</span>
+  94 |     | <span class='neutral'></span>
+  95 | *   | <span class='executed'>        assert(fromBalAfter &lt;= fromBalBefore - amount);</span>
+  96 |     | <span class='neutral'>    }</span>
+  97 |     | <span class='neutral'></span>
+  98 |     | <span class='neutral'>    // The sending account&#39;s balance after a transfer must not decrease by more than the amount transferred</span>
+  99 | *   | <span class='executed'>    function testTransferBalanceSentMore(</span>
+ 100 |     | <span class='neutral'>        uint8 fromAcc,</span>
+ 101 |     | <span class='neutral'>        uint8 toAcc,</span>
+ 102 |     | <span class='neutral'>        uint256 amount</span>
+ 103 |     | <span class='neutral'>    ) public {</span>
+ 104 | *   | <span class='executed'>        address from = getAccount(fromAcc);</span>
+ 105 | *   | <span class='executed'>        address to = getAccount(toAcc);</span>
+ 106 |     | <span class='neutral'></span>
+ 107 | *r  | <span class='executed'>        require(from != to);</span>
+ 108 |     | <span class='neutral'></span>
+ 109 | *   | <span class='executed'>        uint256 fromBalBefore = ousd.balanceOf(from);</span>
+ 110 | *   | <span class='executed'>        transfer(fromAcc, toAcc, amount);</span>
+ 111 | *   | <span class='executed'>        uint256 fromBalAfter = ousd.balanceOf(from);</span>
+ 112 |     | <span class='neutral'></span>
+ 113 | *   | <span class='executed'>        Debugger.log(&quot;totalSupply&quot;, ousd.totalSupply());</span>
+ 114 | *   | <span class='executed'>        Debugger.log(&quot;fromBalBefore&quot;, fromBalBefore);</span>
+ 115 | *   | <span class='executed'>        Debugger.log(&quot;fromBalAfter&quot;, fromBalAfter);</span>
+ 116 |     | <span class='neutral'></span>
+ 117 | *   | <span class='executed'>        assert(fromBalAfter &gt;= fromBalBefore - amount);</span>
+ 118 |     | <span class='neutral'>    }</span>
+ 119 |     | <span class='neutral'></span>
+ 120 |     | <span class='neutral'>    // The receiving account&#39;s balance after a transfer must not increase by less than the amount transferred (minus rounding error)</span>
+ 121 | *   | <span class='executed'>    function testTransferBalanceReceivedLessRounding(</span>
+ 122 |     | <span class='neutral'>        uint8 fromAcc,</span>
+ 123 |     | <span class='neutral'>        uint8 toAcc,</span>
+ 124 |     | <span class='neutral'>        uint256 amount</span>
+ 125 | *   | <span class='executed'>    ) public {</span>
+ 126 | *   | <span class='executed'>        address from = getAccount(fromAcc);</span>
+ 127 | *   | <span class='executed'>        address to = getAccount(toAcc);</span>
+ 128 |     | <span class='neutral'></span>
+ 129 | *r  | <span class='executed'>        require(from != to);</span>
+ 130 |     | <span class='neutral'></span>
+ 131 | *   | <span class='executed'>        uint256 toBalBefore = ousd.balanceOf(to);</span>
+ 132 | *   | <span class='executed'>        transfer(fromAcc, toAcc, amount);</span>
+ 133 | *   | <span class='executed'>        uint256 toBalAfter = ousd.balanceOf(to);</span>
+ 134 |     | <span class='neutral'></span>
+ 135 | *   | <span class='executed'>        int256 toDelta = int256(toBalAfter) - int256(toBalBefore);</span>
+ 136 |     | <span class='neutral'></span>
+ 137 |     | <span class='neutral'>        // delta == amount, if no error</span>
+ 138 |     | <span class='neutral'>        // delta &lt; amount,  if too little is sent</span>
+ 139 |     | <span class='neutral'>        // delta &gt; amount,  if too much is sent</span>
+ 140 | *   | <span class='executed'>        int256 error = int256(amount) - toDelta;</span>
+ 141 |     | <span class='neutral'></span>
+ 142 | *   | <span class='executed'>        Debugger.log(&quot;totalSupply&quot;, ousd.totalSupply());</span>
+ 143 | *   | <span class='executed'>        Debugger.log(&quot;toBalBefore&quot;, toBalBefore);</span>
+ 144 | *   | <span class='executed'>        Debugger.log(&quot;toBalAfter&quot;, toBalAfter);</span>
+ 145 | *   | <span class='executed'>        Debugger.log(&quot;toDelta&quot;, toDelta);</span>
+ 146 | *   | <span class='executed'>        Debugger.log(&quot;error&quot;, error);</span>
+ 147 |     | <span class='neutral'></span>
+ 148 | *   | <span class='executed'>        assert(error &gt;= 0);</span>
+ 149 | *   | <span class='executed'>        assert(error &lt;= int256(TRANSFER_ROUNDING_ERROR));</span>
+ 150 |     | <span class='neutral'>    }</span>
+ 151 |     | <span class='neutral'></span>
+ 152 |     | <span class='neutral'>    // The sending account&#39;s balance after a transfer must not decrease by less than the amount transferred (minus rounding error)</span>
+ 153 | *   | <span class='executed'>    function testTransferBalanceSentLessRounding(</span>
+ 154 |     | <span class='neutral'>        uint8 fromAcc,</span>
+ 155 |     | <span class='neutral'>        uint8 toAcc,</span>
+ 156 |     | <span class='neutral'>        uint256 amount</span>
+ 157 |     | <span class='neutral'>    ) public {</span>
+ 158 | *   | <span class='executed'>        address from = getAccount(fromAcc);</span>
+ 159 | *   | <span class='executed'>        address to = getAccount(toAcc);</span>
+ 160 |     | <span class='neutral'></span>
+ 161 | *r  | <span class='executed'>        require(from != to);</span>
+ 162 |     | <span class='neutral'></span>
+ 163 | *   | <span class='executed'>        uint256 fromBalBefore = ousd.balanceOf(from);</span>
+ 164 | *   | <span class='executed'>        transfer(fromAcc, toAcc, amount);</span>
+ 165 | *   | <span class='executed'>        uint256 fromBalAfter = ousd.balanceOf(from);</span>
  166 |     | <span class='neutral'></span>
- 167 |     | <span class='unexecuted'>        Debugger.log(&quot;totalSupply&quot;, totalSupply);</span>
- 168 |     | <span class='unexecuted'>        Debugger.log(&quot;totalBalance&quot;, totalBalance);</span>
- 169 |     | <span class='neutral'></span>
- 170 |     | <span class='unexecuted'>        assert(totalSupply &gt;= totalBalance);</span>
- 171 |     | <span class='neutral'>    }</span>
- 172 |     | <span class='neutral'></span>
- 173 |     | <span class='neutral'>    // Non-rebasing supply should not be larger than total supply</span>
- 174 | *   | <span class='executed'>    function testNonRebasingSupplyVsTotalSupply() public {</span>
- 175 | *   | <span class='executed'>        uint256 nonRebasingSupply = ousd.nonRebasingSupply();</span>
- 176 | *   | <span class='executed'>        uint256 totalSupply = ousd.totalSupply();</span>
- 177 |     | <span class='neutral'></span>
- 178 | *   | <span class='executed'>        assert(nonRebasingSupply &lt;= totalSupply);</span>
- 179 |     | <span class='neutral'>    }</span>
- 180 |     | <span class='neutral'></span>
- 181 |     | <span class='neutral'>    // Global `rebasingCreditsPerToken` should never increase</span>
- 182 |     | <span class='neutral'>    //</span>
- 183 |     | <span class='neutral'>    // 💥 Known to break when manually calling `changeSupply`. This can be reproduced by toggling `TOGGLE_CHANGESUPPLY_LIMIT`.</span>
- 184 |     | <span class='neutral'>    //</span>
- 185 |     | <span class='neutral'>    // Call sequence:</span>
- 186 |     | <span class='neutral'>    //   testRebasingCreditsPerTokenNotIncreased()</span>
- 187 |     | <span class='neutral'>    //   changeSupply(1)</span>
- 188 |     | <span class='neutral'>    //   testRebasingCreditsPerTokenNotIncreased()</span>
- 189 |     | <span class='neutral'>    //</span>
- 190 | *   | <span class='executed'>    function testRebasingCreditsPerTokenNotIncreased() public {</span>
- 191 | *   | <span class='executed'>        uint256 curRebasingCreditsPerToken = ousd</span>
- 192 |     | <span class='neutral'>            .rebasingCreditsPerTokenHighres();</span>
- 193 |     | <span class='neutral'></span>
- 194 | *   | <span class='executed'>        Debugger.log(</span>
- 195 |     | <span class='neutral'>            &quot;prevRebasingCreditsPerToken&quot;,</span>
- 196 | *   | <span class='executed'>            prevRebasingCreditsPerToken</span>
- 197 |     | <span class='neutral'>        );</span>
- 198 | *   | <span class='executed'>        Debugger.log(&quot;curRebasingCreditsPerToken&quot;, curRebasingCreditsPerToken);</span>
- 199 |     | <span class='neutral'></span>
- 200 | *   | <span class='executed'>        assert(curRebasingCreditsPerToken &lt;= prevRebasingCreditsPerToken);</span>
- 201 |     | <span class='neutral'></span>
- 202 | *   | <span class='executed'>        prevRebasingCreditsPerToken = curRebasingCreditsPerToken;</span>
- 203 |     | <span class='neutral'>    }</span>
- 204 |     | <span class='neutral'></span>
- 205 |     | <span class='neutral'>    // Account balance should not increase when opting in. (Ok to lose rounding funds doing this)</span>
- 206 | *r  | <span class='executed'>    function testOptInBalance(uint8 targetAcc) public {</span>
- 207 | *r  | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 167 | *   | <span class='executed'>        int256 fromDelta = int256(fromBalAfter) - int256(fromBalBefore);</span>
+ 168 |     | <span class='neutral'></span>
+ 169 |     | <span class='neutral'>        // delta == -amount, if no error</span>
+ 170 |     | <span class='neutral'>        // delta &lt; -amount,  if too much is sent</span>
+ 171 |     | <span class='neutral'>        // delta &gt; -amount,  if too little is sent</span>
+ 172 | *   | <span class='executed'>        int256 error = int256(amount) + fromDelta;</span>
+ 173 |     | <span class='neutral'></span>
+ 174 | *   | <span class='executed'>        Debugger.log(&quot;totalSupply&quot;, ousd.totalSupply());</span>
+ 175 | *   | <span class='executed'>        Debugger.log(&quot;fromBalBefore&quot;, fromBalBefore);</span>
+ 176 | *   | <span class='executed'>        Debugger.log(&quot;fromBalAfter&quot;, fromBalAfter);</span>
+ 177 | *   | <span class='executed'>        Debugger.log(&quot;fromDelta&quot;, fromDelta);</span>
+ 178 |     | <span class='neutral'>        Debugger.log(&quot;error&quot;, error);</span>
+ 179 |     | <span class='neutral'></span>
+ 180 |     | <span class='neutral'>        assert(error &gt;= 0);</span>
+ 181 |     | <span class='neutral'>        assert(error &lt;= int256(TRANSFER_ROUNDING_ERROR));</span>
+ 182 |     | <span class='neutral'>    }</span>
+ 183 |     | <span class='neutral'></span>
+ 184 |     | <span class='neutral'>    // An account should always be able to successfully transfer an amount within its balance.</span>
+ 185 |     | <span class='neutral'>    //</span>
+ 186 |     | <span class='neutral'>    // testTransferWithinBalanceDoesNotRevert(uint8,uint8,uint8): failed!💥</span>
+ 187 |     | <span class='neutral'>    //   Call sequence:</span>
+ 188 |     | <span class='neutral'>    //       mint(0,1)</span>
+ 189 |     | <span class='neutral'>    //       changeSupply(3)</span>
+ 190 |     | <span class='neutral'>    //       optOut(0)</span>
+ 191 |     | <span class='neutral'>    //       testTransferWithinBalanceDoesNotRevert(0,128,2)</span>
+ 192 |     | <span class='neutral'>    //       optIn(0)</span>
+ 193 |     | <span class='neutral'>    //       testTransferWithinBalanceDoesNotRevert(128,0,1)</span>
+ 194 |     | <span class='neutral'>    //</span>
+ 195 |     | <span class='neutral'>    //   Event sequence:</span>
+ 196 |     | <span class='neutral'>    //       error Revert Panic(17): SafeMath over-/under-flows</span>
+ 197 |     | <span class='neutral'>    //</span>
+ 198 | *   | <span class='executed'>    function testTransferWithinBalanceDoesNotRevert(</span>
+ 199 |     | <span class='neutral'>        uint8 fromAcc,</span>
+ 200 |     | <span class='neutral'>        uint8 toAcc,</span>
+ 201 |     | <span class='neutral'>        uint256 amount</span>
+ 202 | *   | <span class='executed'>    ) public hasKnownIssue {</span>
+ 203 | *   | <span class='executed'>        address from = getAccount(fromAcc);</span>
+ 204 | *   | <span class='executed'>        address to = getAccount(toAcc);</span>
+ 205 |     | <span class='neutral'></span>
+ 206 | *r  | <span class='executed'>        require(amount &gt; 0);</span>
+ 207 | *   | <span class='executed'>        amount = amount % ousd.balanceOf(from);</span>
  208 |     | <span class='neutral'></span>
- 209 | *r  | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
- 210 | *r  | <span class='executed'>        optIn(targetAcc);</span>
- 211 | *   | <span class='executed'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
- 212 |     | <span class='neutral'></span>
- 213 | *   | <span class='executed'>        assert(balanceAfter &lt;= balanceBefore);</span>
- 214 |     | <span class='neutral'>    }</span>
- 215 |     | <span class='neutral'></span>
- 216 |     | <span class='neutral'>    // Account balance should remain the same after opting out</span>
- 217 | *r  | <span class='executed'>    function testOptOutBalance(uint8 targetAcc) public {</span>
- 218 | *r  | <span class='executed'>        address target = getAccount(targetAcc);</span>
- 219 |     | <span class='neutral'></span>
- 220 | *r  | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
- 221 | *r  | <span class='executed'>        optOut(targetAcc);</span>
- 222 | *   | <span class='executed'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
- 223 |     | <span class='neutral'></span>
- 224 |     | <span class='neutral'>        assert(balanceAfter == balanceBefore);</span>
- 225 |     | <span class='neutral'>    }</span>
- 226 |     | <span class='neutral'></span>
- 227 |     | <span class='neutral'>    // After opting in, total supply should remain the same</span>
- 228 | *r  | <span class='executed'>    function testOptInTotalSupply(uint8 targetAcc) public {</span>
- 229 | *r  | <span class='executed'>        uint256 totalSupplyBefore = ousd.totalSupply();</span>
- 230 | *r  | <span class='executed'>        optIn(targetAcc);</span>
- 231 |     | <span class='neutral'>        uint256 totalSupplyAfter = ousd.totalSupply();</span>
- 232 |     | <span class='neutral'></span>
- 233 |     | <span class='neutral'>        assert(totalSupplyAfter == totalSupplyBefore);</span>
- 234 |     | <span class='neutral'>    }</span>
- 235 |     | <span class='neutral'></span>
- 236 |     | <span class='neutral'>    // After opting out, total supply should remain the same</span>
- 237 | *r  | <span class='executed'>    function testOptOutTotalSupply(uint8 targetAcc) public {</span>
- 238 | *r  | <span class='executed'>        uint256 totalSupplyBefore = ousd.totalSupply();</span>
- 239 | *r  | <span class='executed'>        optOut(targetAcc);</span>
- 240 | *   | <span class='executed'>        uint256 totalSupplyAfter = ousd.totalSupply();</span>
+ 209 | *   | <span class='executed'>        Debugger.log(&quot;Total supply&quot;, ousd.totalSupply());</span>
+ 210 |     | <span class='neutral'></span>
+ 211 | *   | <span class='executed'>        hevm.prank(from);</span>
+ 212 | *   | <span class='executed'>        try ousd.transfer(to, amount) {</span>
+ 213 | *   | <span class='executed'>            assert(true);</span>
+ 214 |     | <span class='neutral'>        } catch {</span>
+ 215 | *   | <span class='executed'>            assert(false);</span>
+ 216 |     | <span class='neutral'>        }</span>
+ 217 |     | <span class='neutral'>    }</span>
+ 218 |     | <span class='neutral'></span>
+ 219 |     | <span class='neutral'>    // An account should never be able to successfully transfer an amount greater than their balance.</span>
+ 220 | *   | <span class='executed'>    function testTransferExceedingBalanceReverts(</span>
+ 221 |     | <span class='neutral'>        uint8 fromAcc,</span>
+ 222 |     | <span class='neutral'>        uint8 toAcc,</span>
+ 223 |     | <span class='neutral'>        uint256 amount</span>
+ 224 |     | <span class='neutral'>    ) public {</span>
+ 225 | *   | <span class='executed'>        address from = getAccount(fromAcc);</span>
+ 226 | *   | <span class='executed'>        address to = getAccount(toAcc);</span>
+ 227 |     | <span class='neutral'></span>
+ 228 | *   | <span class='executed'>        amount = ousd.balanceOf(from) + 1 + amount;</span>
+ 229 |     | <span class='neutral'></span>
+ 230 | *   | <span class='executed'>        hevm.prank(from);</span>
+ 231 | *   | <span class='executed'>        try ousd.transfer(to, amount) {</span>
+ 232 |     | <span class='unexecuted'>            assert(false);</span>
+ 233 |     | <span class='neutral'>        } catch {</span>
+ 234 | *   | <span class='executed'>            assert(true);</span>
+ 235 |     | <span class='neutral'>        }</span>
+ 236 |     | <span class='neutral'>    }</span>
+ 237 |     | <span class='neutral'></span>
+ 238 |     | <span class='neutral'>    // A transfer to the same account should not change that account&#39;s balance</span>
+ 239 | *   | <span class='executed'>    function testTransferSelf(uint8 targetAcc, uint256 amount) public {</span>
+ 240 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
  241 |     | <span class='neutral'></span>
- 242 | *   | <span class='executed'>        assert(totalSupplyAfter == totalSupplyBefore);</span>
- 243 |     | <span class='neutral'>    }</span>
- 244 |     | <span class='neutral'></span>
- 245 |     | <span class='neutral'>    // Account balance should remain the same when a smart contract auto converts</span>
- 246 | *   | <span class='executed'>    function testAutoConvertBalance(uint8 targetAcc) public {</span>
- 247 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
+ 242 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
+ 243 | *   | <span class='executed'>        transfer(targetAcc, targetAcc, amount);</span>
+ 244 | *   | <span class='executed'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
+ 245 |     | <span class='neutral'></span>
+ 246 | *   | <span class='executed'>        assert(balanceBefore == balanceAfter);</span>
+ 247 |     | <span class='neutral'>    }</span>
  248 |     | <span class='neutral'></span>
- 249 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
- 250 | *   | <span class='executed'>        ousd._isNonRebasingAccountEchidna(target);</span>
- 251 | *   | <span class='executed'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
+ 249 |     | <span class='neutral'>    // Transfers to the zero account revert</span>
+ 250 | *   | <span class='executed'>    function testTransferToZeroAddress(uint8 fromAcc, uint256 amount) public {</span>
+ 251 | *   | <span class='executed'>        address from = getAccount(fromAcc);</span>
  252 |     | <span class='neutral'></span>
- 253 | *   | <span class='executed'>        assert(balanceAfter == balanceBefore);</span>
- 254 |     | <span class='neutral'>    }</span>
- 255 |     | <span class='neutral'></span>
- 256 |     | <span class='neutral'>    // The `balanceOf` function should never revert</span>
- 257 | *   | <span class='executed'>    function testBalanceOfShouldNotRevert(uint8 targetAcc) public {</span>
- 258 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
- 259 |     | <span class='neutral'></span>
- 260 | *   | <span class='executed'>        try ousd.balanceOf(target) {</span>
- 261 |     | <span class='neutral'>            assert(true);</span>
- 262 |     | <span class='neutral'>        } catch {</span>
- 263 |     | <span class='unexecuted'>            assert(false);</span>
- 264 |     | <span class='neutral'>        }</span>
- 265 |     | <span class='neutral'>    }</span>
- 266 |     | <span class='neutral'></span>
- 267 |     | <span class='neutral'>    // The rebasing credits per token ratio must greater than zero</span>
- 268 | *   | <span class='executed'>    function testRebasingCreditsPerTokenAboveZero() public {</span>
- 269 | *   | <span class='executed'>        assert(ousd.rebasingCreditsPerTokenHighres() &gt; 0);</span>
- 270 |     | <span class='neutral'>    }</span>
- 271 |     | <span class='neutral'></span>
- 272 |     | <span class='neutral'>    // Minting 0 tokens should not affect account balance</span>
- 273 | *   | <span class='executed'>    function testMintZeroBalance(uint8 targetAcc) public {</span>
- 274 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
- 275 |     | <span class='neutral'></span>
- 276 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
- 277 | *   | <span class='executed'>        mint(targetAcc, 0);</span>
- 278 |     | <span class='neutral'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
- 279 |     | <span class='neutral'></span>
- 280 |     | <span class='neutral'>        assert(balanceAfter == balanceBefore);</span>
- 281 |     | <span class='neutral'>    }</span>
- 282 |     | <span class='neutral'></span>
- 283 |     | <span class='neutral'>    // Burning 0 tokens should not affect account balance</span>
- 284 | *   | <span class='executed'>    function testBurnZeroBalance(uint8 targetAcc) public {</span>
- 285 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
- 286 |     | <span class='neutral'></span>
- 287 | *   | <span class='executed'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
- 288 | *   | <span class='executed'>        burn(targetAcc, 0);</span>
- 289 |     | <span class='neutral'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
- 290 |     | <span class='neutral'></span>
- 291 |     | <span class='neutral'>        assert(balanceAfter == balanceBefore);</span>
- 292 |     | <span class='neutral'>    }</span>
- 293 |     | <span class='neutral'></span>
- 294 |     | <span class='neutral'>    // Minting tokens should always increase the account balance by at least amount</span>
- 295 |     | <span class='neutral'>    //</span>
- 296 |     | <span class='neutral'>    // testMintBalance(uint8,uint256): failed!💥</span>
- 297 |     | <span class='neutral'>    //   Call sequence:</span>
- 298 |     | <span class='neutral'>    //       changeSupply(1)</span>
- 299 |     | <span class='neutral'>    //       testMintBalance(0,1)</span>
- 300 |     | <span class='neutral'>    //</span>
- 301 |     | <span class='neutral'>    //   Event sequence:</span>
- 302 |     | <span class='neutral'>    //       Debug(«balanceBefore», 0)</span>
- 303 |     | <span class='neutral'>    //       Debug(«balanceAfter», 0)</span>
- 304 |     | <span class='neutral'>    //</span>
- 305 | *   | <span class='executed'>    function testMintBalance(uint8 targetAcc, uint256 amount)</span>
- 306 |     | <span class='neutral'>        public</span>
- 307 |     | <span class='neutral'>        hasKnownIssue</span>
- 308 |     | <span class='neutral'>    {</span>
- 309 |     | <span class='unexecuted'>        address target = getAccount(targetAcc);</span>
- 310 |     | <span class='neutral'></span>
- 311 |     | <span class='unexecuted'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
- 312 |     | <span class='unexecuted'>        uint256 amountMinted = mint(targetAcc, amount);</span>
- 313 |     | <span class='unexecuted'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
- 314 |     | <span class='neutral'></span>
- 315 |     | <span class='unexecuted'>        Debugger.log(&quot;amountMinted&quot;, amountMinted);</span>
- 316 |     | <span class='unexecuted'>        Debugger.log(&quot;balanceBefore&quot;, balanceBefore);</span>
- 317 |     | <span class='unexecuted'>        Debugger.log(&quot;balanceAfter&quot;, balanceAfter);</span>
- 318 |     | <span class='neutral'></span>
- 319 |     | <span class='unexecuted'>        assert(balanceAfter &gt;= balanceBefore + amountMinted);</span>
- 320 |     | <span class='neutral'>    }</span>
- 321 |     | <span class='neutral'></span>
- 322 |     | <span class='neutral'>    // Burning tokens must decrease the balance by at least amount.</span>
- 323 |     | <span class='neutral'>    //</span>
- 324 |     | <span class='neutral'>    // testBurnBalance(uint8,uint256): failed!💥</span>
- 325 |     | <span class='neutral'>    //   Call sequence:</span>
- 326 |     | <span class='neutral'>    //     changeSupply(1)</span>
- 327 |     | <span class='neutral'>    //     mint(0,3)</span>
- 328 |     | <span class='neutral'>    //     testBurnBalance(0,1)</span>
- 329 |     | <span class='neutral'>    //</span>
- 330 |     | <span class='neutral'>    //   Event sequence:</span>
- 331 |     | <span class='neutral'>    //       Debug(«balanceBefore», 2)</span>
- 332 |     | <span class='neutral'>    //       Debug(«balanceAfter», 2)</span>
- 333 |     | <span class='neutral'>    //</span>
- 334 | *   | <span class='executed'>    function testBurnBalance(uint8 targetAcc, uint256 amount)</span>
- 335 |     | <span class='neutral'>        public</span>
- 336 |     | <span class='neutral'>        hasKnownIssue</span>
- 337 |     | <span class='neutral'>    {</span>
- 338 |     | <span class='unexecuted'>        address target = getAccount(targetAcc);</span>
- 339 |     | <span class='neutral'></span>
- 340 |     | <span class='unexecuted'>        uint256 balanceBefore = ousd.balanceOf(target);</span>
- 341 |     | <span class='unexecuted'>        burn(targetAcc, amount);</span>
- 342 |     | <span class='unexecuted'>        uint256 balanceAfter = ousd.balanceOf(target);</span>
- 343 |     | <span class='neutral'></span>
- 344 |     | <span class='unexecuted'>        Debugger.log(&quot;balanceBefore&quot;, balanceBefore);</span>
- 345 |     | <span class='unexecuted'>        Debugger.log(&quot;balanceAfter&quot;, balanceAfter);</span>
- 346 |     | <span class='neutral'></span>
- 347 |     | <span class='unexecuted'>        assert(balanceAfter &lt;= balanceBefore - amount);</span>
- 348 |     | <span class='neutral'>    }</span>
- 349 |     | <span class='neutral'></span>
- 350 |     | <span class='neutral'>    // A burn of an account balance must result in a zero balance</span>
- 351 | *   | <span class='executed'>    function testBurnAllBalanceToZero(uint8 targetAcc) public {</span>
- 352 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
- 353 |     | <span class='neutral'></span>
- 354 | *   | <span class='executed'>        burn(targetAcc, ousd.balanceOf(target));</span>
- 355 | *   | <span class='executed'>        assert(ousd.balanceOf(target) == 0);</span>
- 356 |     | <span class='neutral'>    }</span>
- 357 |     | <span class='neutral'></span>
- 358 |     | <span class='neutral'>    // You should always be able to burn an account&#39;s balance</span>
- 359 | *   | <span class='executed'>    function testBurnAllBalanceShouldNotRevert(uint8 targetAcc) public {</span>
- 360 | *   | <span class='executed'>        address target = getAccount(targetAcc);</span>
- 361 | *   | <span class='executed'>        uint balance = ousd.balanceOf(target);</span>
- 362 |     | <span class='neutral'></span>
- 363 | *   | <span class='executed'>        hevm.prank(ADDRESS_VAULT);</span>
- 364 | *   | <span class='executed'>        try ousd.burn(target, balance) {</span>
- 365 |     | <span class='neutral'>            assert(true);</span>
- 366 |     | <span class='neutral'>        } catch {</span>
- 367 |     | <span class='unexecuted'>            assert(false);</span>
- 368 |     | <span class='neutral'>        }</span>
- 369 |     | <span class='neutral'>    }</span>
- 370 |     | <span class='neutral'>}</span>
- 371 |     | <span class='neutral'></span>
+ 253 | *   | <span class='executed'>        hevm.prank(from);</span>
+ 254 | *   | <span class='executed'>        try ousd.transfer(address(0), amount) {</span>
+ 255 |     | <span class='unexecuted'>            assert(false);</span>
+ 256 |     | <span class='neutral'>        } catch {</span>
+ 257 | *   | <span class='executed'>            assert(true);</span>
+ 258 |     | <span class='neutral'>        }</span>
+ 259 |     | <span class='neutral'>    }</span>
+ 260 |     | <span class='neutral'>}</span>
+ 261 |     | <span class='neutral'></span>
 
 </code>
 <br />
@@ -1274,8 +1584,8 @@
   2 |     | <span class='neutral'>pragma solidity ^0.8.0;</span>
   3 |     | <span class='neutral'></span>
   4 |     | <span class='neutral'>import &quot;../token/OUSD.sol&quot;;</span>
-  5 | *r  | <span class='executed'></span>
-  6 |     | <span class='neutral'>contract OUSDEchidna is OUSD {</span>
+  5 |     | <span class='neutral'></span>
+  6 | *   | <span class='executed'>contract OUSDEchidna is OUSD {</span>
   7 |     | <span class='unexecuted'>    constructor() OUSD() {}</span>
   8 |     | <span class='neutral'></span>
   9 | *   | <span class='executed'>    function _isNonRebasingAccountEchidna(address _account)</span>
@@ -1301,8 +1611,8 @@
    7 |     | <span class='neutral'> *      from owner to governor and renounce methods removed. Does not use</span>
    8 |     | <span class='neutral'> *      Context.sol like Ownable.sol does for simplification.</span>
    9 |     | <span class='neutral'> * @author Origin Protocol Inc</span>
-  10 |     | <span class='unexecuted'> */</span>
-  11 |     | <span class='neutral'>contract Governable {</span>
+  10 |     | <span class='neutral'> */</span>
+  11 |     | <span class='unexecuted'>contract Governable {</span>
   12 |     | <span class='neutral'>    // Storage position of the owner and pendingOwner of the contract</span>
   13 |     | <span class='neutral'>    // keccak256(&quot;OUSD.governor&quot;);</span>
   14 |     | <span class='neutral'>    bytes32 private constant governorPosition =</span>
@@ -1375,7 +1685,7 @@
   81 |     | <span class='neutral'>     * @dev Throws if called by any account other than the Governor.</span>
   82 |     | <span class='neutral'>     */</span>
   83 |     | <span class='neutral'>    modifier onlyGovernor() {</span>
-  84 | *r  | <span class='executed'>        require(isGovernor(), &quot;Caller is not the Governor&quot;);</span>
+  84 | *   | <span class='executed'>        require(isGovernor(), &quot;Caller is not the Governor&quot;);</span>
   85 |     | <span class='neutral'>        _;</span>
   86 |     | <span class='neutral'>    }</span>
   87 |     | <span class='neutral'></span>
@@ -1406,16 +1716,16 @@
  112 |     | <span class='neutral'>        uint256 _reentry_status;</span>
  113 |     | <span class='neutral'>        // solhint-disable-next-line no-inline-assembly</span>
  114 |     | <span class='neutral'>        assembly {</span>
- 115 | *r  | <span class='executed'>            _reentry_status := sload(position)</span>
+ 115 | *   | <span class='executed'>            _reentry_status := sload(position)</span>
  116 |     | <span class='neutral'>        }</span>
  117 |     | <span class='neutral'></span>
  118 |     | <span class='neutral'>        // On the first call to nonReentrant, _notEntered will be true</span>
- 119 | *r  | <span class='executed'>        require(_reentry_status != _ENTERED, &quot;Reentrant call&quot;);</span>
+ 119 | *   | <span class='executed'>        require(_reentry_status != _ENTERED, &quot;Reentrant call&quot;);</span>
  120 |     | <span class='neutral'></span>
  121 |     | <span class='neutral'>        // Any calls to nonReentrant after this point will fail</span>
  122 |     | <span class='neutral'>        // solhint-disable-next-line no-inline-assembly</span>
  123 |     | <span class='neutral'>        assembly {</span>
- 124 | *r  | <span class='executed'>            sstore(position, _ENTERED)</span>
+ 124 | *   | <span class='executed'>            sstore(position, _ENTERED)</span>
  125 |     | <span class='neutral'>        }</span>
  126 |     | <span class='neutral'></span>
  127 | *   | <span class='executed'>        _;</span>
@@ -1497,8 +1807,8 @@
   20 |     | <span class='neutral'> * balanceOf(x) for all x is not &gt;= totalSupply(). This is a consequence of the</span>
   21 |     | <span class='neutral'> * rebasing design. Any integrations with OUSD should be aware.</span>
   22 |     | <span class='neutral'> */</span>
-  23 |     | <span class='unexecuted'></span>
-  24 |     | <span class='neutral'>contract OUSD is Initializable, InitializableERC20Detailed, Governable {</span>
+  23 |     | <span class='neutral'></span>
+  24 |     | <span class='unexecuted'>contract OUSD is Initializable, InitializableERC20Detailed, Governable {</span>
   25 |     | <span class='neutral'>    using SafeMath for uint256;</span>
   26 |     | <span class='neutral'>    using StableMath for uint256;</span>
   27 |     | <span class='neutral'></span>
@@ -1555,15 +1865,15 @@
   78 |     | <span class='neutral'>     * @dev Verifies that the caller is the Vault contract</span>
   79 |     | <span class='neutral'>     */</span>
   80 |     | <span class='neutral'>    modifier onlyVault() {</span>
-  81 | *r  | <span class='executed'>        require(vaultAddress == msg.sender, &quot;Caller is not the Vault&quot;);</span>
+  81 | *   | <span class='executed'>        require(vaultAddress == msg.sender, &quot;Caller is not the Vault&quot;);</span>
   82 |     | <span class='neutral'>        _;</span>
   83 |     | <span class='neutral'>    }</span>
   84 |     | <span class='neutral'></span>
   85 |     | <span class='neutral'>    /**</span>
   86 |     | <span class='neutral'>     * @return The total supply of OUSD.</span>
   87 |     | <span class='neutral'>     */</span>
-  88 | *r  | <span class='executed'>    function totalSupply() public view override returns (uint256) {</span>
-  89 | *r  | <span class='executed'>        return _totalSupply;</span>
+  88 | *   | <span class='executed'>    function totalSupply() public view override returns (uint256) {</span>
+  89 | *   | <span class='executed'>        return _totalSupply;</span>
   90 |     | <span class='neutral'>    }</span>
   91 |     | <span class='neutral'></span>
   92 |     | <span class='neutral'>    /**</span>
@@ -1576,7 +1886,7 @@
   99 |     | <span class='neutral'>    /**</span>
  100 |     | <span class='neutral'>     * @return Low resolution total number of rebasing credits</span>
  101 |     | <span class='neutral'>     */</span>
- 102 | *r  | <span class='executed'>    function rebasingCredits() public view returns (uint256) {</span>
+ 102 | *   | <span class='executed'>    function rebasingCredits() public view returns (uint256) {</span>
  103 |     | <span class='unexecuted'>        return _rebasingCredits / RESOLUTION_INCREASE;</span>
  104 |     | <span class='neutral'>    }</span>
  105 |     | <span class='neutral'></span>
@@ -1600,15 +1910,15 @@
  123 |     | <span class='neutral'>     * @return A uint256 representing the amount of base units owned by the</span>
  124 |     | <span class='neutral'>     *         specified address.</span>
  125 |     | <span class='neutral'>     */</span>
- 126 | *r  | <span class='executed'>    function balanceOf(address _account)</span>
+ 126 | *   | <span class='executed'>    function balanceOf(address _account)</span>
  127 |     | <span class='neutral'>        public</span>
  128 |     | <span class='neutral'>        view</span>
  129 |     | <span class='neutral'>        override</span>
- 130 | *r  | <span class='executed'>        returns (uint256)</span>
+ 130 | *   | <span class='executed'>        returns (uint256)</span>
  131 |     | <span class='neutral'>    {</span>
- 132 | *r  | <span class='executed'>        if (_creditBalances[_account] == 0) return 0;</span>
+ 132 | *   | <span class='executed'>        if (_creditBalances[_account] == 0) return 0;</span>
  133 |     | <span class='neutral'>        return</span>
- 134 | *r  | <span class='executed'>            _creditBalances[_account].divPrecisely(_creditsPerToken(_account));</span>
+ 134 | *   | <span class='executed'>            _creditBalances[_account].divPrecisely(_creditsPerToken(_account));</span>
  135 |     | <span class='neutral'>    }</span>
  136 |     | <span class='neutral'></span>
  137 |     | <span class='neutral'>    /**</span>
@@ -1643,19 +1953,19 @@
  166 |     | <span class='neutral'>     * @return (uint256, uint256, bool) Credit balance, credits per token of the</span>
  167 |     | <span class='neutral'>     *         address, and isUpgraded</span>
  168 |     | <span class='neutral'>     */</span>
- 169 |     | <span class='unexecuted'>    function creditsBalanceOfHighres(address _account)</span>
+ 169 | *   | <span class='executed'>    function creditsBalanceOfHighres(address _account)</span>
  170 |     | <span class='neutral'>        public</span>
  171 |     | <span class='neutral'>        view</span>
  172 |     | <span class='neutral'>        returns (</span>
- 173 |     | <span class='unexecuted'>            uint256,</span>
+ 173 | *   | <span class='executed'>            uint256,</span>
  174 |     | <span class='neutral'>            uint256,</span>
  175 |     | <span class='neutral'>            bool</span>
  176 |     | <span class='neutral'>        )</span>
  177 |     | <span class='neutral'>    {</span>
- 178 |     | <span class='unexecuted'>        return (</span>
- 179 |     | <span class='unexecuted'>            _creditBalances[_account],</span>
- 180 |     | <span class='unexecuted'>            _creditsPerToken(_account),</span>
- 181 |     | <span class='unexecuted'>            isUpgraded[_account] == 1</span>
+ 178 | *   | <span class='executed'>        return (</span>
+ 179 | *   | <span class='executed'>            _creditBalances[_account],</span>
+ 180 | *   | <span class='executed'>            _creditsPerToken(_account),</span>
+ 181 | *   | <span class='executed'>            isUpgraded[_account] == 1</span>
  182 |     | <span class='neutral'>        );</span>
  183 |     | <span class='neutral'>    }</span>
  184 |     | <span class='neutral'></span>
@@ -1665,14 +1975,14 @@
  188 |     | <span class='neutral'>     * @param _value the amount to be transferred.</span>
  189 |     | <span class='neutral'>     * @return true on success.</span>
  190 |     | <span class='neutral'>     */</span>
- 191 | *r  | <span class='executed'>    function transfer(address _to, uint256 _value)</span>
+ 191 | *   | <span class='executed'>    function transfer(address _to, uint256 _value)</span>
  192 |     | <span class='neutral'>        public</span>
  193 |     | <span class='neutral'>        override</span>
- 194 | *r  | <span class='executed'>        returns (bool)</span>
+ 194 | *   | <span class='executed'>        returns (bool)</span>
  195 |     | <span class='neutral'>    {</span>
- 196 | *r  | <span class='executed'>        require(_to != address(0), &quot;Transfer to zero address&quot;);</span>
- 197 | *r  | <span class='executed'>        require(</span>
- 198 | *r  | <span class='executed'>            _value &lt;= balanceOf(msg.sender),</span>
+ 196 | *   | <span class='executed'>        require(_to != address(0), &quot;Transfer to zero address&quot;);</span>
+ 197 | *   | <span class='executed'>        require(</span>
+ 198 | *   | <span class='executed'>            _value &lt;= balanceOf(msg.sender),</span>
  199 |     | <span class='neutral'>            &quot;Transfer greater than balance&quot;</span>
  200 |     | <span class='neutral'>        );</span>
  201 |     | <span class='neutral'></span>
@@ -1725,7 +2035,7 @@
  248 |     | <span class='neutral'>        // Credits deducted and credited might be different due to the</span>
  249 |     | <span class='neutral'>        // differing creditsPerToken used by each account</span>
  250 | *   | <span class='executed'>        uint256 creditsCredited = _value.mulTruncate(_creditsPerToken(_to));</span>
- 251 | *r  | <span class='executed'>        uint256 creditsDeducted = _value.mulTruncate(_creditsPerToken(_from));</span>
+ 251 | *   | <span class='executed'>        uint256 creditsDeducted = _value.mulTruncate(_creditsPerToken(_from));</span>
  252 |     | <span class='neutral'></span>
  253 | *   | <span class='executed'>        _creditBalances[_from] = _creditBalances[_from].sub(</span>
  254 | *   | <span class='executed'>            creditsDeducted,</span>
@@ -1777,7 +2087,7 @@
  300 |     | <span class='neutral'>     * @param _spender The address which will spend the funds.</span>
  301 |     | <span class='neutral'>     * @param _value The amount of tokens to be spent.</span>
  302 |     | <span class='neutral'>     */</span>
- 303 | *r  | <span class='executed'>    function approve(address _spender, uint256 _value)</span>
+ 303 | *   | <span class='executed'>    function approve(address _spender, uint256 _value)</span>
  304 |     | <span class='neutral'>        public</span>
  305 |     | <span class='neutral'>        override</span>
  306 |     | <span class='unexecuted'>        returns (bool)</span>
@@ -1869,8 +2179,8 @@
  392 |     | <span class='neutral'>    /**</span>
  393 |     | <span class='neutral'>     * @dev Burns tokens, decreasing totalSupply.</span>
  394 |     | <span class='neutral'>     */</span>
- 395 | *r  | <span class='executed'>    function burn(address account, uint256 amount) external onlyVault {</span>
- 396 | *r  | <span class='executed'>        _burn(account, amount);</span>
+ 395 | *   | <span class='executed'>    function burn(address account, uint256 amount) external onlyVault {</span>
+ 396 | *   | <span class='executed'>        _burn(account, amount);</span>
  397 |     | <span class='neutral'>    }</span>
  398 |     | <span class='neutral'></span>
  399 |     | <span class='neutral'>    /**</span>
@@ -1884,28 +2194,28 @@
  407 |     | <span class='neutral'>     * - `_account` cannot be the zero address.</span>
  408 |     | <span class='neutral'>     * - `_account` must have at least `_amount` tokens.</span>
  409 |     | <span class='neutral'>     */</span>
- 410 | *r  | <span class='executed'>    function _burn(address _account, uint256 _amount) internal nonReentrant {</span>
- 411 | *r  | <span class='executed'>        require(_account != address(0), &quot;Burn from the zero address&quot;);</span>
- 412 | *r  | <span class='executed'>        if (_amount == 0) {</span>
- 413 | *r  | <span class='executed'>            return;</span>
+ 410 | *   | <span class='executed'>    function _burn(address _account, uint256 _amount) internal nonReentrant {</span>
+ 411 | *   | <span class='executed'>        require(_account != address(0), &quot;Burn from the zero address&quot;);</span>
+ 412 | *   | <span class='executed'>        if (_amount == 0) {</span>
+ 413 | *   | <span class='executed'>            return;</span>
  414 |     | <span class='neutral'>        }</span>
  415 |     | <span class='neutral'></span>
- 416 | *r  | <span class='executed'>        bool isNonRebasingAccount = _isNonRebasingAccount(_account);</span>
- 417 | *r  | <span class='executed'>        uint256 creditAmount = _amount.mulTruncate(_creditsPerToken(_account));</span>
- 418 | *r  | <span class='executed'>        uint256 currentCredits = _creditBalances[_account];</span>
+ 416 | *   | <span class='executed'>        bool isNonRebasingAccount = _isNonRebasingAccount(_account);</span>
+ 417 | *   | <span class='executed'>        uint256 creditAmount = _amount.mulTruncate(_creditsPerToken(_account));</span>
+ 418 | *   | <span class='executed'>        uint256 currentCredits = _creditBalances[_account];</span>
  419 |     | <span class='neutral'></span>
  420 |     | <span class='neutral'>        // Remove the credits, burning rounding errors</span>
- 421 | *r  | <span class='executed'>        if (</span>
- 422 | *r  | <span class='executed'>            currentCredits == creditAmount || currentCredits - 1 == creditAmount</span>
+ 421 | *   | <span class='executed'>        if (</span>
+ 422 | *   | <span class='executed'>            currentCredits == creditAmount || currentCredits - 1 == creditAmount</span>
  423 |     | <span class='neutral'>        ) {</span>
  424 |     | <span class='neutral'>            // Handle dust from rounding</span>
  425 | *   | <span class='executed'>            _creditBalances[_account] = 0;</span>
- 426 | *r  | <span class='executed'>        } else if (currentCredits &gt; creditAmount) {</span>
+ 426 | *   | <span class='executed'>        } else if (currentCredits &gt; creditAmount) {</span>
  427 | *   | <span class='executed'>            _creditBalances[_account] = _creditBalances[_account].sub(</span>
  428 | *   | <span class='executed'>                creditAmount</span>
  429 |     | <span class='neutral'>            );</span>
  430 |     | <span class='neutral'>        } else {</span>
- 431 | r   | <span class='reverted'>            revert(&quot;Remove exceeds balance&quot;);</span>
+ 431 | *   | <span class='executed'>            revert(&quot;Remove exceeds balance&quot;);</span>
  432 |     | <span class='neutral'>        }</span>
  433 |     | <span class='neutral'></span>
  434 |     | <span class='neutral'>        // Remove from the credit tallies and non-rebasing supply</span>
@@ -1925,15 +2235,15 @@
  448 |     | <span class='neutral'>     *      if the account is non-rebasing.</span>
  449 |     | <span class='neutral'>     * @param _account Address of the account.</span>
  450 |     | <span class='neutral'>     */</span>
- 451 | *r  | <span class='executed'>    function _creditsPerToken(address _account)</span>
+ 451 | *   | <span class='executed'>    function _creditsPerToken(address _account)</span>
  452 |     | <span class='neutral'>        internal</span>
  453 |     | <span class='neutral'>        view</span>
- 454 | *r  | <span class='executed'>        returns (uint256)</span>
+ 454 | *   | <span class='executed'>        returns (uint256)</span>
  455 |     | <span class='neutral'>    {</span>
- 456 | *r  | <span class='executed'>        if (nonRebasingCreditsPerToken[_account] != 0) {</span>
- 457 | *r  | <span class='executed'>            return nonRebasingCreditsPerToken[_account];</span>
+ 456 | *   | <span class='executed'>        if (nonRebasingCreditsPerToken[_account] != 0) {</span>
+ 457 | *   | <span class='executed'>            return nonRebasingCreditsPerToken[_account];</span>
  458 |     | <span class='neutral'>        } else {</span>
- 459 | *r  | <span class='executed'>            return _rebasingCreditsPerToken;</span>
+ 459 | *   | <span class='executed'>            return _rebasingCreditsPerToken;</span>
  460 |     | <span class='neutral'>        }</span>
  461 |     | <span class='neutral'>    }</span>
  462 |     | <span class='neutral'></span>
@@ -1942,12 +2252,12 @@
  465 |     | <span class='neutral'>     *      Also, ensure contracts are non-rebasing if they have not opted in.</span>
  466 |     | <span class='neutral'>     * @param _account Address of the account.</span>
  467 |     | <span class='neutral'>     */</span>
- 468 | *r  | <span class='executed'>    function _isNonRebasingAccount(address _account) internal returns (bool) {</span>
+ 468 | *   | <span class='executed'>    function _isNonRebasingAccount(address _account) internal returns (bool) {</span>
  469 |     | <span class='neutral'>        bool isContract = Address.isContract(_account);</span>
- 470 | *r  | <span class='executed'>        if (isContract &amp;&amp; rebaseState[_account] == RebaseOptions.NotSet) {</span>
- 471 | *r  | <span class='executed'>            _ensureMigrationToNonRebasing(_account);</span>
+ 470 | *   | <span class='executed'>        if (isContract &amp;&amp; rebaseState[_account] == RebaseOptions.NotSet) {</span>
+ 471 | *   | <span class='executed'>            _ensureMigrationToNonRebasing(_account);</span>
  472 |     | <span class='neutral'>        }</span>
- 473 | *r  | <span class='executed'>        return nonRebasingCreditsPerToken[_account] &gt; 0;</span>
+ 473 | *   | <span class='executed'>        return nonRebasingCreditsPerToken[_account] &gt; 0;</span>
  474 |     | <span class='neutral'>    }</span>
  475 |     | <span class='neutral'></span>
  476 |     | <span class='neutral'>    /**</span>
@@ -1992,15 +2302,15 @@
  515 |     | <span class='neutral'>     * @dev Ensures internal account for rebasing and non-rebasing credits and</span>
  516 |     | <span class='neutral'>     *      supply is updated following deployment of frozen yield change.</span>
  517 |     | <span class='neutral'>     */</span>
- 518 | *r  | <span class='executed'>    function _ensureMigrationToNonRebasing(address _account) internal {</span>
- 519 | *r  | <span class='executed'>        if (nonRebasingCreditsPerToken[_account] != 0) {</span>
+ 518 | *   | <span class='executed'>    function _ensureMigrationToNonRebasing(address _account) internal {</span>
+ 519 | *   | <span class='executed'>        if (nonRebasingCreditsPerToken[_account] != 0) {</span>
  520 |     | <span class='neutral'>            return; // Account already is non-rebasing</span>
  521 |     | <span class='neutral'>        }</span>
- 522 | *r  | <span class='executed'>        uint256 oldBalance = balanceOf(_account); // For checks</span>
- 523 | *r  | <span class='executed'>        if (_creditBalances[_account] == 0) {</span>
+ 522 | *   | <span class='executed'>        uint256 oldBalance = balanceOf(_account); // For checks</span>
+ 523 | *   | <span class='executed'>        if (_creditBalances[_account] == 0) {</span>
  524 |     | <span class='neutral'>            // Since there is no existing balance, we can directly set it to</span>
  525 |     | <span class='neutral'>            // high resolution, and do not have to do any other bookkeeping</span>
- 526 | *r  | <span class='executed'>            nonRebasingCreditsPerToken[_account] = 1e27;</span>
+ 526 | *   | <span class='executed'>            nonRebasingCreditsPerToken[_account] = 1e27;</span>
  527 |     | <span class='neutral'>        } else {</span>
  528 |     | <span class='neutral'>            // This does not change, but if it did, we would want to</span>
  529 |     | <span class='neutral'>            // use the value before changes.</span>
@@ -2027,12 +2337,12 @@
  550 |     | <span class='neutral'></span>
  551 |     | <span class='neutral'>        // Moving to a non rebasing account should always allow perfect accounting.</span>
  552 |     | <span class='neutral'>        // This check does cost extra gas, but migrating accounts is rare.</span>
- 553 | *r  | <span class='executed'>        require(oldBalance == balanceOf(_account), &quot;Balances do not match&quot;);</span>
+ 553 | *   | <span class='executed'>        require(oldBalance == balanceOf(_account), &quot;Balances do not match&quot;);</span>
  554 |     | <span class='neutral'></span>
- 555 | *r  | <span class='executed'>        emit RebasingDisabled(</span>
- 556 | *r  | <span class='executed'>            _account,</span>
- 557 | *r  | <span class='executed'>            balanceOf(_account),</span>
- 558 | *r  | <span class='executed'>            _rebasingCreditsPerToken</span>
+ 555 | *   | <span class='executed'>        emit RebasingDisabled(</span>
+ 556 | *   | <span class='executed'>            _account,</span>
+ 557 | *   | <span class='executed'>            balanceOf(_account),</span>
+ 558 | *   | <span class='executed'>            _rebasingCreditsPerToken</span>
  559 |     | <span class='neutral'>        );</span>
  560 |     | <span class='neutral'>    }</span>
  561 |     | <span class='neutral'></span>
@@ -2041,8 +2351,8 @@
  564 |     | <span class='neutral'>     * address&#39;s balance will be part of rebases and the account will be exposed</span>
  565 |     | <span class='neutral'>     * to upside and downside.</span>
  566 |     | <span class='neutral'>     */</span>
- 567 | *r  | <span class='executed'>    function rebaseOptIn() public nonReentrant {</span>
- 568 | *r  | <span class='executed'>        require(_isNonRebasingAccount(msg.sender), &quot;Account has not opted out&quot;);</span>
+ 567 | *   | <span class='executed'>    function rebaseOptIn() public nonReentrant {</span>
+ 568 | *   | <span class='executed'>        require(_isNonRebasingAccount(msg.sender), &quot;Account has not opted out&quot;);</span>
  569 |     | <span class='neutral'></span>
  570 | *   | <span class='executed'>        _ensureMigrationToRebasing(msg.sender);</span>
  571 |     | <span class='neutral'></span>
@@ -2052,8 +2362,8 @@
  575 |     | <span class='neutral'>    /**</span>
  576 |     | <span class='neutral'>     * @dev Explicitly mark that an address is non-rebasing.</span>
  577 |     | <span class='neutral'>     */</span>
- 578 | *r  | <span class='executed'>    function rebaseOptOut() public nonReentrant {</span>
- 579 | *r  | <span class='executed'>        require(!_isNonRebasingAccount(msg.sender), &quot;Account has not opted in&quot;);</span>
+ 578 | *   | <span class='executed'>    function rebaseOptOut() public nonReentrant {</span>
+ 579 | *   | <span class='executed'>        require(!_isNonRebasingAccount(msg.sender), &quot;Account has not opted in&quot;);</span>
  580 |     | <span class='neutral'></span>
  581 | *   | <span class='executed'>        _ensureMigrationToNonRebasing(msg.sender);</span>
  582 |     | <span class='neutral'></span>
@@ -2206,7 +2516,7 @@
  34 |     | <span class='neutral'>    /**</span>
  35 |     | <span class='neutral'>     * @dev Returns the name of the token.</span>
  36 |     | <span class='neutral'>     */</span>
- 37 | *r  | <span class='executed'>    function name() public view returns (string memory) {</span>
+ 37 | *   | <span class='executed'>    function name() public view returns (string memory) {</span>
  38 |     | <span class='unexecuted'>        return _name;</span>
  39 |     | <span class='neutral'>    }</span>
  40 |     | <span class='neutral'></span>
@@ -2248,15 +2558,15 @@
    5 |     | <span class='neutral'></span>
    6 |     | <span class='neutral'>// Based on StableMath from Stability Labs Pty. Ltd.</span>
    7 |     | <span class='neutral'>// https://github.com/mstable/mStable-contracts/blob/master/contracts/shared/StableMath.sol</span>
-   8 |     | <span class='unexecuted'></span>
-   9 |     | <span class='neutral'>library StableMath {</span>
+   8 |     | <span class='neutral'></span>
+   9 |     | <span class='unexecuted'>library StableMath {</span>
   10 |     | <span class='neutral'>    using SafeMath for uint256;</span>
   11 |     | <span class='neutral'></span>
   12 |     | <span class='neutral'>    /**</span>
   13 |     | <span class='neutral'>     * @dev Scaling unit for use in specific calculations,</span>
   14 |     | <span class='neutral'>     * where 1 * 10**18, or 1e18 represents a unit &#39;1&#39;</span>
   15 |     | <span class='neutral'>     */</span>
-  16 | *r  | <span class='executed'>    uint256 private constant FULL_SCALE = 1e18;</span>
+  16 | *   | <span class='executed'>    uint256 private constant FULL_SCALE = 1e18;</span>
   17 |     | <span class='neutral'></span>
   18 |     | <span class='neutral'>    /***************************************</span>
   19 |     | <span class='neutral'>                    Helpers</span>
@@ -2291,8 +2601,8 @@
   48 |     | <span class='neutral'>     * @return Result after multiplying the two inputs and then dividing by the shared</span>
   49 |     | <span class='neutral'>     *         scale unit</span>
   50 |     | <span class='neutral'>     */</span>
-  51 | *r  | <span class='executed'>    function mulTruncate(uint256 x, uint256 y) internal pure returns (uint256) {</span>
-  52 | *r  | <span class='executed'>        return mulTruncateScale(x, y, FULL_SCALE);</span>
+  51 | *   | <span class='executed'>    function mulTruncate(uint256 x, uint256 y) internal pure returns (uint256) {</span>
+  52 | *   | <span class='executed'>        return mulTruncateScale(x, y, FULL_SCALE);</span>
   53 |     | <span class='neutral'>    }</span>
   54 |     | <span class='neutral'></span>
   55 |     | <span class='neutral'>    /**</span>
@@ -2304,16 +2614,16 @@
   61 |     | <span class='neutral'>     * @return Result after multiplying the two inputs and then dividing by the shared</span>
   62 |     | <span class='neutral'>     *         scale unit</span>
   63 |     | <span class='neutral'>     */</span>
-  64 | *r  | <span class='executed'>    function mulTruncateScale(</span>
+  64 | *   | <span class='executed'>    function mulTruncateScale(</span>
   65 |     | <span class='neutral'>        uint256 x,</span>
   66 |     | <span class='neutral'>        uint256 y,</span>
   67 |     | <span class='neutral'>        uint256 scale</span>
-  68 | *r  | <span class='executed'>    ) internal pure returns (uint256) {</span>
+  68 | *   | <span class='executed'>    ) internal pure returns (uint256) {</span>
   69 |     | <span class='neutral'>        // e.g. assume scale = fullScale</span>
   70 |     | <span class='neutral'>        // z = 10e18 * 9e17 = 9e36</span>
-  71 | *r  | <span class='executed'>        uint256 z = x.mul(y);</span>
+  71 | *   | <span class='executed'>        uint256 z = x.mul(y);</span>
   72 |     | <span class='neutral'>        // return 9e36 / 1e18 = 9e18</span>
-  73 | *r  | <span class='executed'>        return z.div(scale);</span>
+  73 | *   | <span class='executed'>        return z.div(scale);</span>
   74 |     | <span class='neutral'>    }</span>
   75 |     | <span class='neutral'></span>
   76 |     | <span class='neutral'>    /**</span>
@@ -2344,15 +2654,15 @@
  101 |     | <span class='neutral'>     * @return Result after multiplying the left operand by the scale, and</span>
  102 |     | <span class='neutral'>     *         executing the division on the right hand input.</span>
  103 |     | <span class='neutral'>     */</span>
- 104 | *r  | <span class='executed'>    function divPrecisely(uint256 x, uint256 y)</span>
+ 104 | *   | <span class='executed'>    function divPrecisely(uint256 x, uint256 y)</span>
  105 |     | <span class='neutral'>        internal</span>
  106 |     | <span class='neutral'>        pure</span>
- 107 | *r  | <span class='executed'>        returns (uint256)</span>
+ 107 | *   | <span class='executed'>        returns (uint256)</span>
  108 |     | <span class='neutral'>    {</span>
  109 |     | <span class='neutral'>        // e.g. 8e18 * 1e18 = 8e36</span>
- 110 | *r  | <span class='executed'>        uint256 z = x.mul(FULL_SCALE);</span>
+ 110 | *   | <span class='executed'>        uint256 z = x.mul(FULL_SCALE);</span>
  111 |     | <span class='neutral'>        // e.g. 8e36 / 10e18 = 8e17</span>
- 112 | *r  | <span class='executed'>        return z.div(y);</span>
+ 112 | *   | <span class='executed'>        return z.div(y);</span>
  113 |     | <span class='neutral'>    }</span>
  114 |     | <span class='neutral'>}</span>
  115 |     | <span class='neutral'></span>

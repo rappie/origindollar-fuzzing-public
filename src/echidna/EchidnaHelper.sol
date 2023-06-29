@@ -67,4 +67,28 @@ contract EchidnaHelper is EchidnaSetup {
         total += ousd.balanceOf(ADDRESS_CONTRACT0);
         total += ousd.balanceOf(ADDRESS_CONTRACT1);
     }
+
+    function getTotalNonRebasingBalance() public  returns (uint256 total) {
+        total += ousd._isNonRebasingAccountEchidna(ADDRESS_VAULT)
+            ? ousd.balanceOf(ADDRESS_VAULT)
+            : 0;
+        total += ousd._isNonRebasingAccountEchidna(ADDRESS_OUTSIDER_USER)
+            ? ousd.balanceOf(ADDRESS_OUTSIDER_USER)
+            : 0;
+        total += ousd._isNonRebasingAccountEchidna(ADDRESS_OUTSIDER_CONTRACT)
+            ? ousd.balanceOf(ADDRESS_OUTSIDER_CONTRACT)
+            : 0;
+        total += ousd._isNonRebasingAccountEchidna(ADDRESS_USER0)
+            ? ousd.balanceOf(ADDRESS_USER0)
+            : 0;
+        total += ousd._isNonRebasingAccountEchidna(ADDRESS_USER1)
+            ? ousd.balanceOf(ADDRESS_USER1)
+            : 0;
+        total += ousd._isNonRebasingAccountEchidna(ADDRESS_CONTRACT0)
+            ? ousd.balanceOf(ADDRESS_CONTRACT0)
+            : 0;
+        total += ousd._isNonRebasingAccountEchidna(ADDRESS_CONTRACT1)
+            ? ousd.balanceOf(ADDRESS_CONTRACT1)
+            : 0;
+    }
 }

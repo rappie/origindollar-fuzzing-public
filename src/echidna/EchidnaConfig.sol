@@ -13,7 +13,8 @@ contract EchidnaConfig {
     address internal ADDRESS_CONTRACT0;
     address internal ADDRESS_CONTRACT1;
 
-    bool internal TOGGLE_KNOWN_ISSUES = false;
+    bool internal TOGGLE_KNOWN_ISSUES = true;
+    bool internal TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS = false;
 
     bool internal TOGGLE_STARTING_BALANCE = true;
     uint256 internal STARTING_BALANCE = 1_000_000e18;
@@ -24,12 +25,25 @@ contract EchidnaConfig {
     bool internal TOGGLE_MINT_LIMIT = true;
     uint256 internal MINT_MODULO = 1_000_000_000_000e18;
 
+    uint256 internal TRANSFER_ROUNDING_ERROR = 1e18 - 1;
+    uint256 internal OPT_IN_ROUNDING_ERROR = 1e18 - 1;
+    uint256 internal MINT_ROUNDING_ERROR = 1e18 - 1;
+
     modifier hasKnownIssue() {
         if (!TOGGLE_KNOWN_ISSUES) return;
         _;
     }
 
-    function getAccount(uint8 accountId) internal view returns (address account) {
+    modifier hasKnownIssueWithinLimits() {
+        if (!TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS) return;
+        _;
+    }
+
+    function getAccount(uint8 accountId)
+        internal
+        view
+        returns (address account)
+    {
         accountId = accountId / 64;
         if (accountId == 0) return account = ADDRESS_USER0;
         if (accountId == 1) return account = ADDRESS_USER1;
