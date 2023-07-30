@@ -4,11 +4,13 @@ pragma solidity ^0.8.0;
 import "./EchidnaDebug.sol";
 import "./EchidnaTestAccounting.sol";
 
-/** @title Mixin for testing Mint and Burn functions
+/**
+ * @title Mixin for testing Mint and Burn functions
  * @author Rappie
  */
 contract EchidnaTestMintBurn is EchidnaTestAccounting {
-    /** @notice Minting 0 tokens should not affect account balance
+    /**
+     * @notice Minting 0 tokens should not affect account balance
      * @param targetAcc Account to mint to
      */
     function testMintZeroBalance(uint8 targetAcc) public {
@@ -21,7 +23,8 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
         assert(balanceAfter == balanceBefore);
     }
 
-    /** @notice Burning 0 tokens should not affect account balance
+    /**
+     * @notice Burning 0 tokens should not affect account balance
      * @param targetAcc Account to burn from
      */
     function testBurnZeroBalance(uint8 targetAcc) public {
@@ -34,7 +37,8 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
         assert(balanceAfter == balanceBefore);
     }
 
-    /** @notice Minting tokens must increase the account balance by at least amount
+    /**
+     * @notice Minting tokens must increase the account balance by at least amount
      * @param targetAcc Account to mint to
      * @param amount Amount to mint
      * @custom:error testMintBalance(uint8,uint256): failed!💥
@@ -63,7 +67,8 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
         assert(balanceAfter >= balanceBefore + amountMinted);
     }
 
-    /** @notice Burning tokens must decrease the account balance by at least amount
+    /**
+     * @notice Burning tokens must decrease the account balance by at least amount
      * @param targetAcc Account to burn from
      * @param amount Amount to burn
      * @custom:error testBurnBalance(uint8,uint256): failed!💥
@@ -92,7 +97,8 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
         assert(balanceAfter <= balanceBefore - amount);
     }
 
-    /** @notice Minting tokens should not increase the account balance by less than rounding error above amount
+    /**
+     * @notice Minting tokens should not increase the account balance by less than rounding error above amount
      * @param targetAcc Account to mint to
      * @param amount Amount to mint
      */
@@ -114,7 +120,8 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
         assert(error <= int256(MINT_ROUNDING_ERROR));
     }
 
-    /** @notice A burn of an account balance must result in a zero balance
+    /**
+     * @notice A burn of an account balance must result in a zero balance
      * @param targetAcc Account to burn from
      */
     function testBurnAllBalanceToZero(uint8 targetAcc) public hasKnownIssue {
@@ -124,7 +131,8 @@ contract EchidnaTestMintBurn is EchidnaTestAccounting {
         assert(ousd.balanceOf(target) == 0);
     }
 
-    /** @notice You should always be able to burn an account's balance
+    /**
+     * @notice You should always be able to burn an account's balance
      * @param targetAcc Account to burn from
      */
     function testBurnAllBalanceShouldNotRevert(uint8 targetAcc)
