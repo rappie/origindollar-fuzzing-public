@@ -4,7 +4,17 @@ pragma solidity ^0.8.0;
 import "./EchidnaSetup.sol";
 import "./Debugger.sol";
 
+/**
+ * @title Mixin containing helper functions
+ * @author Rappie
+ */
 contract EchidnaHelper is EchidnaSetup {
+    /**
+     * @notice Mint tokens to an account
+     * @param toAcc Account to mint to
+     * @param amount Amount to mint
+     * @return Amount minted (in case of capped mint with modulo)
+     */
     function mint(uint8 toAcc, uint256 amount) public returns (uint256) {
         address to = getAccount(toAcc);
 
@@ -18,12 +28,21 @@ contract EchidnaHelper is EchidnaSetup {
         return amount;
     }
 
+    /**
+     * @notice Burn tokens from an account
+     * @param fromAcc Account to burn from
+     * @param amount Amount to burn
+     */
     function burn(uint8 fromAcc, uint256 amount) public {
         address from = getAccount(fromAcc);
         hevm.prank(ADDRESS_VAULT);
         ousd.burn(from, amount);
     }
 
+    /**
+     * @notice Change the total supply of OUSD (rebase)
+     * @param amount New total supply
+     */
     function changeSupply(uint256 amount) public {
         if (TOGGLE_CHANGESUPPLY_LIMIT) {
             amount =
@@ -35,6 +54,12 @@ contract EchidnaHelper is EchidnaSetup {
         ousd.changeSupply(amount);
     }
 
+    /**
+     * @notice Transfer tokens between accounts
+     * @param fromAcc Account to transfer from
+     * @param toAcc Account to transfer to
+     * @param amount Amount to transfer
+     */
     function transfer(
         uint8 fromAcc,
         uint8 toAcc,
@@ -46,18 +71,30 @@ contract EchidnaHelper is EchidnaSetup {
         ousd.transfer(to, amount);
     }
 
+    /**
+     * @notice Opt in to rebasing
+     * @param targetAcc Account to opt in
+     */
     function optIn(uint8 targetAcc) public {
         address target = getAccount(targetAcc);
         hevm.prank(target);
         ousd.rebaseOptIn();
     }
 
+    /**
+     * @notice Opt out of rebasing
+     * @param targetAcc Account to opt out
+     */
     function optOut(uint8 targetAcc) public {
         address target = getAccount(targetAcc);
         hevm.prank(target);
         ousd.rebaseOptOut();
     }
 
+    /**
+     * @notice Get the sum of all OUSD balances
+     * @return Total balance
+     */
     function getTotalBalance() public view returns (uint256 total) {
         total += ousd.balanceOf(ADDRESS_VAULT);
         total += ousd.balanceOf(ADDRESS_OUTSIDER_USER);
@@ -68,7 +105,11 @@ contract EchidnaHelper is EchidnaSetup {
         total += ousd.balanceOf(ADDRESS_CONTRACT1);
     }
 
-    function getTotalNonRebasingBalance() public  returns (uint256 total) {
+    /**
+     * @notice Get the sum of all non-rebasing OUSD balances
+     * @return Total balance
+     */
+    function getTotalNonRebasingBalance() public returns (uint256 total) {
         total += ousd._isNonRebasingAccountEchidna(ADDRESS_VAULT)
             ? ousd.balanceOf(ADDRESS_VAULT)
             : 0;
