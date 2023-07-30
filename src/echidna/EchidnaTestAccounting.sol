@@ -4,8 +4,13 @@ pragma solidity ^0.8.0;
 import "./EchidnaDebug.sol";
 import "./EchidnaTestSupply.sol";
 
+/** @title Mixin for testing accounting functions
+ * @author Rappie
+ */
 contract EchidnaTestAccounting is EchidnaTestSupply {
-    // After opting in, balance should not increase. (Ok to lose rounding funds doing this)
+    /** @notice After opting in, balance should not increase. (Ok to lose rounding funds doing this)
+     * @param targetAcc Account to opt in
+     */
     function testOptInBalance(uint8 targetAcc) public {
         address target = getAccount(targetAcc);
 
@@ -16,7 +21,9 @@ contract EchidnaTestAccounting is EchidnaTestSupply {
         assert(balanceAfter <= balanceBefore);
     }
 
-    // After opting out, balance should remain the same
+    /** @notice After opting out, balance should remain the same
+     * @param targetAcc Account to opt out
+     */
     function testOptOutBalance(uint8 targetAcc) public {
         address target = getAccount(targetAcc);
 
@@ -27,7 +34,9 @@ contract EchidnaTestAccounting is EchidnaTestSupply {
         assert(balanceAfter == balanceBefore);
     }
 
-    // Account balance should remain the same after opting in minus rounding error
+    /** @notice Account balance should remain the same after opting in minus rounding error
+     * @param targetAcc Account to opt in
+     */
     function testOptInBalanceRounding(uint8 targetAcc) public {
         address target = getAccount(targetAcc);
 
@@ -42,7 +51,9 @@ contract EchidnaTestAccounting is EchidnaTestSupply {
         assert(-1 * delta <= int256(OPT_IN_ROUNDING_ERROR));
     }
 
-    // After opting in, total supply should remain the same
+    /** @notice After opting in, total supply should remain the same
+     * @param targetAcc Account to opt in
+     */
     function testOptInTotalSupply(uint8 targetAcc) public {
         uint256 totalSupplyBefore = ousd.totalSupply();
         optIn(targetAcc);
@@ -51,7 +62,9 @@ contract EchidnaTestAccounting is EchidnaTestSupply {
         assert(totalSupplyAfter == totalSupplyBefore);
     }
 
-    // After opting out, total supply should remain the same
+    /** @notice After opting out, total supply should remain the same
+     * @param targetAcc Account to opt out
+     */
     function testOptOutTotalSupply(uint8 targetAcc) public {
         uint256 totalSupplyBefore = ousd.totalSupply();
         optOut(targetAcc);
@@ -60,7 +73,9 @@ contract EchidnaTestAccounting is EchidnaTestSupply {
         assert(totalSupplyAfter == totalSupplyBefore);
     }
 
-    // Account balance should remain the same when a smart contract auto converts
+    /** @notice Account balance should remain the same when a smart contract auto converts
+     * @param targetAcc Account to auto convert
+     */
     function testAutoConvertBalance(uint8 targetAcc) public {
         address target = getAccount(targetAcc);
 
@@ -71,7 +86,9 @@ contract EchidnaTestAccounting is EchidnaTestSupply {
         assert(balanceAfter == balanceBefore);
     }
 
-    // The `balanceOf` function should never revert
+    /** @notice The `balanceOf` function should never revert
+     * @param targetAcc Account to check balance of
+     */
     function testBalanceOfShouldNotRevert(uint8 targetAcc) public {
         address target = getAccount(targetAcc);
 
