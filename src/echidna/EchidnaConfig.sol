@@ -30,7 +30,7 @@ contract EchidnaConfig {
 
     // Toggle known issues within limits
     //
-    // Same as TOGGLE_KNOWN_ISSUES, but only skip tests that are known to fail
+    // Same as TOGGLE_KNOWN_ISSUES, but also skip tests that are known to fail
     // within limits set by the variables below.
     //
     bool internal TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS = false;
