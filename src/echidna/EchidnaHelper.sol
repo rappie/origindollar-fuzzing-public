@@ -91,6 +91,12 @@ contract EchidnaHelper is EchidnaSetup {
         ousd.rebaseOptOut();
     }
 
+    /**
+     * @notice Approve an account to spend OUSD
+     * @param ownerAcc Account that owns the OUSD
+     * @param spenderAcc Account that is approved to spend the OUSD
+     * @param amount Amount to approve
+     */
     function approve(
         uint8 ownerAcc,
         uint8 spenderAcc,
