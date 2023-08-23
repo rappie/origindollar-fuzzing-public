@@ -91,6 +91,17 @@ contract EchidnaHelper is EchidnaSetup {
         ousd.rebaseOptOut();
     }
 
+    function approve(
+        uint8 ownerAcc,
+        uint8 spenderAcc,
+        uint256 amount
+    ) public {
+        address owner = getAccount(ownerAcc);
+        address spender = getAccount(spenderAcc);
+        hevm.prank(owner);
+        ousd.approve(spender, amount);
+    }
+
     /**
      * @notice Get the sum of all OUSD balances
      * @return total Total balance
