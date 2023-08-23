@@ -72,6 +72,26 @@ contract EchidnaHelper is EchidnaSetup {
     }
 
     /**
+     * @notice Transfer approved tokens between accounts
+     * @param authorizedAcc Account that is authorized to transfer
+     * @param fromAcc Account to transfer from
+     * @param toAcc Account to transfer to
+     * @param amount Amount to transfer
+     */
+    function transferFrom(
+        uint8 authorizedAcc,
+        uint8 fromAcc,
+        uint8 toAcc,
+        uint256 amount
+    ) public {
+        address authorized = getAccount(authorizedAcc);
+        address from = getAccount(fromAcc);
+        address to = getAccount(toAcc);
+        hevm.prank(authorized);
+        ousd.transferFrom(from, to, amount);
+    }
+
+    /**
      * @notice Opt in to rebasing
      * @param targetAcc Account to opt in
      */
