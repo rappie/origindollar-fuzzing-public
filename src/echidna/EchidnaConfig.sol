@@ -94,7 +94,7 @@ contract EchidnaConfig {
     /**
      * @notice Translate an account ID to an address
      * @param accountId The ID of the account
-     * @return The address of the account
+     * @return account The address of the account
      */
     function getAccount(uint8 accountId)
         internal

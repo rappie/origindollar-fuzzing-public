@@ -93,7 +93,7 @@ contract EchidnaHelper is EchidnaSetup {
 
     /**
      * @notice Get the sum of all OUSD balances
-     * @return Total balance
+     * @return total Total balance
      */
     function getTotalBalance() public view returns (uint256 total) {
         total += ousd.balanceOf(ADDRESS_VAULT);
@@ -107,7 +107,7 @@ contract EchidnaHelper is EchidnaSetup {
 
     /**
      * @notice Get the sum of all non-rebasing OUSD balances
-     * @return Total balance
+     * @return total Total balance
      */
     function getTotalNonRebasingBalance() public returns (uint256 total) {
         total += ousd._isNonRebasingAccountEchidna(ADDRESS_VAULT)
