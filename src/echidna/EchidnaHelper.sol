@@ -126,6 +126,23 @@ contract EchidnaHelper is EchidnaSetup {
     }
 
     /**
+     * @notice Decrease the allowance of an account to spend OUSD
+     * @param ownerAcc Account that owns the OUSD
+     * @param spenderAcc Account that is approved to spend the OUSD
+     * @param amount Amount to decrease the allowance by
+     */
+    function decreaseAllowance(
+        uint8 ownerAcc,
+        uint8 spenderAcc,
+        uint256 amount
+    ) public {
+        address owner = getAccount(ownerAcc);
+        address spender = getAccount(spenderAcc);
+        hevm.prank(owner);
+        ousd.decreaseAllowance(spender, amount);
+    }
+
+    /**
      * @notice Get the sum of all OUSD balances
      * @return total Total balance
      */
