@@ -67,4 +67,29 @@ contract EchidnaTestApproval is EchidnaTestMintBurn {
             // pass
         }
     }
+
+    /**
+     * @notice Approving an amount should update the allowance and overwrite any previous allowance
+     * @param ownerAcc The account that is approving
+     * @param spenderAcc The account that is being approved
+     * @param amount The amount to approve
+     */
+    function testApprove(
+        uint8 ownerAcc,
+        uint8 spenderAcc,
+        uint256 amount
+    ) public {
+        address owner = getAccount(ownerAcc);
+        address spender = getAccount(spenderAcc);
+
+        approve(ownerAcc, spenderAcc, amount);
+        uint256 allowanceAfter1 = ousd.allowance(owner, spender);
+
+        assert(allowanceAfter1 == amount);
+
+        approve(ownerAcc, spenderAcc, amount / 2);
+        uint256 allowanceAfter2 = ousd.allowance(owner, spender);
+
+        assert(allowanceAfter2 == amount / 2);
+    }
 }
