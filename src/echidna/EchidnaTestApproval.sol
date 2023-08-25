@@ -36,4 +36,35 @@ contract EchidnaTestApproval is EchidnaTestMintBurn {
             assert(false);
         }
     }
+
+    /**
+     * @notice Performing `transferFrom` with an amount outside the allowance should revert
+     * @param authorizedAcc The account that is authorized to transfer
+     * @param fromAcc The account that is transferring
+     * @param toAcc The account that is receiving
+     * @param amount The amount to transfer
+     */
+    function testTransferFromShouldRevert(
+        uint8 authorizedAcc,
+        uint8 fromAcc,
+        uint8 toAcc,
+        uint256 amount
+    ) public {
+        address authorized = getAccount(authorizedAcc);
+        address from = getAccount(fromAcc);
+        address to = getAccount(toAcc);
+
+        require(amount > 0);
+        require(
+            !(amount <= ousd.balanceOf(from) &&
+                amount <= ousd.allowance(from, authorized))
+        );
+
+        hevm.prank(authorized);
+        try ousd.transferFrom(from, to, amount) {
+            assert(false);
+        } catch {
+            // pass
+        }
+    }
 }
