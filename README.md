@@ -39,4 +39,10 @@
 	- Minting tokens should not increase the account balance by less than rounding error above amount
 	- A burn of an account balance must result in a zero balance
 	- You should always be able to burn an account's balance
+- Approvals
+	- Performing `transferFrom` with an amount inside the allowance should not revert
+	- Performing `transferFrom` with an amount outside the allowance should revert
+	- Approving an amount should update the allowance and overwrite any previous allowance
+	- Increasing the allowance should raise it by the amount provided
+	- Decreasing the allowance should lower it by the amount provided
 
