@@ -26,14 +26,14 @@ contract EchidnaConfig {
     //   True => skip tests that are known to fail
     //   False => run all tests
     //
-    bool internal TOGGLE_KNOWN_ISSUES = true;
+    bool internal TOGGLE_KNOWN_ISSUES = false;
 
     // Toggle known issues within limits
     //
     // Same as TOGGLE_KNOWN_ISSUES, but also skip tests that are known to fail
     // within limits set by the variables below.
     //
-    bool internal TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS = false;
+    bool internal TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS = true;
 
     // Starting balance
     //
@@ -78,7 +78,7 @@ contract EchidnaConfig {
      * @dev see TOGGLE_KNOWN_ISSUES for more information
      */
     modifier hasKnownIssue() {
-        if (!TOGGLE_KNOWN_ISSUES) return;
+        if (TOGGLE_KNOWN_ISSUES) return;
         _;
     }
 
@@ -87,7 +87,7 @@ contract EchidnaConfig {
      * @dev see TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS for more information
      */
     modifier hasKnownIssueWithinLimits() {
-        if (!TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS) return;
+        if (TOGGLE_KNOWN_ISSUES_WITHIN_LIMITS) return;
         _;
     }
 
