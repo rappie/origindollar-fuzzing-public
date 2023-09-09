@@ -1,9 +1,6 @@
 # OUSD Fuzzing Campaign
 
-**NOTE:** This repo is work in progress.
-
 ## Invariants
-
 - Transfer
 	-  The receiving account's balance after a transfer must not increase by less than the amount transferred
 	- The receiving account's balance after a transfer must not increase by more than the amount transferred
