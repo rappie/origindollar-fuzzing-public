@@ -1,17 +1,19 @@
 {
 	"fuzzing": {
-		"workers": 4,
+		"workers": 2,
 		"workerResetLimit": 50,
 		"timeout": 0,
 		"testLimit": 0,
 		"callSequenceLength": 100,
 		"corpusDirectory": "medusa-corpus",
 		"coverageEnabled": true,
-                "deploymentOrder": ["Echidna"],
+		"deploymentOrder": ["Echidna"],
 		"constructorArgs": {},
-		"deployerAddress": "0x00a329c0648769a73afac7f9381e08fb43dbea72",
+		"deployerAddress": "0x30000",
 		"senderAddresses": [
-			"0x00a329c0648769a73afac7f9381e08fb43dbea72"
+			"0x10000",
+			"0x20000",
+			"0x30000"
 		],
 		"blockNumberDelayMax": 60480,
 		"blockTimestampDelayMax": 604800,
@@ -20,16 +22,35 @@
 		"testing": {
 			"stopOnFailedTest": true,
 			"stopOnFailedContractMatching": true,
+			"stopOnNoTests": true,
 			"testAllContracts": false,
 			"traceAll": false,
 			"assertionTesting": {
 				"enabled": true,
-				"testViewMethods": true
+				"testViewMethods": false,
+				"assertionModes": {
+					"failOnCompilerInsertedPanic": false,
+					"failOnAssertion": true,
+					"failOnArithmeticUnderflow": false,
+					"failOnDivideByZero": false,
+					"failOnEnumTypeConversionOutOfBounds": false,
+					"failOnIncorrectStorageAccess": false,
+					"failOnPopEmptyArray": false,
+					"failOnOutOfBoundsArrayAccess": false,
+					"failOnAllocateTooMuchMemory": false,
+					"failOnCallUninitializedVariable": false
+				}
 			},
 			"propertyTesting": {
 				"enabled": false,
 				"testPrefixes": [
 					"fuzz_"
+				]
+			},
+			"optimizationTesting": {
+				"enabled": false,
+				"testPrefixes": [
+					"optimize_"
 				]
 			}
 		},
@@ -49,5 +70,9 @@
 			"exportDirectory": "",
 			"args": []
 		}
+	},
+	"logging": {
+		"level": "info",
+		"logDirectory": ""
 	}
 }

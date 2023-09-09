@@ -8,6 +8,10 @@ import "./Debugger.sol";
 
 import "../token/OUSD.sol";
 
+/**
+ * @title Room for random debugging functions
+ * @author Rappie
+ */
 contract EchidnaDebug is EchidnaHelper {
     function debugOUSD() public pure {
         // assert(ousd.balanceOf(ADDRESS_USER0) == 1000);
