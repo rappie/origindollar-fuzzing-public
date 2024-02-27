@@ -229,7 +229,8 @@ contract EchidnaTestTransfer is EchidnaDebug {
         uint8 fromAcc,
         uint8 toAcc,
         uint256 amount
-    ) public hasKnownIssue {
+    // ) public hasKnownIssue {
+    ) public {
         address from = getAccount(fromAcc);
         address to = getAccount(toAcc);
 

@@ -1,6 +1,6 @@
 # multi-abi: true
 
-workers: 2
+workers: 1
 symExec: true
 
 testMode: assertion

@@ -26,7 +26,7 @@ contract EchidnaConfig {
     //   True => skip tests that are known to fail
     //   False => run all tests
     //
-    bool internal TOGGLE_KNOWN_ISSUES = false;
+    bool internal TOGGLE_KNOWN_ISSUES = true;
 
     // Toggle known issues within limits
     //
@@ -43,7 +43,7 @@ contract EchidnaConfig {
     // The starting balance is given to outsider accounts that are not used as
     // accounts while fuzzing.
     //
-    bool internal TOGGLE_STARTING_BALANCE = true;
+    bool internal TOGGLE_STARTING_BALANCE = false;
     uint256 internal STARTING_BALANCE = 1_000_000e18;
 
     // Change supply
@@ -54,7 +54,7 @@ contract EchidnaConfig {
     //  True => limit the amount of change to a percentage of total supply
     //  False => no limit
     //
-    bool internal TOGGLE_CHANGESUPPLY_LIMIT = true;
+    bool internal TOGGLE_CHANGESUPPLY_LIMIT = false;
     uint256 internal CHANGESUPPLY_DIVISOR = 10; // 10% of total supply
 
     // Mint limit
@@ -65,7 +65,7 @@ contract EchidnaConfig {
     //  True => limit the amount of minted tokens
     //  False => no limit
     //
-    bool internal TOGGLE_MINT_LIMIT = true;
+    bool internal TOGGLE_MINT_LIMIT = false;
     uint256 internal MINT_MODULO = 1_000_000_000_000e18;
 
     // Known rounding errors

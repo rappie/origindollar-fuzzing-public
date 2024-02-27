@@ -124,8 +124,8 @@ contract EchidnaTestSupply is EchidnaTestTransfer {
      */
     function testTotalNonRebasingSupplyLessThanTotalBalance()
         public
-        hasKnownIssue
-        hasKnownIssueWithinLimits
+        // hasKnownIssue
+        // hasKnownIssueWithinLimits
     {
         uint256 totalNonRebasingSupply = ousd.nonRebasingSupply();
         uint256 totalNonRebasingBalance = getTotalNonRebasingBalance();
